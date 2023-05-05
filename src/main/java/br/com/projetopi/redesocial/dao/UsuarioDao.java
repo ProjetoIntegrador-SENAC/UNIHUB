@@ -63,6 +63,29 @@ public class UsuarioDao {
         }
     }
 
+    public boolean update( Usuario usuario ) {
+        String sqlQuery = """
+        update usuario
+        set 
+         email = ?,
+         senha = ?,
+         papel = ?,
+         where id = ? 
+               """;
+
+        try { PreparedStatement ps = conexao.prepareStatement(sqlQuery); {
+            ps.setString(1, usuario.getEmail());
+            ps.setString(2, usuario.getSenha());
+            ps.setString(3,usuario.getPapel());
+            ps.setInt(4,usuario.getId());
+        }
+
+        }catch (SQLException e){
+            System.out.println("Ocorreu erro " + e );
+        }
+
+        return true;
+    }
 
 
 

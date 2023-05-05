@@ -48,7 +48,7 @@ public class CadastroContaServlet  extends HttpServlet {
             String sobre = req.getParameter("sobre");// TODO CRIAR
             String instituicao_id = req.getParameter("instituicao_id");
             String curso_id = req.getParameter("curso_id");
-            String foto_id = req.getParameter("foto_id");
+            String foto_id = null; //req.getParameter("foto_id");
             String turma_id = req.getParameter("turma_id");
 
             Conta conta = new Conta();

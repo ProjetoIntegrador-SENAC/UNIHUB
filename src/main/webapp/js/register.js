@@ -14,6 +14,67 @@ const email = document.getElementById("email")
 const password = document.getElementById("password")
 const passwordConfirmation = document.getElementById("passwordConfirmation")
 
+// Traz Instituições do banco
+function getInstituicoes() {
+    console.log("funcao chamada")
+    return fetch("http://localhost:8080/api_instituicoes")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            return data
+        })
+}
+// Traz Cursos do banco
+function getCursosByInstituicaoId(id){
+    return fetch("http://localhost:8080/api_cursos?instituicao_id="+id)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            return data
+        })
+}
+
+// Traz Turmas do banco
+function getTurmaByCursoId(id){
+    return fetch("http://localhost:8080/api_turma_specific?ano_inicio=2022&semestre=SEGUNDO&id_curso=1&turno=noturno")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+}
+
+window.addEventListener('load', () => {
+
+    getInstituicoes().then(dados =>{
+        dados.forEach(dado => {
+            const option = document.createElement("option")
+            option.value = dado['id']
+            option.textContent = dado['nome']
+            university.appendChild(option)
+        })
+    }).then( () => {
+        university.addEventListener('change', () => {
+            const id = university.value
+            let index = university.options[id].value;
+            getCursosByInstituicaoId(index).then(dados =>{
+                // limpa opções anteriores, exceto a opção com value="0"
+                const options = course.querySelectorAll('option:not([value="0"])');
+                options.forEach(option => option.remove())
+                const optionZero = course.querySelector('option[value="0"]')
+                optionZero.selected = true
+
+                dados.forEach(dado => {
+                    option = document.createElement("option")
+                    option.value = dado['id'];
+                    option.textContent = dado['nome'];
+                    course.appendChild(option)
+                })
+            })
+        })
+    })
+})
+    
+
 form.addEventListener('submit', (e) => {
 
     const valida = checkInputs();
@@ -172,33 +233,3 @@ function onlynumber(evt) {
 function checkEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
-
-function getInstituicoes(){
-    console.log("funcao chamada")
-    fetch("http://localhost:8080/api_instituicoes")
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-}
-
-function getCursosByInstituicaoId(id){
-    fetch("http://localhost:8080/api_cursos_by_email?instituicao_id="+id)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-}
-
-function getTurmaByCursoId(id){
-    fetch("http://localhost:8080/api_turma_specific?data_inicio=2022&semestre=SEGUNDO&id_curso=1&turno=noturno")
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-}
-
-document.querySelector('#instituicao').addEventListener('change', (e) => {
-    id = document.querySelector('#instituicao').value
-    getCursosByInstituicaoId(id)
-})

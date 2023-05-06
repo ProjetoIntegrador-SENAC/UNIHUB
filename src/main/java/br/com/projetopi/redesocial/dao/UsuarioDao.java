@@ -42,7 +42,7 @@ public class UsuarioDao {
     public void add(Usuario usuario){
         String sqlQuery = "insert into usuario " +
                 "(email, senha, papel)" +
-                "values (?,?,?,?)";
+                "values (?,?,?)";
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
             ps.setString(1, usuario.getEmail());
             ps.setString(2, usuario.getSenha());

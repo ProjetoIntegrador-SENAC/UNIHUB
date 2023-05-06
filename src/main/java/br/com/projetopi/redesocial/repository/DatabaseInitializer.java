@@ -58,7 +58,7 @@ public class DatabaseInitializer implements ServletContextListener {
                 id integer primary key auto_increment,
                 cd_foto binary (200));
                 create table conta (
-                id integer primary key auto_increment,
+                id integer primary key auto_increment=101,
                 cpf varchar (12),
                 ic_ativo integer,
                 nome varchar (30) not null,
@@ -68,7 +68,7 @@ public class DatabaseInitializer implements ServletContextListener {
                 usuario_id integer not null,
                 instituicao_id integer not null,
                 curso_id integer not null,
-                foto_id integer not null,
+                foto_id integer,
                 turma_id integer not null,
                 foreign key (instituicao_id) references instituicao(id),
                 foreign key (usuario_id) references usuario(id),

@@ -19,23 +19,23 @@ public class ContaDao {
 
     public void add(Conta conta){
         String sqlQuery = "insert into conta " +
-                "(cpf, nome, data_nascimento, sobre, usuario_id, instituiacao_id, curso_id, foto_id, turma_id)" +
-                "values (?,?,?,?,?,?,?,?,?)";
+                "(cpf, nome, data_nascimento, sobre, usuario_id, instituicao_id, curso_id, turma_id)" +
+                "values (?,?,?,?,?,?,?,?)";
 
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
 
-            ps.setString(1, conta.getCpf());
+            ps.setString(1, conta.getCpf().replace(".", "").replace(",", ""));
             ps.setString(2, conta.getNome());
             ps.setDate(3, conta.getData_nascimento());
             ps.setString(4, conta.getSobre());
             ps.setInt(5, conta.getUsuario_id());
             ps.setInt(6, conta.getInstituiacao_id());
             ps.setInt(7, conta.getCurso_id());
-            ps.setInt(8, conta.getFoto_id());
-            ps.setInt(9, conta.getTurma_id());
+            ps.setInt(8, conta.getTurma_id());
             ps.execute();
 
         }catch (SQLException e){
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }

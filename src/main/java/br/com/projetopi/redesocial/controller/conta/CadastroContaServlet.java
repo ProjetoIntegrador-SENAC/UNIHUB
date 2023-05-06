@@ -48,7 +48,7 @@ public class CadastroContaServlet  extends HttpServlet {
             String sobre = req.getParameter("sobre");// TODO CRIAR
             String instituicao_id = req.getParameter("instituicao_id");
             String curso_id = req.getParameter("curso_id");
-            String foto_id = req.getParameter("foto_id");
+            String foto_id = null; //req.getParameter("foto_id");
             String turma_id = req.getParameter("turma_id");
 
             Conta conta = new Conta();
@@ -59,7 +59,7 @@ public class CadastroContaServlet  extends HttpServlet {
             conta.setUsuario_id(Integer.valueOf(id));
             conta.setInstituiacao_id(Integer.valueOf(instituicao_id));
             conta.setCurso_id(Integer.valueOf(curso_id));
-            conta.setFoto_id(Integer.valueOf(foto_id));
+            //conta.setFoto_id(Integer.valueOf(foto_id));
             conta.setTurma_id(Integer.valueOf(turma_id));
             ContaService contaService = new ContaService();
             contaService.add(conta);
@@ -69,7 +69,6 @@ public class CadastroContaServlet  extends HttpServlet {
             System.out.println("Erro: " + e.getMessage());
             req.setAttribute("cadastro", "fracasso");
         }
-
         req.getRequestDispatcher("./register.html").forward(req,resp);
     }
 }

@@ -19,8 +19,8 @@ public class ContaDao {
 
     public void add(Conta conta){
         String sqlQuery = "insert into conta " +
-                "(cpf, nome, data_nascimento, sobre, usuario_id, instituicao_id, curso_id, turma_id)" +
-                "values (?,?,?,?,?,?,?,?)";
+                "(cpf, nome, data_nascimento, sobre, usuario_id, instituicao_id, curso_id, turma_id, genero, sobrenome)" +
+                "values (?,?,?,?,?,?,?,?,?,?)";
 
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
 
@@ -32,6 +32,8 @@ public class ContaDao {
             ps.setInt(6, conta.getInstituiacao_id());
             ps.setInt(7, conta.getCurso_id());
             ps.setInt(8, conta.getTurma_id());
+            ps.setString(9, conta.getGenero());
+            ps.setString(10, conta.getSobrenome());
             ps.execute();
 
         }catch (SQLException e){
@@ -142,6 +144,23 @@ public class ContaDao {
             e.printStackTrace();
         }
         return conta;
+
+    }
+
+    public boolean exists(String cpf){
+        String sqlQuery = "select * from conta where cpf = ?";
+        ResultSet result;
+        try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
+            ps.setString(1, cpf);
+            result = ps.executeQuery();
+
+            while(result.next()){
+               return true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
 
     }
 

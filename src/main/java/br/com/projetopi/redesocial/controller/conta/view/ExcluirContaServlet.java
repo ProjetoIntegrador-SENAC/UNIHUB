@@ -1,4 +1,4 @@
-package br.com.projetopi.redesocial.controller.conta.view_controller;
+package br.com.projetopi.redesocial.controller.conta.view;
 
 import br.com.projetopi.redesocial.service.ContaService;
 
@@ -15,7 +15,6 @@ public class ExcluirContaServlet extends HttpServlet {
     ExcluirContaServlet(){
         this.contaService = new ContaService();
     }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

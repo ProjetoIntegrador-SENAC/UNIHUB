@@ -18,6 +18,10 @@ public class ContaService implements Service<Conta> {
         this.usuarioDao = new UsuarioDao();
     }
 
+    public boolean exists(String cpf) {
+        return this.contaDao.exists(cpf);
+    }
+
     public ArrayList<Conta> getContaAll(int qtd_elementos, int num_inico){
         return contaDao.findAllPageable(qtd_elementos, num_inico);
     }
@@ -45,6 +49,7 @@ public class ContaService implements Service<Conta> {
     public ArrayList findAllPageable(int qtd_elementos, int num_inicio) {
         return null;
     }
+
 
 
 }

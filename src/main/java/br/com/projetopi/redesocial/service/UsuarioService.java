@@ -39,4 +39,8 @@ public class UsuarioService implements Service<Usuario> {
         return id;
     }
 
+    public boolean exists(String email){
+        return this.usuarioDao.exists(email);
+    }
+
 }

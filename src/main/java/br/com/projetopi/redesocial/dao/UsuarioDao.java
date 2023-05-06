@@ -136,6 +136,23 @@ public class UsuarioDao {
 
     }
 
+    public boolean exists(String email){
+        String sqlQuery = "select * from usuario where email = ?";
+        ResultSet result;
+        try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
+            ps.setString(1, email);
+            result = ps.executeQuery();
+
+            while(result.next()){
+                return true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+
+    }
+
 
 
 }

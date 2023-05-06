@@ -29,7 +29,7 @@
         <div class="cardRegister">
             <h1>Cadastre-se</h1>
 
-            <form id="form" action="/conta_cadastrar" method="post">
+            <form id="form" action="/conta?acao=CadastrarConta" method="post">
 
                 <div class="fields field1">
                     <input type="text" name="nome" id="firstName" class="field" placeholder="Nome">
@@ -52,9 +52,9 @@
                 <div class="fields field4">
                     <select name="genero" id="gender" class="field">
                         <option value="0" selected disabled>Gênero</option>
-                        <option value="1">Masculino</option>
-                        <option value="2">Feminino</option>
-                        <option value="3">Outros</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Outros">Outros</option>
                     </select>
                     <span class="error material-icons-round">error</span>
                     <span class="success material-icons-round">check_circle</span>

@@ -1,18 +1,15 @@
-package br.com.projetopi.redesocial.controller.auth.action;
+package br.com.projetopi.redesocial.controller.conta.action;
 
 import br.com.projetopi.redesocial.interfaces.Action;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class Deslogar implements Action {
+public class ExibirFeed implements Action {
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        session.invalidate();
-        return "redirect:login?acao=ExibirTelaLogin";
+        return "redirect:feed.html";
     }
 }

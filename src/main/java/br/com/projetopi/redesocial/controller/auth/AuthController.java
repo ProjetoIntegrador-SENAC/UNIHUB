@@ -30,6 +30,7 @@ public class AuthController extends HttpServlet {
         String[] metodo = result.split(":");
         if (metodo[0].equals("forward")){
             RequestDispatcher rd = req.getRequestDispatcher(metodo[1]);
+            rd.forward(req,resp);
         }else{
             resp.sendRedirect(metodo[1]);
         }

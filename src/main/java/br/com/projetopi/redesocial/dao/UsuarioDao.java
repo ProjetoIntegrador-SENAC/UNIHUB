@@ -150,7 +150,24 @@ public class UsuarioDao {
             e.printStackTrace();
         }
         return false;
-
+    }
+    public Usuario getByEmail(String email) {
+        String sqlQuery = "select * from usuario where email = ?";
+        try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
+            ps.setString(1, email);
+            ResultSet result = ps.executeQuery();
+            Usuario usuario = new Usuario();
+            while(result.next()){
+                usuario.setEmail(result.getString("email"));
+                usuario.setPapel(result.getString("papel"));
+                usuario.setSenha(result.getString("senha"));
+                usuario.setId(result.getInt("id"));
+            }
+            return usuario;
+        }catch (Exception e){
+            System.out.println("Erro " + e.getMessage());
+            return null;
+        }
     }
 
 

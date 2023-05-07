@@ -43,4 +43,8 @@ public class UsuarioService implements Service<Usuario> {
         return this.usuarioDao.exists(email);
     }
 
+    public Usuario getByEmail(String email){
+        return this.usuarioDao.getByEmail(email);
+    }
+
 }

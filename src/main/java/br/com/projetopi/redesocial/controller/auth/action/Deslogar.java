@@ -13,6 +13,6 @@ public class Deslogar implements Action {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        return "redirect:login?acao=ExibirTelaLogin";
+        return "forward:login?acao=ExibirTelaLogin";
     }
 }

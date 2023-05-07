@@ -10,6 +10,6 @@ import java.io.IOException;
 public class ExibirTelaLogin implements Action {
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return "redirect:login.html";
+        return "forward:login.html";
     }
 }

@@ -1,4 +1,4 @@
-package br.com.projetopi.redesocial.controller.conta.action;
+package br.com.projetopi.redesocial.controller.admin.action;
 
 import br.com.projetopi.redesocial.interfaces.Action;
 
@@ -7,9 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ExibirFeed implements Action {
+public class ExibirPainel implements Action {
+
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return "forward:feed.html";
+        return "forward:admin_painel.html";
     }
 }

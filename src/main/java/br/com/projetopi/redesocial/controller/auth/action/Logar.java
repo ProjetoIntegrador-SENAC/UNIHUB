@@ -2,6 +2,7 @@ package br.com.projetopi.redesocial.controller.auth.action;
 
 import br.com.projetopi.redesocial.interfaces.Action;
 import br.com.projetopi.redesocial.model.Usuario;
+import br.com.projetopi.redesocial.service.AuthService;
 import br.com.projetopi.redesocial.service.UsuarioService;
 
 import javax.servlet.ServletException;
@@ -13,9 +14,11 @@ import java.io.IOException;
 public class Logar implements Action {
 
     private UsuarioService usuarioService;
+    private AuthService authService;
 
     public Logar(){
         this.usuarioService = new UsuarioService();
+        this.authService = new AuthService();
     }
 
     @Override
@@ -26,11 +29,16 @@ public class Logar implements Action {
         Usuario usuario = this.usuarioService.getByEmail(email);
 
         if (this.usuarioService.exists(email)) {
-            boolean validaSenha = usuario.getSenha().equals(senha);
+            boolean validaSenha = this.authService.checkPassword(senha, usuario.getSenha());
             if (usuario != null && validaSenha) {
                 HttpSession session = request.getSession();
-                session.setAttribute("usuarioLogado", usuario);
-                return "forward:conta?acao=ExibirFeed";
+                if (usuario.getPapel().toUpperCase().equals("ALUNO")){
+                    session.setAttribute("usuarioLogado", usuario);
+                    return "forward:conta?acao=ExibirFeed";
+                } else if (usuario.getPapel().toUpperCase().equals("ADMIN")) {
+                    session.setAttribute("adminLogado", usuario);
+                    return "forward:admin?acao=ExibirPainel";
+                }
             }
         }
         return "redirect:login?acao=ExibirTelaLogin";

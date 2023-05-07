@@ -40,7 +40,5 @@ public class CursoServlet extends HttpServlet {
         } catch(SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 }

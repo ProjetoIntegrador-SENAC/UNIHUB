@@ -33,7 +33,7 @@ public class DatabaseInitializer implements ServletContextListener {
                 create table usuario (\s
                 id integer primary key AUTO_INCREMENT,
                 email varchar (30) not null,
-                senha varchar (100) not null,
+                senha varchar (500) not null,
                 papel varchar (100) DEFAULT  ('aluno') not null
                 );                
                 create table instituicao(
@@ -65,6 +65,7 @@ public class DatabaseInitializer implements ServletContextListener {
                 data_nascimento date not null,
                 sobre varchar (200),
                 genero varchar(100),
+                sobrenome varchar(20),
                 usuario_id integer not null,
                 instituicao_id integer not null,
                 curso_id integer not null,

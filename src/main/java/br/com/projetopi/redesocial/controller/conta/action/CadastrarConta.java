@@ -3,6 +3,7 @@ package br.com.projetopi.redesocial.controller.conta.action;
 import br.com.projetopi.redesocial.interfaces.Action;
 import br.com.projetopi.redesocial.model.Conta;
 import br.com.projetopi.redesocial.model.Usuario;
+import br.com.projetopi.redesocial.service.AuthService;
 import br.com.projetopi.redesocial.service.ContaService;
 import br.com.projetopi.redesocial.service.UsuarioService;
 
@@ -16,10 +17,12 @@ public class CadastrarConta implements Action {
 
     UsuarioService usuarioService;
     ContaService contaService;
+    AuthService authService;
 
     public CadastrarConta(){
         this.contaService = new ContaService();
         this.usuarioService = new UsuarioService();
+        this.authService = new AuthService();
     }
     @Override
     public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,7 +31,7 @@ public class CadastrarConta implements Action {
             // dados usuario
 
             String email = req.getParameter("email");
-            String senha = req.getParameter("senha");
+            String senha = this.authService.hashPassword(req.getParameter("senha"));
             String papel = "Aluno";
             Usuario usuario = new Usuario(email, senha, papel);
 
@@ -80,6 +83,7 @@ public class CadastrarConta implements Action {
         catch (Exception e){
             System.out.println("Erro: " + e.getMessage());
             req.setAttribute("cadastro", "fracasso");
+            return "forward:register.html";
         }
 
         return "forward:login.html";

@@ -50,6 +50,9 @@ public class ContaService implements Service<Conta> {
         return null;
     }
 
+    public Conta getContaByUsuarioId(int id){
+        return this.contaDao.getByUsuarioId(id);
+    }
 
 
 }

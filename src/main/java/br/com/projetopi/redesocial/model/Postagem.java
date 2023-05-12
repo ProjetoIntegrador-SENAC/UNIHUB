@@ -6,12 +6,23 @@ public class Postagem {
     private Integer id;
     private String conteudo;
     private Integer foto_id;
+    private Integer conta_id;
     private Foto foto;
 
     public Postagem(String conteudo, Integer foto_id, Foto foto) {
         this.conteudo = conteudo;
         this.foto_id = foto_id;
         this.foto = foto;
+    }
+
+    public Postagem(){}
+
+    public Integer getConta_id() {
+        return conta_id;
+    }
+
+    public void setConta_id(Integer conta_id) {
+        this.conta_id = conta_id;
     }
 
     public Integer getId() {

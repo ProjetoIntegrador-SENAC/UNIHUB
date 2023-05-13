@@ -45,7 +45,14 @@ public class PostagemDao implements Dao<Postagem> {
 
     @Override
     public boolean remove(int id) {
-        return false;
+        String sqlQuery = "delete from postagem where id = ?";
+        try(PreparedStatement ps =  conexao.prepareStatement(sqlQuery)){
+            ps.setInt(1, id);
+            ps.execute();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return true;
     }
 
     @Override

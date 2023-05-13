@@ -1,14 +1,10 @@
 package br.com.projetopi.redesocial.dao;
 
 import br.com.projetopi.redesocial.interfaces.Dao;
-import br.com.projetopi.redesocial.model.Conta;
 import br.com.projetopi.redesocial.model.Postagem;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class PostagemDao implements Dao<Postagem> {
@@ -22,14 +18,15 @@ public class PostagemDao implements Dao<Postagem> {
     @Override
     public void add(Postagem postagem) {
         String sqlQuery = "insert into postagem " +
-                "(conteudo, foto_id)" +
-                "values (?,?)";
+                "(conteudo, foto_id, conta_id, data_postagem)" +
+                "values (?,?,?,?)";
 
     try (PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
 
         ps.setString(1, postagem.getConteudo());
         ps.setInt(2, postagem.getFoto_id());
         ps.setInt(3, postagem.getConta_id());
+        ps.setDate(4, (Date) postagem.getData_postagem());
         ps.execute();
 
     }catch (SQLException e){
@@ -57,14 +54,27 @@ public class PostagemDao implements Dao<Postagem> {
 
     @Override
     public ArrayList findAllPageable(int qtd_elementos, int num_inicio) {
+        return null;
+    }
+
+    public ArrayList findAllPageableByInstituicao(int instituicao_id, int qtd_elementos, int num_inicio) {
 
         ArrayList<Postagem> postagens = new ArrayList<>();
 
-        String sqlQuery = "select * from postagem LIMIT ? OFFSET ?;";
+        String sqlQuery = """ 
+                select * from postagem\s
+                inner join conta on conta.id = postagem.conta_id
+                inner join instituicao  i on i.id = conta.instituicao_id\s
+                where instituicao_id = ?
+                order by  data_postagem desc\s 
+                LIMIT ? OFFSET ?;"""
+                ;
+
         try (PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
 
-            ps.setInt(1, qtd_elementos);
-            ps.setInt(2, num_inicio);
+            ps.setInt(1, instituicao_id);
+            ps.setInt(2, qtd_elementos);
+            ps.setInt(3, num_inicio);
 
             ResultSet result = ps.executeQuery();
 
@@ -76,6 +86,7 @@ public class PostagemDao implements Dao<Postagem> {
                 postagem.setConteudo(result.getString("conteudo"));
                 postagem.setConta_id(result.getInt("conta_id"));
                 postagem.setFoto_id(result.getInt("foto_id"));
+                postagem.setData_postagem(result.getDate("data_postagem"));
                 postagens.add(postagem);
             }
 
@@ -104,10 +115,11 @@ public class PostagemDao implements Dao<Postagem> {
             while(result.next()){
 
                 Postagem postagem = new Postagem();
-
+                postagem.setId(result.getInt("id"));
                 postagem.setConteudo(result.getString("conteudo"));
                 postagem.setConta_id(result.getInt("conta_id"));
                 postagem.setFoto_id(result.getInt("foto_id"));
+                postagem.setData_postagem(result.getDate("data_postagem"));
                 postagens.add(postagem);
             }
 

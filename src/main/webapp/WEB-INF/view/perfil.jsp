@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,7 +27,7 @@
                 <span class="icon material-symbols-outlined">
                     settings
                 </span>
-                <a href="/src/main/webapp/feed.html">
+                <a href="/login?acao=Deslogar">
                     <span class="icon material-symbols-outlined">
                         disabled_by_default
                     </span>
@@ -36,66 +40,26 @@
             </div>
             <div class="titles">
                 <div class="nameUser">
-                    <h1>$Nome-usuario</h1>
+                    <h1> ${conta.nome_conta} ${conta.sobrenome} </h1>
                 </div>
                 <div class="courseUser">
-                    <h2>$Nome-curso</h2>
+                    <h2>${conta.curso_nome}</h2>
                 </div>
             </div>
         </div>
     </header>
     <main>
         <div class="container">
-            <!-- <c:forEach var="" items="${}"> --> <!-- Repeti os items -->
-            <div class="post">
-                <span class="icon material-symbols-outlined">
-                    delete
-                </span>
-                <img src="" alt="">
-            </div>
-            <!--  </c:forEach> -->
-            <div class="post">
-                <span class="icon material-symbols-outlined">
-                    delete
-                </span>
-                <img src="./img/background-register.jpg" alt="">
-            </div>
-            <div class="post">
-                <span class="icon material-symbols-outlined">
-                    delete
-                </span>
-                <img src="" alt="">
-            </div>
-            <div class="post">
-                <span class="icon material-symbols-outlined">
-                    delete
-                </span>
-                <img src="" alt="">
-            </div>
-            <div class="post">
-                <span class="icon material-symbols-outlined">
-                    delete
-                </span>
-                <img src="" alt="">
-            </div>
-            <div class="post">
-                <span class="icon material-symbols-outlined">
-                    delete
-                </span>
-                <img src="" alt="">
-            </div>
-            <div class="post">
-                <span class="icon material-symbols-outlined">
-                    delete
-                </span>
-                <img src="" alt="">
-            </div>
-            <div class="post">
-                <span class="icon material-symbols-outlined">
-                    delete
-                </span>
-                <img src="" alt="">
-            </div>
+            <c:forEach items="${postagens}" var="postagem">
+                ${postagem.foto}
+                ${postagem.conteudo}
+                <div class="post">
+                    <span class="icon material-symbols-outlined">
+                        delete
+                    </span>
+                    <img src="./img/background-register.jpg" alt="">
+                </div>
+            </c:forEach>
     </main>
 </body>
 </html>

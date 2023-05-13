@@ -10,6 +10,6 @@ import java.io.IOException;
 public class ExibirCadastroConta implements Action {
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return "forward:register.html";
+        return "forward:register.jsp";
     }
 }

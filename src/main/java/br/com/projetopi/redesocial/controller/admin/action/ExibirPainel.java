@@ -11,6 +11,6 @@ public class ExibirPainel implements Action {
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return "forward:admin_painel.html";
+        return "forward:admin_painel.jsp";
     }
 }

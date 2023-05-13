@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<!-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
 
 <head>
     <meta charset="UTF-8">
@@ -26,11 +28,13 @@
         </header>
         <!-- POST's -->
         <div class="container">
-            <!-- <c:forEach var="" items="${}"> --> <!-- Repeti os items -->
             <div class="post">
+                <c:forEach items="${postagens}" var="postagem">
                 <img src="" alt="">
                 <div class="legend">
-                    <textarea class="textLegend" disabled>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis voluptatum doloribus laboriosam voluptates, nihil dolor est tempora dolorem! Facere voluptates nisi molestias, illum pariatur deserunt qui eaque quidem. Id, officia?</textarea>
+                    <textarea class="textLegend" disabled>
+                        ${postagem.conteudo}
+                    </textarea>
                     <button class="btnlegend">
                         <span class="material-symbols-outlined arrow" data-arrow="down-arrow">
                             arrow_drop_down
@@ -48,52 +52,10 @@
                         <span class="icon material-symbols-outlined share" data-share="closed">share</span>
                     </button>
                 </div>
+                    ${postagem.foto}
+            </c:forEach>
             </div>
-            <!--  </c:forEach> -->
-            <div class="post">
-                <img src="" alt="">
-                <div class="legend">
-                    <textarea class="textLegend" disabled>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis voluptatum doloribus laboriosam voluptates, nihil dolor est tempora dolorem! Facere voluptates nisi molestias, illum pariatur deserunt qui eaque quidem. Id, officia?</textarea>
-                    <button class="btnlegend">
-                        <span class="material-symbols-outlined arrow" data-arrow="down-arrow">
-                            arrow_drop_down
-                        </span>
-                    </button>
-                </div>
-                <div class="interactions">
-                    <button class="btnFavorite">
-                        <span class="icon material-symbols-outlined favorite" data-like="dislike">favorite</span>
-                    </button>
-                    <button class="btnComment">
-                        <span class="icon material-symbols-outlined comment" data-comment="closed">Comment</span>
-                    </button>
-                    <button class="btnShare">
-                        <span class="icon material-symbols-outlined share" data-share="closed">share</span>
-                    </button>
-                </div>
-            </div>
-            <div class="post">
-                <img src="" alt="">
-                <div class="legend">
-                    <textarea class="textLegend" disabled>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis voluptatum doloribus laboriosam voluptates, nihil dolor est tempora dolorem! Facere voluptates nisi molestias, illum pariatur deserunt qui eaque quidem. Id, officia?</textarea>
-                    <button class="btnlegend">
-                        <span class="material-symbols-outlined arrow" data-arrow="down-arrow">
-                            arrow_drop_down
-                        </span>
-                    </button>
-                </div>
-                <div class="interactions">
-                    <button class="btnFavorite">
-                        <span class="icon material-symbols-outlined favorite" data-like="dislike">favorite</span>
-                    </button>
-                    <button class="btnComment">
-                        <span class="icon material-symbols-outlined comment" data-comment="closed">Comment</span>
-                    </button>
-                    <button class="btnShare">
-                        <span class="icon material-symbols-outlined share" data-share="closed">share</span>
-                    </button>
-                </div>
-            </div>
+
         <!-- BTN ADD POST -->
         <nav>
             <span class="icon material-symbols-outlined">
@@ -126,76 +88,12 @@
                 </span>
             </div>
             <div class="friends">
-                <!-- <c:forEach var="" items="${}"> --> <!-- Repeti os items -->
-                    <div class="friend">
-                        <img src="" alt="">
-                        <h4>Username</h4>
-                    </div>
-                <!--  </c:forEach> -->
+                <c:forEach items="${contas}" var="conta">
                 <div class="friend">
                     <img src="" alt="">
-                    <h4>Username</h4>
+                    <h4>${conta.nome}</h4>
                 </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
+                </c:forEach>
             </div>
         </section>
     </aside>

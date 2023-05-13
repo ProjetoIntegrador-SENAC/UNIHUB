@@ -4,6 +4,7 @@ import br.com.projetopi.redesocial.dao.ContaDao;
 import br.com.projetopi.redesocial.dao.UsuarioDao;
 import br.com.projetopi.redesocial.interfaces.Service;
 import br.com.projetopi.redesocial.model.Conta;
+import br.com.projetopi.redesocial.model.dto.ContaPerfilDto;
 
 import java.util.ArrayList;
 
@@ -52,6 +53,14 @@ public class ContaService implements Service<Conta> {
 
     public Conta getContaByUsuarioId(int id){
         return this.contaDao.getByUsuarioId(id);
+    }
+
+    public ContaPerfilDto getContaDadosPerfilView(int conta_id){
+        return this.contaDao.getContaPerfilData(conta_id);
+    }
+
+    public ArrayList<Conta> findAllPageableByTurmaId(int turma_id, int qtd_elementos, int num_inicio){
+        return contaDao.findAllPageableByTurmaId(turma_id, qtd_elementos, num_inicio);
     }
 
 

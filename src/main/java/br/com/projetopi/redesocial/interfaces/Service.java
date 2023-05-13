@@ -7,4 +7,8 @@ public interface Service<T> {
     public boolean update(T object);
     public boolean remove(int id);
     public ArrayList findAllPageable(int qtd_elementos, int num_inicio);
+
+    default ArrayList findAllPageable(int instituicao_id, int qtd_elementos, int num_inicio) {
+        return null;
+    }
 }

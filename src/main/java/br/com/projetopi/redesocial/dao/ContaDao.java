@@ -1,6 +1,7 @@
 package br.com.projetopi.redesocial.dao;
 
 import br.com.projetopi.redesocial.model.Conta;
+import br.com.projetopi.redesocial.model.dto.ContaPerfilDto;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
 
 import java.sql.*;
@@ -118,6 +119,22 @@ public class ContaDao {
         return contas;
     }
 
+    public ArrayList<Conta> findAllPageableByTurmaId(int turma_id, int qtd_elementos, int num_inicio){
+        ArrayList<Conta> contas = new ArrayList<>();
+        String sqlQuery = "select * from conta where turma_id = ?  LIMIT ? OFFSET ?;"; //TODO
+        try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
+            ps.setInt(1, turma_id);
+            ps.setInt(2, qtd_elementos);
+            ps.setInt(3, num_inicio);
+            ResultSet result = ps.executeQuery();
+            fillResultSet(contas, result);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return contas;
+    }
+
+
     public Conta findById(int id){
 
         String sqlQuery = "select * from conta where id = ?";
@@ -161,9 +178,7 @@ public class ContaDao {
             e.printStackTrace();
         }
         return false;
-
     }
-
 
     public Conta getByUsuarioId(int id) {
         String sqlQuery = "select * from conta where usuario_id = ?";
@@ -193,4 +208,75 @@ public class ContaDao {
         }
         return conta;
     }
+
+    public ContaPerfilDto getContaPerfilData(int conta_id){
+        String sqlQuery =
+            """
+            select\s
+            co.id, co.cpf, co.nome nome_conta, co.data_nascimento, co.sobre, co.genero, co.sobrenome, co.usuario_id, co.instituicao_id, co.foto_id, co.turma_id, co.curso_id,
+            cu.nome curso_nome, cu.tipo curso_tipo, cu.area curso_area,
+            foto.cd_foto,\s
+            t.data_inicio, t.turno, t.semestre, t.letra,\s
+            i.nome nome_instituicao
+            from conta co\s
+            left join curso cu\s
+            on co.curso_id = cu.id
+            left join foto\s
+            on foto.id = co.foto_id
+            left join turma t
+            on t.id = co.turma_id
+            left join instituicao i
+            on i.id = co.instituicao_id
+            where co.id = ?
+            """;
+
+        ResultSet result;
+        ContaPerfilDto conta = new ContaPerfilDto();
+
+        try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
+            ps.setInt(1, conta_id);
+            result = ps.executeQuery();
+
+            while(result.next()){
+                conta.setCpf(result.getString("cpf"));
+                conta.setData_nascimento(result.getDate("data_nascimento"));
+                conta.setGenero(result.getString("genero"));
+                conta.setSobre(result.getString("sobre"));
+                conta.setUsuario_id(result.getInt("usuario_id"));
+                conta.setCurso_id(result.getInt("curso_id"));
+                conta.setFoto_id(result.getInt("foto_id"));
+                conta.setTurma_id(result.getInt("turma_id"));
+                conta.setNome_conta(result.getString("nome_conta"));
+                conta.setData_inicio(result.getDate("data_inicio"));
+                conta.setNome_instituicao(result.getString("nome_instituicao"));
+                conta.setCurso_nome(result.getString("curso_nome"));
+                conta.setSobrenome(result.getString("sobrenome"));
+
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return conta;
+
+    }
+
+    private void fillResultSet(ArrayList<Conta> contas, ResultSet result) throws SQLException {
+        while(result.next()){
+            Conta conta = new Conta();
+            conta.setSobrenome(result.getString("sobrenome"));
+            conta.setId(result.getInt("id"));
+            conta.setCpf(result.getString("cpf"));
+            conta.setNome(result.getString("nome"));
+            conta.setData_nascimento(result.getDate("data_nascimento"));
+            conta.setGenero(result.getString("genero"));
+            conta.setSobre(result.getString("sobre"));
+            conta.setUsuario_id(result.getInt("usuario_id"));
+            conta.setInstituiacao_id(result.getInt("instituicao_id"));
+            conta.setCurso_id(result.getInt("curso_id"));
+            conta.setFoto_id(result.getInt("foto_id"));
+            conta.setTurma_id(result.getInt("turma_id"));
+            contas.add(conta);
+        }
+    }
+
 }

@@ -175,6 +175,8 @@ public class ContaDao {
             result = ps.executeQuery();
 
             while(result.next()){
+                conta.setSobrenome(result.getString("sobrenome"));
+                conta.setId(result.getInt("id"));
                 conta.setCpf(result.getString("cpf"));
                 conta.setNome(result.getString("nome"));
                 conta.setData_nascimento(result.getDate("data_nascimento"));

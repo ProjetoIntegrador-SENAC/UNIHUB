@@ -21,7 +21,7 @@
 </head>
 <body onload="getInstituicoes()">
 <header class="logo">
-    <a href="./login.html">
+    <a href="./login.jsp">
         <img src="./img/logo-white.png" alt="">
     </a>
 </header>

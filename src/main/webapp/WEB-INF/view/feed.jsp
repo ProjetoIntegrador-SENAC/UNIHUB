@@ -105,6 +105,7 @@
         <section class="profile">
             <div class="user">
                 <img src="./img/user.png" alt="">
+                <a href="/conta?acao=ExibirPerfil"> as </a>
             </div>
             <div class="config">
                 <span class="icon material-symbols-outlined">

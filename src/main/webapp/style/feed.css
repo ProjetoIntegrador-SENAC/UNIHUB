@@ -18,6 +18,7 @@
 
 :root{
     /* Colors */
+    --black: #000;
     --white: #FFF;
     --black: #222;
     --emphasis: #F04;
@@ -103,6 +104,7 @@ main .container{
 }
 
 main .post{
+    position: relative;
     display: flex;
     flex-direction: column;
     background: #EEE;
@@ -113,12 +115,39 @@ main .post{
     padding: 1rem;
     gap: 0.5rem;
 }
-main .post > img{
-    content: "";
-    min-width: 500px;
-    min-height: 500px;
+main .post .userPost {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-right: 0.5rem;
+    height: min-content;
+    backdrop-filter: blur(15px);
+    color: #000;
+    box-shadow: inset 0px 0px 5px var(--black-mono);
+    border-radius: 1rem;
+}
+main .post .userPost > img{
+    height: 15px;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+main .post .img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
     border-radius: 0.5rem;
     box-shadow: inset 0px 0px 10px var(--black-mono);
+}
+main .post .img img {
+    width: 470px;
+    height: 470px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px var(--black-mono);
 }
 main .post .legend{
     display: flex;
@@ -187,7 +216,6 @@ aside{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     width: 12rem;
     height: 100vh;
     position: relative;
@@ -218,6 +246,7 @@ aside .profile .user > img{
     content: "";
     width: 2rem;
     height: 2rem;
+    object-fit: cover;
     border-radius: 0.5rem;
     cursor: pointer;
 }
@@ -231,7 +260,7 @@ aside .container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
     min-height: 80vh;
     margin: 1rem;
@@ -267,6 +296,7 @@ aside .container .friends{
     flex-direction: column;
     align-items: center;
     width: 80%;
+    height: 100%;
     gap: 0.5rem;
     border-radius: 0.5rem;
     padding: 0.5rem;
@@ -283,7 +313,6 @@ aside .container .friends .friend{
     align-items: center;
     justify-content: space-between;
     width: 90%;
-    height: 3rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
     color: var(--black);
@@ -292,10 +321,10 @@ aside .container .friends .friend{
 
 }
 aside .container .friends .friend > img{
-    content: "";
-    width: 1.8rem;
-    height: 1.8rem;
-    border-radius: 0.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: cover;
+    border-radius: 1rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -309,6 +338,7 @@ aside .container .friends .friend > img{
         min-width: 350px;
         min-height: 350px;
     }
+}
 @media screen and (max-width: 280px) {
     main .post > img{
         min-width: 270px;

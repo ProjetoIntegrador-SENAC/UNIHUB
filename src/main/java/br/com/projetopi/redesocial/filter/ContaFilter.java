@@ -1,14 +1,11 @@
 package br.com.projetopi.redesocial.filter;
 
-import br.com.projetopi.redesocial.model.Usuario;
 import br.com.projetopi.redesocial.service.AuthService;
-import br.com.projetopi.redesocial.service.UsuarioService;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter("/conta")

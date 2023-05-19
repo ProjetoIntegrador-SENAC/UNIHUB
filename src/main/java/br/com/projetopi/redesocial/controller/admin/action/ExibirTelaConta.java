@@ -1,6 +1,5 @@
 package br.com.projetopi.redesocial.controller.admin.action;
 
-import br.com.projetopi.redesocial.controller.conta.action.ExibirFeed;
 import br.com.projetopi.redesocial.interfaces.Action;
 import br.com.projetopi.redesocial.model.Conta;
 import br.com.projetopi.redesocial.service.ContaService;
@@ -11,18 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ExibirPainel implements Action {
+public class ExibirTelaConta implements Action {
 
     private ContaService contaService;
 
-    public ExibirPainel(){
+    public ExibirTelaConta(){
         this.contaService = new ContaService();
     }
-
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Conta> contas = contaService.getContaAll(10, 0);
         request.setAttribute("contas", contas);
-        return "forward:painel.jsp";
+        return "forward:conta.jsp";
     }
 }

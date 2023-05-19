@@ -15,7 +15,7 @@ public class AdminController extends HttpServlet {
     @Override
     public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String acao = req.getParameter("acao");
-        String className = "br.com.projetopi.redesocial.controller.conta.action." + acao;
+        String className = "br.com.projetopi.redesocial.controller.admin.action." + acao;
         Action action;
         Class absClassString;
         try {
@@ -30,7 +30,7 @@ public class AdminController extends HttpServlet {
         String[] metodo = result.split(":");
         if (metodo[0].equals("forward")){
             if (metodo[1].contains(".")){
-                RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/" + metodo[1]);
+                RequestDispatcher rd = req.getRequestDispatcher("WEB-INF/view/admin/" + metodo[1]);
                 rd.forward(req, resp);
             }else {
                 RequestDispatcher rd = req.getRequestDispatcher(metodo[1]);

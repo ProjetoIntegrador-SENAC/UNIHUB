@@ -1,4 +1,4 @@
-package br.com.projetopi.redesocial.controller.conta.action;
+package br.com.projetopi.redesocial.controller.admin.action;
 
 import br.com.projetopi.redesocial.interfaces.Action;
 import br.com.projetopi.redesocial.service.ContaService;
@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ExcluirConta implements Action {
     private ContaService contaService;
 
-    ExcluirConta(){
+    public ExcluirConta(){
         this.contaService = new ContaService();
     }
 
@@ -19,6 +19,6 @@ public class ExcluirConta implements Action {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.valueOf(request.getParameter("id"));
         this.contaService.remove(id);
-        return "redrect:";
+        return "forward:conta?acao=ExibirTelaConta";
     }
 }

@@ -21,7 +21,7 @@
     <header>
         <div class="headerTop">
             <div class="logo">
-                <img src="./img/logo-white.png" alt="">
+                <img src="./img/logo-white.png">
             </div>
             <div class="config">
                 <span class="icon material-symbols-outlined">
@@ -36,7 +36,7 @@
         </div>
         <div class="profile">
             <div class="user">
-                <img src="./img/user.png" alt="">
+                <img src="./img/user.png">
             </div>
             <div class="titles">
                 <div class="nameUser">
@@ -60,6 +60,7 @@
                     <img src="./img/background-register.jpg" alt="">
                 </div>
             </c:forEach>
+        </div>
     </main>
 </body>
 </html>

@@ -82,7 +82,7 @@ main header{
     padding: 1rem;
     background: var(--emphasis);
     box-shadow: 1px 3px 10px var(--black-mono);
-    z-index: 1;
+    z-index: 2;
 }
 main header .logo > img{
     content: "";
@@ -114,15 +114,31 @@ main .post{
     height: min-content;
     padding: 1rem;
     gap: 0.5rem;
+    z-index: 1;
+}
+main .post::before{
+    content: "";
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: #EEE;
+    border-radius: 1rem;
+    width: 5rem;
+    top: -8px;
+    left: 12px;
+    padding: 1rem;
+    gap: 0.5rem;
+    z-index: -1;
 }
 main .post .userPost {
+    top: -3px;
+    left: 20px;
     position: absolute;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 0.5rem;
     padding-right: 0.5rem;
-    height: min-content;
+    width: 5.5rem;
     backdrop-filter: blur(15px);
     color: #000;
     box-shadow: inset 0px 0px 5px var(--black-mono);
@@ -203,7 +219,7 @@ main nav{
     transition: all ease-out 250ms;
     cursor: pointer;
     box-shadow: 0 0 10px var(--black),inset 0px 0px 10px var(--black-mono);
-
+    z-index: 2;
 }
 main nav:hover{
     transform: scale(1.3);
@@ -222,7 +238,7 @@ aside{
     gap: 1rem;
     background: var(--emphasis);
     color: var(--white);
-    z-index: 1;
+    z-index: 2;
 }
 aside .profile{
     display: flex;

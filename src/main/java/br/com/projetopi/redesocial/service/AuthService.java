@@ -22,4 +22,9 @@ public class AuthService {
         }
         return true;
     }
+
+    public Usuario getLoggedUser(HttpServletRequest req){
+        HttpSession session = req.getSession();
+        return (Usuario) session.getAttribute("usuarioLogado");
+    }
 }

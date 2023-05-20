@@ -26,7 +26,7 @@ public class PostagemDao implements Dao<Postagem> {
         ps.setString(1, postagem.getConteudo());
         ps.setInt(2, postagem.getFoto_id());
         ps.setInt(3, postagem.getConta_id());
-        ps.setDate(4, (Date) postagem.getData_postagem());
+        ps.setString(4, postagem.getData_postagem());
         ps.execute();
 
     }catch (SQLException e){
@@ -86,7 +86,7 @@ public class PostagemDao implements Dao<Postagem> {
                 postagem.setConteudo(result.getString("conteudo"));
                 postagem.setConta_id(result.getInt("conta_id"));
                 postagem.setFoto_id(result.getInt("foto_id"));
-                postagem.setData_postagem(result.getDate("data_postagem"));
+                postagem.setData_postagem(result.getString("data_postagem"));
                 postagens.add(postagem);
             }
 
@@ -119,7 +119,7 @@ public class PostagemDao implements Dao<Postagem> {
                 postagem.setConteudo(result.getString("conteudo"));
                 postagem.setConta_id(result.getInt("conta_id"));
                 postagem.setFoto_id(result.getInt("foto_id"));
-                postagem.setData_postagem(result.getDate("data_postagem"));
+                postagem.setData_postagem(result.getString("data_postagem"));
                 postagens.add(postagem);
             }
 

@@ -1,13 +1,18 @@
 package br.com.projetopi.redesocial.model;
 
+import java.util.Objects;
+
 public class Foto {
     private int id;
-    private byte[] cd_foto;
+    private String cd_foto;
 
-    public Foto(int id, byte[] cd_fotos) {
+    public Foto(int id, String name){
+        this.id = id;
+        this.cd_foto = name;
     }
 
-    public Foto(byte[] dados) {
+    public Foto(String name){
+        this.cd_foto = name;
     }
 
     public int getId() {
@@ -18,11 +23,24 @@ public class Foto {
         this.id = id;
     }
 
-    public byte[] getCd_foto() {
+    public String getCd_foto() {
         return cd_foto;
     }
 
-    public void setCd_foto(byte[] cd_foto) {
+    public void setCd_foto(String cd_foto) {
         this.cd_foto = cd_foto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Foto foto = (Foto) o;
+        return id == foto.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

@@ -31,8 +31,9 @@ public class TurmaApi extends HttpServlet {
         String semestre = req.getParameter("semestre");
         String turno = req.getParameter("turno");
         int id = Integer.valueOf(req.getParameter("id_curso"));
+        String letra = req.getParameter("letra");
 
-        Turma turma = this.turmaService.findTurmaByDataIdCursoSemestre(ano_inicio, id, semestre, turno);
+        Turma turma = this.turmaService.findTurmaByDataIdCursoSemestre(ano_inicio, id, semestre, turno, letra);
         String json = ApiUtils.ObjectToJsonString(turma);
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");

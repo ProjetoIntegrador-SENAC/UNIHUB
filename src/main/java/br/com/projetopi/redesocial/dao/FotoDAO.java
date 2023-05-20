@@ -4,10 +4,7 @@ import br.com.projetopi.redesocial.model.Foto;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
 
 import javax.servlet.http.HttpServlet;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Optional;
 
 public class FotoDAO{
@@ -20,14 +17,15 @@ public class FotoDAO{
 
     public void toadd(Foto foto) {
         String INSERT = "insert into foto (cd_foto) values (?)";
-        try (PreparedStatement statement = conexao.prepareStatement(INSERT)) {
+        try (PreparedStatement statement = conexao.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
 
-            try {
-//                statement.setInt(1, foto.getId());
-                statement.setBytes(1, foto.getCd_foto());
-                statement.execute();
-            } catch (SQLException e) {
-                e.printStackTrace();
+            statement.setString(1, foto.getCd_foto());
+            statement.execute();
+
+            try(ResultSet rst = statement.getGeneratedKeys()){
+                while(rst.next()) {
+                    foto.setId(rst.getInt(1));
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,7 +47,7 @@ public class FotoDAO{
     public boolean update(Foto foto) {
         String update = "UPDATE foto SET cd_foto = ? WHERE id =? ";
         try (PreparedStatement stmt = conexao.prepareStatement(update)) {
-            stmt.setBytes(1, foto.getCd_foto());
+            stmt.setString(1, foto.getCd_foto());
             stmt.setInt(2, foto.getId());
             stmt.execute();
         } catch (SQLException e) {
@@ -70,7 +68,7 @@ public class FotoDAO{
 
             if (resultado.next()) {
                 return Optional.of(new Foto(resultado.getInt("id"),
-                        resultado.getBytes("cd_foto")));
+                        resultado.getString("cd_foto")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,4 +78,6 @@ public class FotoDAO{
     }
 
 
+    public void getId() {
+    }
 }

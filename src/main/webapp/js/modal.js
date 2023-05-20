@@ -31,7 +31,7 @@ form.addEventListener('submit', function(event) {
     // Obter os valores do input de imagem e do campo de legenda
     const imageInput = document.getElementById('image-input');
     const captionInput = document.getElementById('caption-input');
-    
+
     const selectedImage = imageInput.files[0]; // Obtém o arquivo de imagem selecionado
 
     // Faça algo com os valores (por exemplo, envie-os para o servidor)
@@ -77,6 +77,6 @@ imageInput.addEventListener('change', function(event) {
 
         reader.readAsDataURL(selectedImage); // Lê o conteúdo do arquivo como uma URL de dados
     }
-    
+
     inputImg.style.display = 'none';
 });

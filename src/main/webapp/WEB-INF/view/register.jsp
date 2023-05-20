@@ -85,9 +85,9 @@
             <div class="fields field8">
                 <select name="shift" id="shift" class="field">
                     <option value="0" selected disabled>Turno</option>
-                    <option value="1">Matinal</option>
-                    <option value="2">Noturno</option>
-                    <option value="3">Integral</option>
+                    <option value="matinal">Matinal</option>
+                    <option value="noturno">Noturno</option>
+                    <option value="integral">Integral</option>
                 </select>
                 <span class="error material-icons-round">error</span>
                 <span class="success material-icons-round">check_circle</span>
@@ -112,8 +112,10 @@
             <div class="fields field11">
                 <select name="turma_id" id="turma_id" class="field"> // TODO: verificar se vai usar ou não(se sim, criar js)
                     <option value="0" selected disabled>Turma</option>
-                    <option value="1">A</option>
-                    <option value="2">B</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
                 </select>
                 <span class="error material-icons-round">error</span>
                 <span class="success material-icons-round">check_circle</span>

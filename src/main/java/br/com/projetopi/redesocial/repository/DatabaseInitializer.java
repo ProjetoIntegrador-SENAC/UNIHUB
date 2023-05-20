@@ -85,7 +85,8 @@ public class DatabaseInitializer implements ServletContextListener {
                 conta_id integer,
                 check(foto_id is not null or conteudo is not null),
                 foreign key (foto_id) references foto(id),
-                foreign key (conta_id) references conta(id));      
+                foreign key (conta_id) references conta(id)),
+                foto varchar(255);      
                 create table curtida_postagem(
                 id integer primary key auto_increment,
                 postagem_id integer not null,

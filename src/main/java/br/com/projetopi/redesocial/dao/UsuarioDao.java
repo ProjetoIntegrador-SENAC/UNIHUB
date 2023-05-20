@@ -4,6 +4,7 @@ import br.com.projetopi.redesocial.model.Conta;
 import br.com.projetopi.redesocial.model.Usuario;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -168,6 +169,27 @@ public class UsuarioDao {
             System.out.println("Erro " + e.getMessage());
             return null;
         }
+    }
+
+
+    public ArrayList<Usuario> findAllPageableByRole(String papel, int qtd_elementos, int num_inicio) {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        String sqlQuery = "SELECT * FROM usuario WHERE papel = ? LIMIT ? OFFSET ?";
+
+        try (PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
+            ps.setString(1, papel);
+            ps.setInt(2, qtd_elementos);
+            ps.setInt(3, num_inicio);
+            ResultSet result = ps.executeQuery();
+            while (result.next()) {
+                Usuario usuario = new Usuario();
+                usuarios.add(usuario);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return usuarios;
     }
 
 

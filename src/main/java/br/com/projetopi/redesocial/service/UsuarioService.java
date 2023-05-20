@@ -2,6 +2,7 @@ package br.com.projetopi.redesocial.service;
 
 import br.com.projetopi.redesocial.dao.UsuarioDao;
 import br.com.projetopi.redesocial.interfaces.Service;
+import br.com.projetopi.redesocial.model.Conta;
 import br.com.projetopi.redesocial.model.Usuario;
 
 import java.util.ArrayList;
@@ -25,12 +26,16 @@ public class UsuarioService implements Service<Usuario> {
 
     @Override
     public boolean remove(int id) {
-        return false;
+       return false;
     }
 
     @Override
     public ArrayList findAllPageable(int qtd_elementos, int num_inicio) {
         return null;
+    }
+
+    public ArrayList<Usuario> getUsuarioAll(String papel, int qtd_elementos, int num_inicio){
+        return usuarioDao.findAllPageableByRole(papel,qtd_elementos,num_inicio);
     }
 
 

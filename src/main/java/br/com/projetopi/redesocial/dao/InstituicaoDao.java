@@ -98,6 +98,24 @@ public class InstituicaoDao {
         return instituicoes;
     }
 
+    public ArrayList<Instituicao> findAll(){
+        ArrayList<Instituicao> instituicoes = new ArrayList<>();
+
+        String sqlQuery = "SELECT * FROM instituicao;";
+        try(PreparedStatement ps = con.prepareStatement(sqlQuery)) {
+            ResultSet result = ps.executeQuery();
+
+            while(result.next()){
+                Instituicao instituicao = new Instituicao();
+                instituicao.setNome(result.getString("nome"));
+                instituicao.setId(result.getInt("id"));
+                instituicoes.add(instituicao);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return instituicoes;
+    }
     public Instituicao getInstituicao(int id) throws SQLException {
         String sql = "SELECT * FROM instituicao WHERE id = ?";
 

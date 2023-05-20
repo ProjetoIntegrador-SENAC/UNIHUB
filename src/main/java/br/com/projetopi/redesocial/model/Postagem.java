@@ -10,11 +10,11 @@ public class Postagem {
 
     private Date data_postagem;
     private Integer conta_id;
-    private Foto foto;
+    private String foto;
 
     public Postagem(){}
 
-    public Postagem(String conteudo, Integer foto_id, Foto foto, Integer conta_id, Date data_postagem) {
+    public Postagem(String conteudo, Integer foto_id, String foto, Integer conta_id, Date data_postagem) {
         this.conteudo = conteudo;
         this.foto_id = foto_id;
         this.foto = foto;
@@ -63,11 +63,11 @@ public class Postagem {
         this.foto_id = foto_id;
     }
 
-    public Foto getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(Foto foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 

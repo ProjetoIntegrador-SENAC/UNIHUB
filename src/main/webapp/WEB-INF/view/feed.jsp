@@ -37,7 +37,7 @@
                         <h6>Username</h6>
                     </div>
                     <div class="img">
-                        <img src="${postagem.foto}"> <!-- Adicionar imagem -->
+                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}"> <!-- Adicionar imagem -->
                     </div>
                     <div class="legend">
                         <textarea class="textLegend" disabled>${postagem.conteudo}</textarea>
@@ -104,18 +104,18 @@
     <div id="modal-overlay">
         <div id="modal" class="modal-content">
             <h2>Postagem</h2>
-            <form  id="modal-form" action="/foto" method="post" enctype="multipart/form-data">
-                <img id="preview-image">
-                <div id="img">
-                    <label for="file" class="custom-file-label">Escolher imagem</label>
-                    <input type="file" name="file" id="file" accept="image/*" capture="user" required>
-                </div>
-                <textarea id="caption-input" name="legenda" placeholder="Digite a legenda" required></textarea>
-                <div class="btnModal">
-                    <button id="btnCancelar">Cancelar</button>
-                    <button type="submit">Enviar</button>
-                </div>
-            </form>
+           <form action="/foto" method="post" enctype="multipart/form-data">
+               <div>
+                   <textarea id="caption-input" name="legenda" placeholder="Digite a legenda" required></textarea>
+               </div>
+               <div>
+                   <label for="file">Escolher imagem</label>
+                   <input type="file" name="file" id="file">
+               </div>
+              <div class="btnModal">
+                  <button id="btnCancelar">Cancelar</button>
+                  <button type="submit">Enviar</button>
+              </div>
         </div>
     </div>
 </body>

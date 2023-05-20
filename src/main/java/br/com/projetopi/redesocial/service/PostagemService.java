@@ -35,6 +35,9 @@ public class PostagemService implements Service<Postagem> {
         return null;
     }
 
+    public ArrayList<Postagem> findAllPageable() {
+        return this.postagemDao.findAllPostagem();
+    }
     @Override
     public ArrayList findAllPageable(int instituicao_id, int qtd_elementos, int num_inicio) {
         ArrayList<Postagem> postagens =  this.postagemDao.findAllPageableByInstituicao(instituicao_id, qtd_elementos, num_inicio);

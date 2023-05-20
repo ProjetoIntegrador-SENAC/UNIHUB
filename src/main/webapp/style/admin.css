@@ -20,3 +20,17 @@
 .menu-item a{
     color: gray;
 }
+
+.row.no_border{
+    border: 0;
+    padding: 0px;
+    margin: 0px
+}
+
+.card{
+}
+
+.card-item{
+     margin: 0;
+     padding: 0;
+ }

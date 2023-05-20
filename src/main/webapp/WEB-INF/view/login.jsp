@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,7 +16,7 @@
 
 <body>
     <header class="logo">
-        <a href="./login.html">
+        <a href="./login?acao=ExibirTelaLogin">
             <img src="./img/logo-white.png">
         </a>
     </header>
@@ -38,13 +39,13 @@
                         <span class="icon material-symbols-outlined">
                             person
                         </span>
-                        <input type="text" name="email" id="user">
+                        <input type="text" name="email" id="user" placeholder="Digite seu e-mail">
                     </div>
                     <div class="inputs">
                         <span class="icon material-symbols-outlined">
                             lock
                         </span>
-                        <input type="password" name="senha" id="passowrd">
+                        <input type="password" name="senha" id="passowrd" placeholder="Digite sua senha">
                     </div>
                     <button type="submit" class="btnLogin">LOGAR</button>
                     <span>

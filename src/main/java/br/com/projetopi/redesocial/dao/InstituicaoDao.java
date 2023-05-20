@@ -8,16 +8,14 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class InstituicaoDao {
-    private int id;
-    private String nome;
 
     private Connection con;
 
     public InstituicaoDao(){
         this.con = ConnectionFactory.getConnectionH2();
     }
-    public void add(Instituicao instituicao){
-        String sqlQuery = "insert into instituicao (nome) values (?)";
+    public boolean add(Instituicao instituicao){
+        String sqlQuery = "insert into instituicao (nome, ic_ativo) values (?, 1)";
         try(PreparedStatement ps =  con.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)){
             ps.setString(1, instituicao.getNome());
             ps.execute();
@@ -27,34 +25,34 @@ public class InstituicaoDao {
                     instituicao.setId(generatedKeys.getInt(1));
                 }
             }
+            return true;
         }catch(SQLException e){
             e.printStackTrace();
+            return false;
         }
     }
     public boolean remove(int id){
-        String sqlQuery = "delete from instituicao where id == ?";
+        String sqlQuery = "update instituicao set ic_ativo = 0 where id = ?";
         try(PreparedStatement ps =  con.prepareStatement(sqlQuery)){
             ps.setInt(1, id);
             ps.execute();
         }catch(SQLException e){
             e.printStackTrace();
+            return false;
         }
         return true;
     }
 
     public boolean update(Instituicao instituicao){
 
-        String sqlQuery = """
-            update instituicao 
-            set 
-                nome = ?
-            where id  = ?
-        """;
+        String sqlQuery = "update instituicao set nome = ? where id = ? ";
         try(PreparedStatement ps = con.prepareStatement(sqlQuery)) {
             ps.setString(1, instituicao.getNome());
             ps.setInt(2, instituicao.getId());
+            ps.execute();
         }catch (SQLException e){
-            System.out.println("Ocorreu o erro " + e);;
+            System.out.println("Ocorreu o erro " + e);
+            e.printStackTrace();
             return false;
         }
         return true;
@@ -82,7 +80,7 @@ public class InstituicaoDao {
     public ArrayList<Instituicao> findAllPageble(int qtd_elementos, int num_inicio){
         ArrayList<Instituicao> instituicoes = new ArrayList<>();
 
-        String sqlQuery = "SELECT * FROM instituicao LIMIT ? OFFSET ?;"; //TODO
+        String sqlQuery = "SELECT * FROM instituicao where ic_ativo = 1 LIMIT ? OFFSET ?;"; //TODO
         try(PreparedStatement ps = con.prepareStatement(sqlQuery)) {
             ps.setInt(1, qtd_elementos);
             ps.setInt(2, num_inicio);
@@ -100,6 +98,24 @@ public class InstituicaoDao {
         return instituicoes;
     }
 
+    public ArrayList<Instituicao> findAll(){
+        ArrayList<Instituicao> instituicoes = new ArrayList<>();
+
+        String sqlQuery = "SELECT * FROM instituicao;";
+        try(PreparedStatement ps = con.prepareStatement(sqlQuery)) {
+            ResultSet result = ps.executeQuery();
+
+            while(result.next()){
+                Instituicao instituicao = new Instituicao();
+                instituicao.setNome(result.getString("nome"));
+                instituicao.setId(result.getInt("id"));
+                instituicoes.add(instituicao);
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return instituicoes;
+    }
     public Instituicao getInstituicao(int id) throws SQLException {
         String sql = "SELECT * FROM instituicao WHERE id = ?";
 

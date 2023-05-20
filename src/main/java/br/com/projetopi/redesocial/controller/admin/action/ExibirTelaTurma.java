@@ -10,6 +10,6 @@ import java.io.IOException;
 public class ExibirTelaTurma implements Action {
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return null;
+        return "forward:turma.jsp";
     }
 }

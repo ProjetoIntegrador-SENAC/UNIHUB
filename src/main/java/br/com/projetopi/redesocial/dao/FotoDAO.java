@@ -17,8 +17,8 @@ public class FotoDAO{
 
     public void toadd(Foto foto) {
         String INSERT = "insert into foto (cd_foto) values (?)";
-        try (PreparedStatement statement = conexao.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
 
+        try (PreparedStatement statement = conexao.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, foto.getCd_foto());
             statement.execute();
 

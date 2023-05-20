@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
@@ -12,10 +12,10 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
     
-    <link rel="stylesheet" href="./style/feed.css">
-    <link rel="stylesheet" href="./style/modal.css">
-    <script src="./js/feed.js" defer></script>
-    <script src="./js/modal.js" defer></script>
+    <link rel="stylesheet" href="../../style/feed.css">
+    <link rel="stylesheet" href="../../style/modal.css">
+    <script src="../../js/feed.js" defer></script>
+    <script src="../../js/modal.js" defer></script>
 
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
@@ -37,12 +37,10 @@
                         <h6>Username</h6>
                     </div>
                     <div class="img">
-                        <img src="./img/background-register.jpg"> <!-- Adicionar imagem -->
+                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}"> <!-- Adicionar imagem -->
                     </div>
                     <div class="legend">
-                        <textarea class="textLegend" disabled>
-                            ${postagem.conteudo}
-                        </textarea>
+                        <textarea class="textLegend" disabled>${postagem.conteudo}</textarea>
                         <button class="btnlegend">
                             <span class="material-symbols-outlined arrow" data-arrow="down-arrow">
                                 arrow_drop_down
@@ -60,7 +58,6 @@
                             <span class="icon material-symbols-outlined share" data-share="closed">share</span>
                         </button>
                     </div>
-                        ${postagem.foto}
                 </div>
             </c:forEach>
 
@@ -107,20 +104,18 @@
     <div id="modal-overlay">
         <div id="modal" class="modal-content">
             <h2>Postagem</h2>
-            <form action="/foto" method="post" enctype="multipart/form-data">
-
-                <div>
-                    <textarea id="caption-input" name="legenda" placeholder="Digite a legenda" required></textarea>
-                </div>
-                <div>
-                    <label for="file">Escolher imagem</label>
-                    <input type="file" name="file" id="file">
-                </div>
-               <div class="btnModal">
-                   <button id="btnCancelar">Cancelar</button>
-                   <button type="submit">Enviar</button>
+           <form action="/foto" method="post" enctype="multipart/form-data">
+               <div>
+                   <textarea id="caption-input" name="legenda" placeholder="Digite a legenda" required></textarea>
                </div>
-            </form>
+               <div>
+                   <label for="file">Escolher imagem</label>
+                   <input type="file" name="file" id="file">
+               </div>
+              <div class="btnModal">
+                  <button id="btnCancelar">Cancelar</button>
+                  <button type="submit">Enviar</button>
+              </div>
         </div>
     </div>
 </body>

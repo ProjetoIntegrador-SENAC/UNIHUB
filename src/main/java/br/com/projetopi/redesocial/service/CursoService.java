@@ -15,9 +15,20 @@ public class CursoService {
     public ArrayList<Curso> getCursosByInstituicaoId(int instituicaoId){
         return cursoDao.getCursosByInstituicaoId(instituicaoId);
     }
-
     public Curso getCursoById(int id){
         return cursoDao.findById(id);
+    }
+
+    public boolean update(Curso curso){
+        return this.cursoDao.update(curso);
+    }
+
+    public boolean add(Curso curso){
+        return this.cursoDao.createCurso(curso);
+    }
+
+    public boolean remove(int id){
+        return this.cursoDao.delete(id);
     }
 
 }

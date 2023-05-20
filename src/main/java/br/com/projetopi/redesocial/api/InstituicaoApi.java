@@ -22,7 +22,7 @@ public class InstituicaoApi extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ArrayList<Instituicao> instituicoes = this.instituicaoService.getInstituicaoAll(10, 0);
+        ArrayList<Instituicao> instituicoes = this.instituicaoService.getInstituicaoAll();
         String json = ApiUtils.ObjectToJsonString(instituicoes);
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");

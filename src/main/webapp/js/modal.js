@@ -15,21 +15,19 @@ const btnCancelar = document.getElementById('btnCancelar');
 const inputImg = document.getElementById('img');
 
 // Obtém o elemento do input de imagem e o elemento da imagem de pré-visualização
-const imageInput = document.getElementById('image-input');
+const imageInput = document.getElementById('file');
 const previewImage = document.getElementById('preview-image');
 
 // Adiciona um ouvinte de evento de clique ao botão de adicionar
-addButton.addEventListener('click', function() {
+addButton.addEventListener('click', () => {
     // Exibe o modal
     modalOverlay.style.display = 'flex';
 });
 
 // Adiciona um ouvinte de evento de envio ao formulário do modal
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio do formulário (comportamento padrão)
+form.addEventListener('submit', () => {
 
     // Obter os valores do input de imagem e do campo de legenda
-    const imageInput = document.getElementById('image-input');
     const captionInput = document.getElementById('caption-input');
 
     const selectedImage = imageInput.files[0]; // Obtém o arquivo de imagem selecionado
@@ -51,12 +49,15 @@ function limpar() {
 }
 
 // Adiciona um ouvinte de evento de cancelar o envio ao formulário do modal
-btnCancelar.addEventListener('click', limpar);
+btnCancelar.addEventListener('click', e => {
+    e.preventDefault();
+    limpar()
+});
 
 // Adiciona um ouvinte de evento de clique ao objeto modalOverlay
-modalOverlay.addEventListener('click', function(event) {
+modalOverlay.addEventListener('click', e => {
     // Verifica se o clique foi fora do modal
-    if (event.target === modalOverlay) {
+    if (e.target === modalOverlay) {
         // Fecha o modal
         modalOverlay.style.display = 'none';
     }
@@ -64,8 +65,8 @@ modalOverlay.addEventListener('click', function(event) {
 
 
 // Adiciona um ouvinte de evento de alteração ao input de imagem
-imageInput.addEventListener('change', function(event) {
-    const selectedImage = event.target.files[0]; // Obtém o arquivo de imagem selecionado
+imageInput.addEventListener('change', e => {
+    const selectedImage = e.target.files[0]; // Obtém o arquivo de imagem selecionado
 
     if (selectedImage) {
         const reader = new FileReader(); // Cria um objeto FileReader

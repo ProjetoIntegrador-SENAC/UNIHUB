@@ -18,16 +18,23 @@ public class PostagemDao implements Dao<Postagem> {
     @Override
     public void add(Postagem postagem) {
         String sqlQuery = "insert into postagem " +
-                "(conteudo, foto_id, conta_id, data_postagem)" +
-                "values (?,?,?,?)";
+                "(conteudo, foto_id, conta_id, data_postagem, foto)" +
+                "values (?,?,?,?,?)";
 
-    try (PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
+    try (PreparedStatement ps = conexao.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)){
 
         ps.setString(1, postagem.getConteudo());
         ps.setInt(2, postagem.getFoto_id());
         ps.setInt(3, postagem.getConta_id());
-        ps.setString(4, postagem.getData_postagem());
+        ps.setDate(4, postagem.getData_postagem());
+        ps.setString(5, postagem.getFoto());
         ps.execute();
+
+        try(ResultSet generatedKeys = ps.getGeneratedKeys()){
+            postagem.setId(generatedKeys.getInt(1));
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
     }catch (SQLException e){
         System.out.println(e.getMessage());
@@ -53,8 +60,35 @@ public class PostagemDao implements Dao<Postagem> {
     }
 
     @Override
-    public ArrayList findAllPageable(int qtd_elementos, int num_inicio) {
+    public ArrayList<Postagem> findAllPageable(int qtd_elementos, int num_inicio) {
         return null;
+    }
+
+    public ArrayList<Postagem> findAllPostagem(){
+        String SQL = "SELECT * FROM POSTAGEM";
+
+        ArrayList<Postagem> postagens = new ArrayList<>();
+
+        try (PreparedStatement preparedStatement = conexao.prepareStatement(SQL)){
+            preparedStatement.execute();
+
+            ResultSet set = preparedStatement.getResultSet();
+
+            while(set.next()){
+                Postagem postagem = new Postagem();
+
+                postagem.setId(set.getInt("id"));
+                postagem.setConteudo(set.getString("conteudo"));
+                postagem.setConta_id(set.getInt("conta_id"));
+                postagem.setFoto_id(set.getInt("foto_id"));
+                postagem.setData_postagem(set.getDate("data_postagem"));
+                postagem.setFoto(set.getString("foto"));
+                postagens.add(postagem);
+            }
+            return postagens;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public ArrayList findAllPageableByInstituicao(int instituicao_id, int qtd_elementos, int num_inicio) {
@@ -86,7 +120,7 @@ public class PostagemDao implements Dao<Postagem> {
                 postagem.setConteudo(result.getString("conteudo"));
                 postagem.setConta_id(result.getInt("conta_id"));
                 postagem.setFoto_id(result.getInt("foto_id"));
-                postagem.setData_postagem(result.getString("data_postagem"));
+                postagem.setData_postagem(result.getDate("data_postagem"));
                 postagens.add(postagem);
             }
 
@@ -119,7 +153,7 @@ public class PostagemDao implements Dao<Postagem> {
                 postagem.setConteudo(result.getString("conteudo"));
                 postagem.setConta_id(result.getInt("conta_id"));
                 postagem.setFoto_id(result.getInt("foto_id"));
-                postagem.setData_postagem(result.getString("data_postagem"));
+                postagem.setData_postagem(result.getDate("data_postagem"));
                 postagens.add(postagem);
             }
 

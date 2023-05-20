@@ -37,16 +37,19 @@ public class CursoDao {
         }
     }
 
-    public void update(Curso curso, Curso cursoToUpdate) throws SQLException{
-        String sql = "UPDATE curso SET nome = ? tipo = ? area = ? instituicao_id = ? WHERE id = ?";
-
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, curso.getNome());
-        statement.setString(2, curso.getTipo());
-        statement.setString(3, curso.getArea());
-        statement.setInt(4, curso.getInstituicao_id());
-
-        statement.execute();
+    public boolean update(Curso curso) {
+        String sql = "UPDATE curso SET nome = ?, tipo = ?, area = ? WHERE id = ?";
+        try(PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setString(1, curso.getNome());
+            statement.setString(2, curso.getTipo());
+            statement.setString(3, curso.getArea());
+            statement.setInt(4, curso.getId());
+            statement.execute();
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public List<Curso> findAll() throws SQLException {

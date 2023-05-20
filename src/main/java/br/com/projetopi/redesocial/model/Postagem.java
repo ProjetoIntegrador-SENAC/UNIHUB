@@ -1,6 +1,6 @@
 package br.com.projetopi.redesocial.model;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Objects;
 
 public class Postagem {
@@ -8,21 +8,23 @@ public class Postagem {
     private String conteudo;
     private Integer foto_id;
 
-    private Date data_postagem;
+    private String data_postagem;
     private Integer conta_id;
     private Foto foto;
 
-    public Postagem(String conteudo, Integer foto_id, Foto foto) {
+    public Postagem(String conteudo, Integer foto_id, Foto foto, Integer conta_id, String data_postagem) {
         this.conteudo = conteudo;
         this.foto_id = foto_id;
         this.foto = foto;
+        this.conta_id = conta_id;
+        this.data_postagem = data_postagem;
     }
 
-    public Date getData_postagem() {
+    public String getData_postagem() {
         return data_postagem;
     }
 
-    public void setData_postagem(Date data_postagem) {
+    public void setData_postagem(String data_postagem) {
         this.data_postagem = data_postagem;
     }
 

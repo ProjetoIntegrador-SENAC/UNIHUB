@@ -1,7 +1,9 @@
 package br.com.projetopi.redesocial.controller;
 
 import br.com.projetopi.redesocial.model.Foto;
+import br.com.projetopi.redesocial.model.Postagem;
 import br.com.projetopi.redesocial.service.FotoService;
+import br.com.projetopi.redesocial.service.PostagemService;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -24,17 +26,27 @@ import static org.apache.commons.fileupload.servlet.ServletFileUpload.isMultipar
 
 @WebServlet("/foto")
 public class FotoController extends HttpServlet {
-
-    private FotoService fotoService = new FotoService();
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Map<String, String> parameters = uploadImage(req);
 
         String postImagePath = parameters.get("image");
-        System.out.println("IMAGEM POSTADA: " + postImagePath);
-        fotoService.add(new Foto(postImagePath));
+        String legenda = parameters.get("legenda");
 
+        Foto foto = new Foto(postImagePath);
+
+        FotoService fotoService = new FotoService();
+
+        fotoService.add(foto);
+
+        Postagem postagem = new Postagem(legenda, foto.getId(), foto, 5, "2023"); //TODO: CRIAR METODO PARA PEGAR O ID DO USUARIO
+
+        PostagemService postagemService =  new PostagemService();
+
+        postagemService.add(postagem);
+
+        resp.sendRedirect("/conta?acao=ExibirFeed");
 
     }
 

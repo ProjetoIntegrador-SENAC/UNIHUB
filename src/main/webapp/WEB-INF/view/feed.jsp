@@ -12,10 +12,10 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
     
-    <link rel="stylesheet" href="./style/feed.css">
-    <link rel="stylesheet" href="./style/modal.css">
-    <script src="./js/feed.js" defer></script>
-    <script src="./js/modal.js" defer></script>
+    <link rel="stylesheet" href="../../style/feed.css">
+    <link rel="stylesheet" href="../../style/modal.css">
+    <script src="../../js/feed.js" defer></script>
+    <script src="../../js/modal.js" defer></script>
 
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
@@ -37,12 +37,10 @@
                         <h6>Username</h6>
                     </div>
                     <div class="img">
-                        <img src="./img/background-register.jpg"> <!-- Adicionar imagem -->
+                        <img src="${postagem.foto}"> <!-- Adicionar imagem -->
                     </div>
                     <div class="legend">
-                        <textarea class="textLegend" disabled>
-                            ${postagem.conteudo}
-                        </textarea>
+                        <textarea class="textLegend" disabled>${postagem.conteudo}</textarea>
                         <button class="btnlegend">
                             <span class="material-symbols-outlined arrow" data-arrow="down-arrow">
                                 arrow_drop_down
@@ -60,7 +58,6 @@
                             <span class="icon material-symbols-outlined share" data-share="closed">share</span>
                         </button>
                     </div>
-                        ${postagem.foto}
                 </div>
             </c:forEach>
 
@@ -107,19 +104,17 @@
     <div id="modal-overlay">
         <div id="modal" class="modal-content">
             <h2>Postagem</h2>
-            <form action="/foto" method="post" enctype="multipart/form-data">
-
-                <div>
-                    <textarea id="caption-input" name="legenda" placeholder="Digite a legenda" required></textarea>
+            <form  id="modal-form" action="/foto" method="post" enctype="multipart/form-data">
+                <img id="preview-image">
+                <div id="img">
+                    <label for="file" class="custom-file-label">Escolher imagem</label>
+                    <input type="file" name="file" id="file" accept="image/*" capture="user" required>
                 </div>
-                <div>
-                    <label for="file">Escolher imagem</label>
-                    <input type="file" name="file" id="file">
+                <textarea id="caption-input" name="legenda" placeholder="Digite a legenda" required></textarea>
+                <div class="btnModal">
+                    <button id="btnCancelar">Cancelar</button>
+                    <button type="submit">Enviar</button>
                 </div>
-               <div class="btnModal">
-                   <button id="btnCancelar">Cancelar</button>
-                   <button type="submit">Enviar</button>
-               </div>
             </form>
         </div>
     </div>

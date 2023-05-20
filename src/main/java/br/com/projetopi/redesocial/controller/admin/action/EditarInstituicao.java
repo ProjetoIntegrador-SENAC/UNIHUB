@@ -8,19 +8,24 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class ExibirTelaInstituicao implements Action {
+public class EditarInstituicao implements Action {
 
     private InstituicaoService instituicaoService;
-    public ExibirTelaInstituicao(){
+
+    public EditarInstituicao(){
         this.instituicaoService = new InstituicaoService();
     }
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nome = request.getParameter("nome");
+        int instituicao_id = Integer.valueOf(request.getParameter("id"));
+        Instituicao instituicao = new Instituicao();
+        instituicao.setId(instituicao_id);
+        instituicao.setNome(nome);
+        this.instituicaoService.update(instituicao);
 
-        ArrayList<Instituicao> instituicoes = this.instituicaoService.getInstituicaoAll(50, 0);
-        request.setAttribute("instituicoes", instituicoes);
-        return "forward:instituicao.jsp";
+        return "redrect:admin?acao=ExibirTelaInstituicao";
+
     }
 }

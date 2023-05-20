@@ -8,19 +8,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class ExibirTelaInstituicao implements Action {
+public class ExibirTelaEditarInstituicao implements Action {
 
     private InstituicaoService instituicaoService;
-    public ExibirTelaInstituicao(){
+
+    public ExibirTelaEditarInstituicao(){
         this.instituicaoService = new InstituicaoService();
     }
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        ArrayList<Instituicao> instituicoes = this.instituicaoService.getInstituicaoAll(50, 0);
-        request.setAttribute("instituicoes", instituicoes);
-        return "forward:instituicao.jsp";
+        int instituicao_id = Integer.valueOf(request.getParameter("id"));
+        Instituicao instituicao = this.instituicaoService.getInstituicaoById(instituicao_id);
+        request.setAttribute("instituicao", instituicao);
+        return "forward:editarInstituicao.jsp";
     }
 }

@@ -21,4 +21,17 @@ public class InstituicaoService {
         return instituicaoDao.findById(id);
     }
 
+    public void update(Instituicao instituicao){
+        this.instituicaoDao.update(instituicao);
+    }
+
+    public boolean remove(int id) {
+        return this.instituicaoDao.remove(id);
+    }
+
+    public boolean add(String nome) {
+        Instituicao instituicao = new Instituicao();
+        instituicao.setNome(nome);
+        return this.instituicaoDao.add(instituicao);
+    }
 }

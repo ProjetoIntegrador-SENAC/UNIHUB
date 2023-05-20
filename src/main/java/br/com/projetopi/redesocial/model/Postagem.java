@@ -8,11 +8,13 @@ public class Postagem {
     private String conteudo;
     private Integer foto_id;
 
-    private String data_postagem;
+    private Date data_postagem;
     private Integer conta_id;
     private Foto foto;
 
-    public Postagem(String conteudo, Integer foto_id, Foto foto, Integer conta_id, String data_postagem) {
+    public Postagem(){}
+
+    public Postagem(String conteudo, Integer foto_id, Foto foto, Integer conta_id, Date data_postagem) {
         this.conteudo = conteudo;
         this.foto_id = foto_id;
         this.foto = foto;
@@ -20,15 +22,14 @@ public class Postagem {
         this.data_postagem = data_postagem;
     }
 
-    public String getData_postagem() {
+    public Date getData_postagem() {
         return data_postagem;
     }
 
-    public void setData_postagem(String data_postagem) {
+    public void setData_postagem(Date data_postagem) {
         this.data_postagem = data_postagem;
     }
 
-    public Postagem(){}
 
     public Integer getConta_id() {
         return conta_id;

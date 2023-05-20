@@ -17,6 +17,10 @@ public class InstituicaoService {
         return instituicaoDao.findAllPageble(qtd_elementos, num_inico);
     }
 
+    public ArrayList<Instituicao> getInstituicaoAll(){
+        return instituicaoDao.findAll();
+    }
+
     public Instituicao getInstituicaoById(int id){
         return instituicaoDao.findById(id);
     }

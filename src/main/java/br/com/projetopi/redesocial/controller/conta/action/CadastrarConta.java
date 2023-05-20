@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.Calendar;
 
 public class CadastrarConta implements Action {
 
@@ -55,12 +56,14 @@ public class CadastrarConta implements Action {
             String letra = req.getParameter("turma_id");
             String dataInicio = req.getParameter("year");
             String curso_id = req.getParameter("curso");
-            System.out.println(dataInicio);
 
             if (!this.turmaService.exists(dataInicio, turno, semestre, letra, Integer.valueOf(curso_id))){
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Integer.parseInt(dataInicio), 0, 1);
+
                 Turma novaTurma = new Turma(
-                        1,
-                        new Date(Integer.parseInt(dataInicio),01,01), turno, semestre, letra);  //TODO: CRIAR MÉTODO PARA PEGAR O CURSO ID
+                        Integer.parseInt(curso_id),
+                        new Date(calendar.getTimeInMillis()), turno, semestre, letra);
                 this.turmaService.add(novaTurma);
             }
 
@@ -71,9 +74,7 @@ public class CadastrarConta implements Action {
                     letra
                     );
 
-
             // dados conta
-
             String cpf = req.getParameter("cpf");
             String nome = req.getParameter("nome");
             String sobrenome = req.getParameter("sobrenome");
@@ -96,6 +97,7 @@ public class CadastrarConta implements Action {
             conta.setCurso_id(Integer.valueOf(curso_id));
             //conta.setFoto_id(Integer.valueOf(foto_id));
             conta.setTurma_id(Integer.valueOf(turma_id));
+
             ContaService contaService = new ContaService();
 
             if (contaService.exists(cpf)){

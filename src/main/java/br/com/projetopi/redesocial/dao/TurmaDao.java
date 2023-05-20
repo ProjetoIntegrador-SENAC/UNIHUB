@@ -20,13 +20,23 @@ public class TurmaDao implements Dao<Turma> {
         String sqlQuery = "insert into turma " +
                 "(id_curso, data_inicio, turno, semestre, letra)" +
                 "values (?,?,?,?,?)";
-        try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
+        try(PreparedStatement ps = conexao.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)){
             ps.setInt(1, turma.getCurso_id());
             ps.setDate(2, turma.getData_inicio());
             ps.setString(3, turma.getTurno());
             ps.setString(4, turma.getSemestre());
             ps.setString(5, turma.getLetra());
             ps.execute();
+
+            try(ResultSet resultSet = ps.getGeneratedKeys()){
+
+                while(resultSet.next()){
+
+                    turma.setId(resultSet.getInt(1));
+
+                }
+
+            }
             conexao.commit();
         }catch (SQLException e){
             System.out.println(e.getMessage());
@@ -61,7 +71,7 @@ public class TurmaDao implements Dao<Turma> {
         return turmas;
     }
     public Turma findTurmaByDataIdCursoSemestre(int ano_inicio, int id_curso, String semestre, String turno, String letra){
-        String sqlQuery = "select distinct * from turma where year(data_inicio) = ? and id_curso = ? and semestre = upper(?) and turno = upper(?) and letra = upper(?)";
+        String sqlQuery = "select distinct * from turma where EXTRACT(YEAR FROM data_inicio) = ? and id_curso = ? and semestre = ? and turno = ? and letra = ?";
         Turma turma = new Turma();
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
             ps.setInt(1, ano_inicio);

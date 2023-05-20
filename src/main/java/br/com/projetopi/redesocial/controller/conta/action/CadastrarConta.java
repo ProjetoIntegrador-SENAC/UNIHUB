@@ -2,9 +2,11 @@ package br.com.projetopi.redesocial.controller.conta.action;
 
 import br.com.projetopi.redesocial.interfaces.Action;
 import br.com.projetopi.redesocial.model.Conta;
+import br.com.projetopi.redesocial.model.Turma;
 import br.com.projetopi.redesocial.model.Usuario;
 import br.com.projetopi.redesocial.service.AuthService;
 import br.com.projetopi.redesocial.service.ContaService;
+import br.com.projetopi.redesocial.service.TurmaService;
 import br.com.projetopi.redesocial.service.UsuarioService;
 
 import javax.servlet.ServletException;
@@ -45,6 +47,17 @@ public class CadastrarConta implements Action {
 
             id = usuarioService.getIdByEmail(email);
 
+            // cria uma turma
+            String turno = req.getParameter("shift");
+            String semestre = req.getParameter("semester");
+            String letra = req.getParameter("turma_id");
+            String dataInicio = req.getParameter("year");
+            System.out.println(dataInicio);
+
+            TurmaService turmaService =  new TurmaService();
+            Turma novaTurma = new Turma(1, new Date(Integer.parseInt(dataInicio),01,01), turno, semestre, letra);  //TODO: CRIAR MÉTODO PARA PEGAR O CURSO ID E DATA DE INICIO
+            turmaService.add(novaTurma);
+
             // dados conta
 
             String cpf = req.getParameter("cpf");
@@ -55,7 +68,7 @@ public class CadastrarConta implements Action {
             String instituicao_id = req.getParameter("instituicao");
             String curso_id = req.getParameter("curso");
             String foto_id = null; //req.getParameter("foto_id");
-            String turma_id = req.getParameter("turma_id");
+            String turma_id = "2"; // TODO: TURMAAAAAAAAAAAA
             String genero = req.getParameter("genero");
 
             Conta conta = new Conta();

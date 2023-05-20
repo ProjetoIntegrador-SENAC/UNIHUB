@@ -24,7 +24,7 @@ public class FotoDAO{
 
             try {
 //                statement.setInt(1, foto.getId());
-                statement.setBytes(1, foto.getCd_foto());
+                statement.setString(1, foto.getCd_foto());
                 statement.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -49,7 +49,7 @@ public class FotoDAO{
     public boolean update(Foto foto) {
         String update = "UPDATE foto SET cd_foto = ? WHERE id =? ";
         try (PreparedStatement stmt = conexao.prepareStatement(update)) {
-            stmt.setBytes(1, foto.getCd_foto());
+            stmt.setString(1, foto.getCd_foto());
             stmt.setInt(2, foto.getId());
             stmt.execute();
         } catch (SQLException e) {
@@ -70,7 +70,7 @@ public class FotoDAO{
 
             if (resultado.next()) {
                 return Optional.of(new Foto(resultado.getInt("id"),
-                        resultado.getBytes("cd_foto")));
+                        resultado.getString("cd_foto")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

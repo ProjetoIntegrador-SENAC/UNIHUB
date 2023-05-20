@@ -12,6 +12,16 @@ public class Turma {
     private String semestre;
     private String letra;
 
+    public Turma(){
+
+    }
+    public Turma(int curso_id, Date data_inicio, String turno, String semestre, String letra) {
+        this.curso_id = curso_id;
+        this.data_inicio = data_inicio;
+        this.turno = turno;
+        this.semestre = semestre;
+        this.letra = letra;
+    }
 
     public int getId() {
         return id;

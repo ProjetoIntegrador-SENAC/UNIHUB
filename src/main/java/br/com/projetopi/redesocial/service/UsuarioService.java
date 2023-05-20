@@ -39,4 +39,12 @@ public class UsuarioService implements Service<Usuario> {
         return id;
     }
 
+    public boolean exists(String email){
+        return this.usuarioDao.exists(email);
+    }
+
+    public Usuario getByEmail(String email){
+        return this.usuarioDao.getByEmail(email);
+    }
+
 }

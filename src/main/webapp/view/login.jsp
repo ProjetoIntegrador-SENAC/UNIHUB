@@ -7,6 +7,7 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="./style/login.css">
+    <script src="./js/login.js" defer></script>
 
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
@@ -14,18 +15,19 @@
 
 <body>
     <header class="logo">
-        <img src="./img/logo-white.png" alt="">
+        <a href="./login.html">
+            <img src="./img/logo-white.png">
+        </a>
     </header>
     <main class="login">
         <section class="left">
-            <h1>Seja bem vindo a UNIHUB</h1>
+            <h1>
+                Seja bem vindo a UNIHUB
+                <img src="./img/logo-small-white.png">
+            </h1>
             <div class="cardLeft">
                 <h4>Somos uma rede social focada em universitários...</h4>
-                <button>
-                    <a href="./register.html">
-                        Inscreva-se
-                    </a>
-                </button>
+                <button id="singUp">Inscreva-se</button>
             </div>
         </section>
         <section class="right">

@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
     
     <link rel="stylesheet" href="./style/feed.css">
+    <link rel="stylesheet" href="./style/modal.css">
     <script src="./js/feed.js" defer></script>
+    <script src="./js/modal.js" defer></script>
 
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
@@ -21,14 +23,20 @@
         <!-- HEADER -->
         <header>
             <div class="logo">
-                <img src="./img/logo-white.png" alt="">
+                <img src="./img/logo-white.png">
             </div>
         </header>
         <!-- POST's -->
         <div class="container">
             <!-- <c:forEach var="" items="${}"> --> <!-- Repeti os items -->
             <div class="post">
-                <img src="" alt="">
+                <div class="userPost">
+                    <img src="./img/user.png">
+                    <h6>Username</h6>
+                </div>
+                <div class="img">
+                    <img src="./img/background-register.jpg">
+                </div>
                 <div class="legend">
                     <textarea class="textLegend" disabled>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis voluptatum doloribus laboriosam voluptates, nihil dolor est tempora dolorem! Facere voluptates nisi molestias, illum pariatur deserunt qui eaque quidem. Id, officia?</textarea>
                     <button class="btnlegend">
@@ -50,50 +58,7 @@
                 </div>
             </div>
             <!--  </c:forEach> -->
-            <div class="post">
-                <img src="" alt="">
-                <div class="legend">
-                    <textarea class="textLegend" disabled>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis voluptatum doloribus laboriosam voluptates, nihil dolor est tempora dolorem! Facere voluptates nisi molestias, illum pariatur deserunt qui eaque quidem. Id, officia?</textarea>
-                    <button class="btnlegend">
-                        <span class="material-symbols-outlined arrow" data-arrow="down-arrow">
-                            arrow_drop_down
-                        </span>
-                    </button>
-                </div>
-                <div class="interactions">
-                    <button class="btnFavorite">
-                        <span class="icon material-symbols-outlined favorite" data-like="dislike">favorite</span>
-                    </button>
-                    <button class="btnComment">
-                        <span class="icon material-symbols-outlined comment" data-comment="closed">Comment</span>
-                    </button>
-                    <button class="btnShare">
-                        <span class="icon material-symbols-outlined share" data-share="closed">share</span>
-                    </button>
-                </div>
-            </div>
-            <div class="post">
-                <img src="" alt="">
-                <div class="legend">
-                    <textarea class="textLegend" disabled>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis voluptatum doloribus laboriosam voluptates, nihil dolor est tempora dolorem! Facere voluptates nisi molestias, illum pariatur deserunt qui eaque quidem. Id, officia?</textarea>
-                    <button class="btnlegend">
-                        <span class="material-symbols-outlined arrow" data-arrow="down-arrow">
-                            arrow_drop_down
-                        </span>
-                    </button>
-                </div>
-                <div class="interactions">
-                    <button class="btnFavorite">
-                        <span class="icon material-symbols-outlined favorite" data-like="dislike">favorite</span>
-                    </button>
-                    <button class="btnComment">
-                        <span class="icon material-symbols-outlined comment" data-comment="closed">Comment</span>
-                    </button>
-                    <button class="btnShare">
-                        <span class="icon material-symbols-outlined share" data-share="closed">share</span>
-                    </button>
-                </div>
-            </div>
+        </div>
         <!-- BTN ADD POST -->
         <nav>
             <span class="icon material-symbols-outlined">
@@ -104,7 +69,7 @@
     <aside>
         <section class="profile">
             <div class="user">
-                <img src="./img/user.png" alt="">
+                <img id="imageProfile" src="./img/user.png">
             </div>
             <div class="config">
                 <span class="icon material-symbols-outlined">
@@ -127,76 +92,29 @@
             <div class="friends">
                 <!-- <c:forEach var="" items="${}"> --> <!-- Repeti os items -->
                     <div class="friend">
-                        <img src="" alt="">
+                        <img src="./img/user.png">
                         <h4>Username</h4>
                     </div>
                 <!--  </c:forEach> -->
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
-                <div class="friend">
-                    <img src="" alt="">
-                    <h4>Username</h4>
-                </div>
             </div>
         </section>
     </aside>
+    <div id="modal-overlay">
+        <div id="modal" class="modal-content">
+            <h2>Postagem</h2>
+            <form id="modal-form">
+                <img id="preview-image">
+                <div id="img">
+                    <label for="image-input" class="custom-file-label">Escolher imagem</label>
+                    <input type="file" id="image-input" accept="image/*" capture="user" required>
+                </div>
+                <textarea id="caption-input" placeholder="Digite a legenda" required></textarea>
+                <div class="btnModal">
+                    <button id="btnCancelar">Cancelar</button>
+                    <button type="submit">Enviar</button>
+                </div>
+              </form>
+        </div>
+    </div>
 </body>
 </html>

@@ -12,7 +12,7 @@
     /* Colors */
     --white: #FFF;
     --black: #222;
-    --emphasis: #7C162E;
+    --emphasis: #FF0044;
     --black-mono: #191528cf;
     --white-mono: #38383970;
 
@@ -44,15 +44,14 @@ body{
 }
 
 header{
-    margin: 2rem;
     display: flex;
     background: transparent;
     position: fixed;
+    margin: 1.5rem;
 }
 
-.logo > img{
+.logo > a > img{
     align-items: left;
-    content: "";
     width: 5rem;
     height: 5rem;
 }
@@ -78,11 +77,14 @@ main{
     font-weight: bold;
     font-size: 1.8rem;
 }
+.left img{
+    width: 1.5rem;
+}
 .cardLeft{
     display: flex;
     flex-direction: column;
-    width: 400px;
-    height: 350px;
+    width: 250px;
+    height: 150px;
     padding: var(--paddingCard);
     justify-content: space-around;
     align-items: center;
@@ -90,19 +92,28 @@ main{
     background: var(--black-mono);
     border-radius: var(--borderRadiusCard);
 }
+.cardLeft > h4 {
+    text-align: center;
+    font-size: .8rem;
+}
 
 .cardLeft > button{
+    cursor: pointer;
     padding: var(--paddingButton);
     border-radius: var(--borderRadiusButton);
     background: var(--emphasis);
     font-weight: bold;
-    font-size: 1.25rem;
-    width: 10rem;
+    font-size: 1rem;
+    width: 7rem;
     height: 2.5rem;
+    box-shadow: 0 4px 10px #000;
+    color: var(--white);
 }
 
-.cardLeft > button > a{
-    color: var(--white);
+.cardLeft button:hover {
+    background: var(--white);
+    color: var(--emphasis);
+    box-shadow: inset 0px 0px 30px #000, inset 2px 2px 10px #000;
 }
 
 .right{
@@ -114,11 +125,11 @@ main{
     align-items: center;
 }
 
-.cardRight{
+.cardRight form{
     display: flex;
     flex-direction: column;
-    width: 16rem;
-    height: 16rem;
+    width: 12rem;
+    height: 12rem;
     padding: var(--paddingCard);
     justify-content: center;
     align-items: center;
@@ -127,49 +138,59 @@ main{
     border-radius: var(--borderRadiusCard);
 }
 
-.cardRight > h2{
-    font-size: 1.5rem;
+.cardRight h2{
+    font-size: 1.2rem;
     font-weight: bold;
 }
 
-.inputs{
-    display: flex;
-    gap: 0.5rem;
-}
-
 .inputs > span{
-    font-size: 2rem;
+    position: absolute;
+    font-size: 1.0rem;
+    margin: 0.4rem 0 0 0.3rem;
 }
 
 .inputs > input{
+    position: relative;
     background: #FFFFFF08;
+    padding: 0.2rem 0.9rem 0.2rem 1.5rem;
+    border-radius: 1rem;
     border-bottom: 2px solid var(--white);
-    width: 10.5rem;
-    height: 2rem;
+    width: 9rem;
+    height: 1.5rem;
+    font-size: 0.9rem;
+    box-shadow: inset 2px 2px 10px #000;
+}
+
+.inputs > input:focus{
+    border-bottom: 2px solid var(--emphasis);
+    outline: none;
 }
 
 .btnLogin{
+    cursor: pointer;
     padding: var(--paddingButton);
     border-radius: var(--borderRadiusButton);
     color: var(--emphasis);
     background: var(--white);
     font-weight: bold;
-    font-size: 1.5rem;
-    width: 12.8rem;
+    font-size: 1.2rem;
+    width: 6rem;
     height: 2.5rem;
+    box-shadow: 0 4px 10px #000;
 }
 
 .btnLogin:hover{
     color: var(--white);
     background: var(--emphasis);
+    box-shadow: inset 0px 0px 30px #000, inset 2px 2px 10px #000;
 }
 
-.cardRight > span > a{
+.cardRight span > a{
     color: var(--white);
-    font-size: 0.8rem;
+    font-size: 0.6rem;
 }
 
-.cardRight > span > a:hover{
+.cardRight span > a:hover{
     color: var(--emphasis);
 }
 

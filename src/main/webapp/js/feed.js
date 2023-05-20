@@ -66,3 +66,12 @@ btnShares.forEach(btnShare => {
         }
     })
 })
+
+const imageProfile = document.getElementById('imageProfile')
+
+imageProfile.addEventListener('click', onPress);
+
+function onPress(){
+
+    location.href = './perfil.html'
+}

@@ -48,9 +48,11 @@ public class FeedController extends HttpServlet {
 
         //Cria postagem
         java.sql.Date date = new java.sql.Date(System.currentTimeMillis());
-        Postagem postagem = new Postagem(legenda, foto.getId(), foto, conta.getId(), date);
+        Postagem postagem = new Postagem(legenda, foto.getId(), postImagePath, conta.getId(), date);
 
         PostagemService postagemService =  new PostagemService();
+
+        System.out.println("Legenda:" + postagem.getConteudo());
 
         postagemService.add(postagem);
 

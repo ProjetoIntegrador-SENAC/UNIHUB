@@ -50,7 +50,7 @@
     border-radius: 0.5rem;
 }
 
-#image-input {
+#file {
     /* Estilos do input de arquivo */
     display: none;
 }
@@ -71,7 +71,7 @@
     color: var(--emphasis);
     box-shadow: inset 2px 2px 10px var(--black);
 }
-#image-input::-webkit-file-upload-button {
+#file::-webkit-file-upload-button {
     /* Oculta o nome do arquivo selecionado */
     visibility: hidden;
 }

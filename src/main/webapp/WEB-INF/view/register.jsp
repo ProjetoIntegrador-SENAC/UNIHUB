@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -21,7 +22,7 @@
 </head>
 <body onload="getInstituicoes()">
 <header class="logo">
-    <a href="./login.jsp">
+    <a href="./login?acao=ExibirTelaLogin">
         <img src="./img/logo-white.png" alt="">
     </a>
 </header>

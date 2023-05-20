@@ -7,6 +7,11 @@ import java.util.Optional;
 
 public class FotoService {
 
+    private FotoDAO fotoDAO;
+
+    public FotoService(){
+        this.fotoDAO = new FotoDAO();
+    }
     public void add(Foto foto) {
         new FotoDAO().toadd(foto);
     }

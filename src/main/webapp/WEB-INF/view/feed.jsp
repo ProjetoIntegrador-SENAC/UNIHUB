@@ -107,17 +107,19 @@
     <div id="modal-overlay">
         <div id="modal" class="modal-content">
             <h2>Postagem</h2>
-            <form id="modal-form" action="/foto" method="post" enc-type="multipart/form-data">
-                <img id="preview-image">
-                    <div id="img">
-                        <label for="image-input" class="custom-file-label">Escolher imagem</label>
-                        <input type="file" id="image-input" accept="image/*" capture="user" required>
-                    </div>
-                    <textarea id="caption-input" placeholder="Digite a legenda" required></textarea>
-                    <div class="btnModal">
-                        <button id="btnCancelar">Cancelar</button>
-                        <button type="submit">Enviar</button>
-                    </div>
+            <form action="/foto" method="post" enctype="multipart/form-data">
+
+                <div>
+                    <textarea id="caption-input" name="legenda" placeholder="Digite a legenda" required></textarea>
+                </div>
+                <div>
+                    <label for="file">Escolher imagem</label>
+                    <input type="file" name="file" id="file">
+                </div>
+               <div class="btnModal">
+                   <button id="btnCancelar">Cancelar</button>
+                   <button type="submit">Enviar</button>
+               </div>
             </form>
         </div>
     </div>

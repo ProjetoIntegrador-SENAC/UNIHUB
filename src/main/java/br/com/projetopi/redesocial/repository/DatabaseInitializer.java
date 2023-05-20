@@ -56,7 +56,7 @@ public class DatabaseInitializer implements ServletContextListener {
                 foreign key (id_curso) references curso(id));
                 create table foto (
                 id integer primary key auto_increment,
-                cd_foto binary (200));
+                cd_foto varchar(255));
                 create table conta (
                 id integer primary key auto_increment,
                 cpf varchar (12),
@@ -122,6 +122,5 @@ public class DatabaseInitializer implements ServletContextListener {
        // --INSERT INTO CONTA (ID, CPF,IC_ATIVO, NOME, DATA_NASCIMENTO, SOBRE, USUARIO_ID, INSTITUICAO_ID, CURSO_ID, FOTO_ID, TURMA_ID, GENERO) VALUES (1, '45194845804', 1, 'ALUNO EXEMPLO', '1994-04-04', 'APRESENTACAO PESSOAL', 1, 1, 1, 1, 1, 'MASCULINO');
        // --INSERT INTO CONTA (ID, CPF,IC_ATIVO, NOME, DATA_NASCIMENTO, SOBRE, USUARIO_ID, INSTITUICAO_ID, CURSO_ID, FOTO_ID, TURMA_ID, GENERO) VALUES (2, '45194845805', 1, 'ALUNA EXEMPLO', '1994-06-04', 'APRESENTACAO PESSOAL2', 1, 1, 1, 1, 1, 'FEMININO');
     }
-
 
 }

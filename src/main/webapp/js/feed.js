@@ -73,5 +73,5 @@ imageProfile.addEventListener('click', onPress);
 
 function onPress(){
 
-    location.href = './perfil.html'
+    location.href = './conta?acao=ExibirPerfil'
 }

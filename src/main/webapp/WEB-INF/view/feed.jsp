@@ -30,39 +30,39 @@
         </header>
         <!-- POST's -->
         <div class="container">
-            <div class="post">
-                <c:forEach items="${postagens}" var="postagem">
-                <div class="userPost">
-                    <img src="./img/user.png">
-                    <h6>Username</h6>
+            <c:forEach items="${postagens}" var="postagem">
+                <div class="post">
+                    <div class="userPost">
+                        <img src="./img/user.png">
+                        <h6>Username</h6>
+                    </div>
+                    <div class="img">
+                        <img src="./img/background-register.jpg"> <!-- Adicionar imagem -->
+                    </div>
+                    <div class="legend">
+                        <textarea class="textLegend" disabled>
+                            ${postagem.conteudo}
+                        </textarea>
+                        <button class="btnlegend">
+                            <span class="material-symbols-outlined arrow" data-arrow="down-arrow">
+                                arrow_drop_down
+                            </span>
+                        </button>
+                    </div>
+                    <div class="interactions">
+                        <button class="btnFavorite">
+                            <span class="icon material-symbols-outlined favorite" data-like="dislike">favorite</span>
+                        </button>
+                        <button class="btnComment">
+                            <span class="icon material-symbols-outlined comment" data-comment="closed">Comment</span>
+                        </button>
+                        <button class="btnShare">
+                            <span class="icon material-symbols-outlined share" data-share="closed">share</span>
+                        </button>
+                    </div>
+                        ${postagem.foto}
                 </div>
-                <div class="img">
-                    <img src="./img/background-register.jpg">
-                </div>
-                <div class="legend">
-                    <textarea class="textLegend" disabled>
-                        ${postagem.conteudo}
-                    </textarea>
-                    <button class="btnlegend">
-                        <span class="material-symbols-outlined arrow" data-arrow="down-arrow">
-                            arrow_drop_down
-                        </span>
-                    </button>
-                </div>
-                <div class="interactions">
-                    <button class="btnFavorite">
-                        <span class="icon material-symbols-outlined favorite" data-like="dislike">favorite</span>
-                    </button>
-                    <button class="btnComment">
-                        <span class="icon material-symbols-outlined comment" data-comment="closed">Comment</span>
-                    </button>
-                    <button class="btnShare">
-                        <span class="icon material-symbols-outlined share" data-share="closed">share</span>
-                    </button>
-                </div>
-                    ${postagem.foto}
             </c:forEach>
-            </div>
 
         <!-- BTN ADD POST -->
         <nav>

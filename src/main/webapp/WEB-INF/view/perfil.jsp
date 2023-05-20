@@ -54,7 +54,7 @@
                 ${postagem.foto}
                 ${postagem.conteudo}
                 <div class="post">
-                    <span class="icon material-symbols-outlined">
+                    <span id="btnDelet" class="icon material-symbols-outlined">
                         delete
                     </span>
                     <img src="./img/background-register.jpg" alt="">

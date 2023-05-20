@@ -5,11 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnectionH2() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             return DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/rede_social", "root", "root123");
+                    "jdbc:mysql://localhost:3306/rede_social", "root", "123");
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao realizar a conexão");
         } catch (ClassNotFoundException e) {
@@ -17,12 +17,12 @@ public class ConnectionFactory {
         }
     }
 
-    public static Connection getConnectionH2()  {
-        try {
-            //Class.forName("com.mysql.jdbc.Driver");
-            return DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
-        } catch (SQLException e) {
-            throw new RuntimeException("Erro ao realizar a conexão");
-        }
-    }
+//    public static Connection getConnectionH2()  {
+//        try {
+//            //Class.forName("com.mysql.jdbc.Driver");
+//            return DriverManager.getConnection("jdbc:h2:~/test", "sa", "sa");
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Erro ao realizar a conexão");
+//        }
+//    }
 }

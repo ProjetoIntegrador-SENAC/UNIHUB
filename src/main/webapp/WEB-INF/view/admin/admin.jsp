@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="./style/admin.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./js/admin.js" defer></script>
@@ -40,7 +40,7 @@
                         </a>
                     </li>
                     <li class="nav-item menu-item d-flex justify-content-center">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="admin?acao=ExibirTelaInstituicao">
                             Instituicoes
                         </a>
                     </li>
@@ -72,9 +72,9 @@
     <tbody>
     <c:forEach items="${contas}" var="conta">
     <tr>
-            <td>${conta.cpf }</td>
-            <td>${conta.nome }</td>
-            <td>${conta.data_nascimento }</td>
+            <td>${conta.cpf}</td>
+            <td>${conta.nome}</td>
+            <td>${conta.data_nascimento}</td>
             <td>${conta.genero}</td>
             <td>
                 <!-- Button trigger modal -->
@@ -89,7 +89,7 @@
             </span>
             </td>
             <td>
-                <a href="/excluir_conta?id=${conta.id}">
+                <a href="/admin?acao=ExcluirConta&id=${conta.id}">
                 <span class="material-icons">
                     delete_forever
                 </span>
@@ -131,3 +131,71 @@
                 <input type="date" class="form-control" id="f_nascimento" placeholder="">
             </div>
         </div>
+
+        <div class="row mt-3">
+            <div class="col-4">
+                <label for="f_genero" class="form-label"> Genero </label>
+                <select class="form-select" aria-label="Default select example" id="f_genero">
+                  <option selected>  </option>
+                </select>
+            </div>
+
+             <div class="col-8">
+                <label for="f_instituicoes" class="form-label"> Instituicao </label>
+                <select class="form-select" aria-label="Default select example" id="f_instituicoes">
+                  <option selected>  </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-4">
+                <label for="f_curso" class="form-label"> Curso </label>
+                <select class="form-select" aria-label="Default select example" id="f_curso">
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label for="f_ano_inicio" class="form-label"> Ano inicio </label>
+                <select class="form-select" aria-label="Default select example" id="f_ano_inicio">
+
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label for="f_semestre" class="form-label"> Semestre  </label>
+                <select class="form-select" aria-label="Default select example" id="f_semestre">
+                </select>
+            </div>
+
+        </div>
+
+      <div class="row mt-3">
+          <div class="col-4">
+              <label for="f_turno" class="form-label"> Turno </label>
+              <select class="form-select" aria-label="Default select example" id="f_turno">
+              </select>
+          </div>
+
+          <div class="col-4">
+              <label for="f_turma" class="form-label"> Turma </label>
+              <select class="form-select" aria-label="Default select example" id="f_turma">
+              </select>
+          </div>
+
+      </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Fechar </button>
+        <button type="button" class="btn btn-primary"> Salvar </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+<script src="./js/admin.js" defer></script>
+
+</html>

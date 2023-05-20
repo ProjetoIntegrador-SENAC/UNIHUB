@@ -1,28 +1,24 @@
-package br.com.projetopi.redesocial.controller.admin.action;
+package br.com.projetopi.redesocial.controller.conta.action;
 
-import br.com.projetopi.redesocial.controller.conta.action.ExibirFeed;
 import br.com.projetopi.redesocial.interfaces.Action;
-import br.com.projetopi.redesocial.model.Conta;
 import br.com.projetopi.redesocial.service.ContaService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class ExibirPainel implements Action {
-
+public class ExcluirPostagem implements Action {
     private ContaService contaService;
 
-    public ExibirPainel(){
+    ExcluirPostagem(){
         this.contaService = new ContaService();
     }
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Conta> contas = contaService.getContaAll(10, 0);
-        request.setAttribute("contas", contas);
-        return "forward:painel.jsp";
+        int id = Integer.valueOf(request.getParameter("id"));
+        this.contaService.removePost(id);
+        return "redrect:conta?acao=ExibirPerfil";
     }
 }

@@ -279,4 +279,15 @@ public class ContaDao {
         }
     }
 
+    public void removePost(int id) {
+        String SQL = "DELETE FROM POSTAGEM WHERE ID = (?)";
+
+        try (PreparedStatement statement = conexao.prepareStatement(SQL)){
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

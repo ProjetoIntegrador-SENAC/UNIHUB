@@ -21,13 +21,13 @@
     <header>
         <div class="headerTop">
             <div class="logo">
-                <img src="./img/logo-white.png" alt="">
+                <img src="./img/logo-white.png">
             </div>
             <div class="config">
                 <span class="icon material-symbols-outlined">
                     settings
                 </span>
-                <a href="/login?acao=Deslogar">
+                <a href="/conta?acao=ExibirFeed">
                     <span class="icon material-symbols-outlined">
                         disabled_by_default
                     </span>
@@ -36,14 +36,14 @@
         </div>
         <div class="profile">
             <div class="user">
-                <img src="./img/user.png" alt="">
+                <img src="./img/user.png"> <!-- Adicionar Foto user -->
             </div>
             <div class="titles">
                 <div class="nameUser">
-                    <h1> ${conta.nome_conta} ${conta.sobrenome} </h1>
+                    <h1> ${conta.nome_conta} ${conta.sobrenome} </h1> <!-- Adicionar nome user -->
                 </div>
                 <div class="courseUser">
-                    <h2>${conta.curso_nome}</h2>
+                    <h2>${conta.curso_nome}</h2> <!-- Adicionar curso user -->
                 </div>
             </div>
         </div>
@@ -60,6 +60,7 @@
                     <img src="./img/background-register.jpg" alt="">
                 </div>
             </c:forEach>
+        </div>
     </main>
 </body>
 </html>

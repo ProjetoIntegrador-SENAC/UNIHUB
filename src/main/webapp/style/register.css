@@ -12,7 +12,7 @@
     /* Colors */
     --white: #FFF;
     --black: #222;
-    --emphasis: #7C162E;
+    --emphasis: #FF0044;
     --black-mono: #191528cf;
     --white-mono: #38383970;
 
@@ -53,7 +53,6 @@ header{
 
 .logo > a > img{
     align-items: left;
-    content: "";
     width: 6rem;
     height: 6rem;
 }
@@ -131,6 +130,11 @@ form{
     padding: 0.5rem 1rem;
     border: 1px solid #CCC;
     border-radius: 1rem;
+    box-shadow: inset 2px 2px 10px #000, 0 4px 10px #000;
+    outline: none;
+}
+.field:focus{
+    border: 2px solid var(--emphasis);
 }
 .field{    
     flex: 1 0 50%; /*flex magic*/
@@ -166,6 +170,7 @@ form{
 }
 
 .btnRegister{
+    cursor: pointer;
     padding: var(--paddingButton);
     border-radius: var(--borderRadiusButton);
     color: var(--color);
@@ -174,10 +179,12 @@ form{
     font-size: 1rem;
     width: 11rem;
     height: 2.5rem;
+    box-shadow: 0 4px 10px #000;
 }
 .btnRegister:hover{
     color: var(--emphasis);
     background: var(--white);
+    box-shadow: inset 0px 0px 30px #000, inset 2px 2px 10px #000;
 }
 
 footer{

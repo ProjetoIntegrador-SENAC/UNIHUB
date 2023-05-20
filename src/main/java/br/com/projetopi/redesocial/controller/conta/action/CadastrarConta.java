@@ -60,7 +60,7 @@ public class CadastrarConta implements Action {
             if (!this.turmaService.exists(dataInicio, turno, semestre, letra, Integer.valueOf(curso_id))){
                 Turma novaTurma = new Turma(
                         1,
-                        new Date(Integer.parseInt(dataInicio),01,01), turno, semestre, letra);  //TODO: CRIAR MÉTODO PARA PEGAR O CURSO ID E DATA DE INICIO
+                        new Date(Integer.parseInt(dataInicio),01,01), turno, semestre, letra);  //TODO: CRIAR MÉTODO PARA PEGAR O CURSO ID
                 this.turmaService.add(novaTurma);
             }
 
@@ -81,7 +81,7 @@ public class CadastrarConta implements Action {
             String sobre = req.getParameter("sobre");
             String instituicao_id = req.getParameter("instituicao");
             String foto_id = null; //req.getParameter("foto_id");
-            int turma_id = turma.getId(); // TODO: TURMAAAAAAAAAAAA
+            int turma_id = turma.getId();
             String genero = req.getParameter("genero");
 
             Conta conta = new Conta();

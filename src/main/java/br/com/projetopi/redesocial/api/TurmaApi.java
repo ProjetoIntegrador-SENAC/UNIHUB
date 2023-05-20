@@ -32,7 +32,7 @@ public class TurmaApi extends HttpServlet {
         String turno = req.getParameter("turno");
         int id = Integer.valueOf(req.getParameter("id_curso"));
 
-        Turma turma = this.turmaService.findTurmaByDataIdCursoSemestre(ano_inicio, id, semestre, turno);
+        Turma turma = this.turmaService.findTurmaByDataIdCursoSemestre(ano_inicio, id, semestre, turno, "A"); //TODO: CONSERTAR LETRA
         String json = ApiUtils.ObjectToJsonString(turma);
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");

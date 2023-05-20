@@ -34,8 +34,6 @@ public class FotoController extends HttpServlet {
         String postImagePath = parameters.get("image");
         String legenda = parameters.get("legenda");
 
-        System.out.println("IMAGEM POSTADA: " + legenda);
-
         Foto foto = new Foto(postImagePath);
 
         FotoService fotoService = new FotoService();

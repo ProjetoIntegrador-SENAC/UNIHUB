@@ -60,14 +60,15 @@ public class TurmaDao implements Dao<Turma> {
         }
         return turmas;
     }
-    public Turma findTurmaByDataIdCursoSemestre(int ano_inicio, int id_curso, String semestre, String turno){
-        String sqlQuery = "select * from turma where year(data_inicio) = ? and id_curso = ? and semestre = upper(?) and turno = upper(?)";
+    public Turma findTurmaByDataIdCursoSemestre(int ano_inicio, int id_curso, String semestre, String turno, String letra){
+        String sqlQuery = "select distinct * from turma where year(data_inicio) = ? and id_curso = ? and semestre = upper(?) and turno = upper(?) and letra = upper(?)";
         Turma turma = new Turma();
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
             ps.setInt(1, ano_inicio);
             ps.setInt(2, id_curso);
             ps.setString(3, semestre);
             ps.setString(4, turno);
+            ps.setString(5, letra);
             ResultSet result = ps.executeQuery();
             while(result.next()){
                 turma.setCurso_id(result.getInt("id_curso"));
@@ -112,9 +113,20 @@ public class TurmaDao implements Dao<Turma> {
     }
 
 
-
-
-
-
-
+    public boolean exists(String dataInicio, String turno, String semestre, String letra, int curso_id) {
+        String sql = "select * from turma where year(data_inicio) = 2023 and id_curso = 1 and turno = 'noturno' and semestre = 'primeiro' and letra = 'A';";
+        try( PreparedStatement statement = conexao.prepareStatement(sql)) {
+            statement.execute();
+            try(ResultSet set = statement.getResultSet()) {
+                while (set.next()) {
+                   return true;
+                }
+            }catch (SQLException e){
+                System.out.printf(e.getMessage());
+            }
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+        return false;
+    }
 }

@@ -34,11 +34,15 @@ public class TurmaService implements Service<Turma> {
         return this.turmaDao.findAllPageable(qtd_elementos, num_inicio);
     }
 
-    public Turma findTurmaByDataIdCursoSemestre(int ano_inicio, int id_curso, String semestre, String turno){
-        return this.turmaDao.findTurmaByDataIdCursoSemestre(ano_inicio, id_curso, semestre, turno);
+    public Turma findTurmaByDataIdCursoSemestre(int ano_inicio, int id_curso, String semestre, String turno, String letra){
+        return this.turmaDao.findTurmaByDataIdCursoSemestre(ano_inicio, id_curso, semestre, turno, letra);
     }
 
     public Turma getById(int id){
         return this.turmaDao.findById(id);
+    }
+
+    public boolean exists(String dataInicio, String turno, String semestre, String letra, int curso_id) {
+        return this.turmaDao.exists(dataInicio, turno, semestre, letra, curso_id);
     }
 }

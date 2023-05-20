@@ -23,4 +23,12 @@ public class CursoService {
         return this.cursoDao.update(curso);
     }
 
+    public boolean add(Curso curso){
+        return this.cursoDao.createCurso(curso);
+    }
+
+    public boolean remove(int id){
+        return this.cursoDao.delete(id);
+    }
+
 }

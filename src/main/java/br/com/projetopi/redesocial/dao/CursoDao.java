@@ -15,26 +15,18 @@ public class CursoDao {
     public CursoDao() {
         this.connection = ConnectionFactory.getConnectionH2();
     }
-    public void createCurso(Curso curso) throws SQLException {
-        boolean cursoExists = cursoExists(curso);
-
-        if(!cursoExists){
-            String sql = "INSERT INTO curso(NOME, TIPO, AREA, INSTITUICAO_ID) VALUES (?, ?, ?, ?)";
-
-            PreparedStatement statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, curso.getNome());
-            statement.setString(2, curso.getTipo());
-            statement.setString(3, curso.getArea());
-            statement.setInt(4,curso.getInstituicao_id());
-
-            statement.execute();
-
-            try(ResultSet rs = statement.getGeneratedKeys()){
-                while(rs.next()){
-                    curso.setId(rs.getInt(1));
-                }
-            }
-        }
+    public boolean createCurso(Curso curso)  {
+            String sql = "insert into curso(nome, tipo, area, instituicao_id) values (?, ?, ?, ?)";
+            try(PreparedStatement statement = connection.prepareStatement(sql)){
+                statement.setString(1, curso.getNome());
+                statement.setString(2, curso.getTipo());
+                statement.setString(3, curso.getArea());
+                statement.setInt(4,curso.getInstituicao_id());
+                statement.execute();
+                return true;
+            }catch (SQLException e){
+              e.printStackTrace();
+              return false;}
     }
 
     public boolean update(Curso curso) {
@@ -89,28 +81,17 @@ public class CursoDao {
         return null;
     }
 
-    public void delete(int id) throws SQLException {
-        String sql = "DELETE FROM curso WHERE id = " + id;
-
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.execute();
-    }
-
-    private boolean cursoExists(Curso curso) throws SQLException {
-        String sql = " SELECT EXISTS(SELECT * FROM CURSO WHERE nome = ?)";
-
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, curso.getNome());
-        preparedStatement.execute();
-
-        try( ResultSet rst = preparedStatement.getResultSet()){
-            while(rst.next()){
-                return rst.getBoolean(1);
-            }
+    public boolean delete(int id) {
+        String sql = "DELETE FROM curso WHERE id = ?";
+        try(PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setInt(1, id);
+            statement.execute();
+            return true;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return false;
         }
-        return false;
     }
-
 
     public ArrayList<Curso> getCursosByInstituicaoId(int instituicaoId) {
         String sqlQuery = "select * from curso where instituicao_id = ?";

@@ -32,7 +32,6 @@ public class ExibirFeed implements Action {
         int num_inicio = 0; //Integer.valueOf(request.getParameter("num_inicio"));
 
         ArrayList<Postagem> postagens = this.postagemService.findAllPageable();
-        postagens.forEach(postagem -> System.out.println(postagem));
         ArrayList<Conta> contas = contaService.findAllPageableByTurmaId(conta.getTurma_id(), 50, 0);
 
         request.setAttribute("postagens", postagens);

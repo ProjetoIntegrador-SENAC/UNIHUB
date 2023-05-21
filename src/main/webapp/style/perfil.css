@@ -108,6 +108,7 @@ header .profile {
     box-shadow: 1px 3px 10px var(--black-mono);
 }
 header .profile .user{
+    position: relative;
     content: "";
     width: 5rem;
     height: 5rem;
@@ -127,6 +128,7 @@ header .profile .user > img{
     border-radius: 5rem;
     cursor: pointer;
 }
+
 header .profile .titles {
     display: flex;
     flex-direction: column;

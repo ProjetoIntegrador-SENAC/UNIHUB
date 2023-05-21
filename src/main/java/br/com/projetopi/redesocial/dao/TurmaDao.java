@@ -10,6 +10,7 @@ import br.com.projetopi.redesocial.repository.ConnectionFactory;
 import java.security.cert.TrustAnchor;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TurmaDao implements Dao<Turma> {
     Connection conexao;
@@ -123,9 +124,15 @@ public class TurmaDao implements Dao<Turma> {
     }
 
 
-    public boolean exists(String dataInicio, String turno, String semestre, String letra, int curso_id) {
-        String sql = "select * from turma where year(data_inicio) = 2023 and id_curso = 1 and turno = 'noturno' and semestre = 'primeiro' and letra = 'A';";
+    public boolean exists(java.sql.Date dataInicio, String turno, String semestre, String letra, int curso_id) {
+        String sql = "select * from turma where data_inicio = ? and id_curso = ? and turno = ? and semestre = ? and letra = ?;";
         try( PreparedStatement statement = conexao.prepareStatement(sql)) {
+            statement.setDate(1, dataInicio);
+            statement.setInt(2, curso_id);
+            statement.setString(3, turno);
+            statement.setString(4, semestre);
+            statement.setString(5, letra);
+
             statement.execute();
             try(ResultSet set = statement.getResultSet()) {
                 while (set.next()) {

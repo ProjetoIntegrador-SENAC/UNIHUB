@@ -52,8 +52,6 @@ public class FeedController extends HttpServlet {
 
         PostagemService postagemService =  new PostagemService();
 
-        System.out.println("Legenda:" + postagem.getConteudo());
-
         postagemService.add(postagem);
 
         resp.sendRedirect("/conta?acao=ExibirFeed");

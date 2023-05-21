@@ -33,12 +33,7 @@ public class ExibirPerfil implements Action {
 
         ArrayList<Postagem>  postagens = postagemService.findByAccountId(conta.getId(), qtdElemtos, numInicio);
 
-        for (Postagem postagem : postagens){
-            System.out.println(postagem);
-        }
         ContaPerfilDto contaView = this.contaService.getContaDadosPerfilView(conta.getId());
-
-        System.out.println(conta);
 
         request.setAttribute("postagens", postagens);
         request.setAttribute("conta", contaView);

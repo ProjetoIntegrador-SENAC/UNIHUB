@@ -24,21 +24,6 @@ addButton.addEventListener('click', () => {
     modalOverlay.style.display = 'flex';
 });
 
-// Adiciona um ouvinte de evento de envio ao formulário do modal
-form.addEventListener('submit', () => {
-
-    // Obter os valores do input de imagem e do campo de legenda
-    const captionInput = document.getElementById('caption-input');
-
-    const selectedImage = imageInput.files[0]; // Obtém o arquivo de imagem selecionado
-
-    // Faça algo com os valores (por exemplo, envie-os para o servidor)
-    console.log('Imagem:', selectedImage);
-    console.log('Legenda:', captionInput.value);
-
-    limpar()
-});
-
 // Limpe o formulário
 function limpar() {
     // Feche o modal
@@ -46,6 +31,7 @@ function limpar() {
     form.reset();
     inputImg.style.display = 'block';
     previewImage.src = '';
+    previewImage.display = 'none';
 }
 
 // Adiciona um ouvinte de evento de cancelar o envio ao formulário do modal
@@ -78,6 +64,7 @@ imageInput.addEventListener('change', e => {
 
         reader.readAsDataURL(selectedImage); // Lê o conteúdo do arquivo como uma URL de dados
     }
-
+    
+    previewImage.style.display = 'block';
     inputImg.style.display = 'none';
 });

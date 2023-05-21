@@ -1,0 +1,32 @@
+header .profile .user #edit-img {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 5.02rem;
+    border-radius: 5rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+header .profile .user #edit-img:hover {
+    background-color: #0005;
+}
+#file-imgUser {
+    /* Estilos do input de arquivo */
+    display: none;
+}
+.custom-file-imgUser-label {
+    /* Estilos do texto personalizado */   
+    font-size: 3rem;
+    padding: 1rem;
+    color: transparent;
+    cursor: pointer;
+}
+.custom-file-imgUser-label:hover {
+    color: var(--white);
+}
+#file-imgUser::-webkit-file-upload-button {
+    /* Oculta o nome do arquivo selecionado */
+    visibility: hidden;
+}

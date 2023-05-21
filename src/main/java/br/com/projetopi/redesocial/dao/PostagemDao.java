@@ -65,7 +65,7 @@ public class PostagemDao implements Dao<Postagem> {
     }
 
     public ArrayList<Postagem> findAllPostagem(){
-        String SQL = "SELECT * FROM POSTAGEM";
+        String SQL = "SELECT * FROM POSTAGEM ORDER BY ID DESC";
 
         ArrayList<Postagem> postagens = new ArrayList<>();
 
@@ -121,6 +121,7 @@ public class PostagemDao implements Dao<Postagem> {
                 postagem.setConta_id(result.getInt("conta_id"));
                 postagem.setFoto_id(result.getInt("foto_id"));
                 postagem.setData_postagem(result.getDate("data_postagem"));
+                postagem.setFoto(result.getString("foto"));
                 postagens.add(postagem);
             }
 
@@ -154,6 +155,7 @@ public class PostagemDao implements Dao<Postagem> {
                 postagem.setConta_id(result.getInt("conta_id"));
                 postagem.setFoto_id(result.getInt("foto_id"));
                 postagem.setData_postagem(result.getDate("data_postagem"));
+                postagem.setFoto(result.getString("foto"));
                 postagens.add(postagem);
             }
 

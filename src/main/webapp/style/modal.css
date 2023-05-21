@@ -29,6 +29,15 @@
     margin-top: 0;
 }
 
+#preview-image {
+    display: none;
+    width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+    box-shadow: 0 0 10px var(--black-mono);
+    border-radius: 0.5rem;
+}
+
 .modal-content form {
     display: flex;
     flex-direction: column;
@@ -39,15 +48,6 @@
     padding: 1rem;
     border-radius: 0.5rem;
     box-shadow: inset 0px 0px 10px var(--black-mono);
-}
-
-#preview-image {
-    width: 150px;
-    max-height: 150px;
-    object-fit: cover;
-    margin-bottom: 10px;
-    box-shadow: 0 0 10px var(--black-mono);
-    border-radius: 0.5rem;
 }
 
 #file {

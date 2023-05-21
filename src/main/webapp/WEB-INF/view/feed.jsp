@@ -33,8 +33,8 @@
             <c:forEach items="${postagens}" var="postagem">
                 <div class="post">
                     <div class="userPost">
-                        <img src="./img/user.png">
-                        <h6>Username</h6>
+                        <img src="./img/user.png"> <!-- TODO: Adicionar foto do dono do post -->
+                        <h6>${conta.nome}</h6> <!-- TODO: Adicionar nome do dono do post -->
                     </div>
                     <div class="img">
                         <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}"> <!-- Adicionar imagem -->
@@ -71,7 +71,7 @@
     <aside>
         <section class="profile">
             <div class="user">
-                <img id="imageProfile" src="./img/user.png"> <!-- Adicionar foto usuario -->
+                <img id="imageProfile" src="./img/user.png"> <!-- TODO:Adicionar foto usuario -->
             </div>
             <div class="config">
                 <span class="icon material-symbols-outlined">
@@ -94,7 +94,7 @@
             <div class="friends">
                 <c:forEach items="${contas}" var="conta">
                 <div class="friend">
-                    <img src="./img/user.png"> <!-- Adicionar foto friend -->
+                    <img src="./img/user.png"> <!-- TODO:Adicionar foto friend -->
                     <h4>${conta.nome}</h4>
                 </div>
                 </c:forEach>
@@ -104,18 +104,18 @@
     <div id="modal-overlay">
         <div id="modal" class="modal-content">
             <h2>Postagem</h2>
-           <form action="/foto" method="post" enctype="multipart/form-data">
-               <div>
-                   <textarea id="caption-input" name="legenda" placeholder="Digite a legenda" required></textarea>
-               </div>
-               <div>
-                   <label for="file">Escolher imagem</label>
-                   <input type="file" name="file" id="file">
-               </div>
-              <div class="btnModal">
-                  <button id="btnCancelar">Cancelar</button>
-                  <button type="submit">Enviar</button>
-              </div>
+            <img id="preview-image">
+            <form action="/foto" method="post" enctype="multipart/form-data" id="modal-form">
+                <div id="img">
+                    <label for="file" class="custom-file-label">Escolher imagem</label>
+                    <input type="file" name="file" id="file" capture="user" required>
+                </div>
+                <textarea id="caption-input" name="legenda" placeholder="Digite a legenda" required></textarea>
+                <div class="btnModal">
+                    <button id="btnCancelar">Cancelar</button>
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>

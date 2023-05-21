@@ -42,7 +42,7 @@ public class TurmaService implements Service<Turma> {
         return this.turmaDao.findById(id);
     }
 
-    public boolean exists(String dataInicio, String turno, String semestre, String letra, int curso_id) {
+    public boolean exists(java.sql.Date dataInicio, String turno, String semestre, String letra, int curso_id) {
         return this.turmaDao.exists(dataInicio, turno, semestre, letra, curso_id);
     }
 }

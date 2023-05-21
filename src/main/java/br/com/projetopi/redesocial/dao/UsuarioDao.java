@@ -151,6 +151,7 @@ public class UsuarioDao {
         }
         return false;
     }
+
     public Usuario getByEmail(String email) {
         String sqlQuery = "select * from usuario where email = ?";
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)){

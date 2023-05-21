@@ -34,10 +34,10 @@
                 <div class="post">
                     <div class="userPost">
                         <img src="./img/user.png"> <!-- TODO: Adicionar foto do dono do post -->
-                        <h6>${postagem.conta.nome}</h6> <!-- TODO: Adicionar nome do dono do post -->
+                        <h6>${postagem.conta.nome}</h6>
                     </div>
                     <div class="img">
-                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}"> <!-- Adicionar imagem -->
+                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}">
                     </div>
                     <div class="legend">
                         <textarea class="textLegend" disabled>${postagem.conteudo}</textarea>

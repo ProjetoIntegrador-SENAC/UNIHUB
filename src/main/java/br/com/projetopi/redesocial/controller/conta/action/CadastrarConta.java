@@ -57,13 +57,14 @@ public class CadastrarConta implements Action {
             String dataInicio = req.getParameter("year");
             String curso_id = req.getParameter("curso");
 
-            if (!this.turmaService.exists(dataInicio, turno, semestre, letra, Integer.valueOf(curso_id))){
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Integer.parseInt(dataInicio), 0, 1);
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Integer.parseInt(dataInicio), 0, 1);
 
+            Date date = new Date(calendar.getTimeInMillis());
+
+            if (!this.turmaService.exists(date, turno, semestre, letra, Integer.valueOf(curso_id))){
                 Turma novaTurma = new Turma(
-                        Integer.parseInt(curso_id),
-                        new Date(calendar.getTimeInMillis()), turno, semestre, letra);
+                        Integer.parseInt(curso_id), date, turno, semestre, letra);
                 this.turmaService.add(novaTurma);
             }
 

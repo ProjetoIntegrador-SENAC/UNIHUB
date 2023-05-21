@@ -23,7 +23,7 @@ public class ContaDao {
                 "(cpf, nome, data_nascimento, sobre, usuario_id, instituicao_id, curso_id, turma_id, genero, sobrenome)" +
                 "values (?,?,?,?,?,?,?,?,?,?)";
 
-        try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
+        try(PreparedStatement ps = conexao.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
 
             ps.setString(1, conta.getCpf().replace(".", "").replace(",", ""));
             ps.setString(2, conta.getNome());
@@ -36,6 +36,10 @@ public class ContaDao {
             ps.setString(9, conta.getGenero());
             ps.setString(10, conta.getSobrenome());
             ps.execute();
+
+            try(ResultSet set = ps.getGeneratedKeys()){
+              conta.setId(set.getInt(1));
+            }
 
         }catch (SQLException e){
             System.out.println(e.getMessage());

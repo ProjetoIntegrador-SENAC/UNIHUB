@@ -1,5 +1,7 @@
 package br.com.projetopi.redesocial.model;
 
+import br.com.projetopi.redesocial.util.PostagemUtils;
+
 import java.sql.Date;
 import java.util.Objects;
 
@@ -11,6 +13,8 @@ public class Postagem {
     private Date data_postagem;
     private Integer conta_id;
     private String foto;
+
+    private Conta conta;
 
     public Postagem(){}
 
@@ -37,6 +41,8 @@ public class Postagem {
 
     public void setConta_id(Integer conta_id) {
         this.conta_id = conta_id;
+        PostagemUtils postagemUtils = new PostagemUtils();
+        setConta(postagemUtils.findPostCriator(conta_id));
     }
 
     public Integer getId() {
@@ -69,6 +75,14 @@ public class Postagem {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public Conta getConta() {
+        return conta;
+    }
+
+    public void setConta(Conta conta) {
+        this.conta = conta;
     }
 
     @Override

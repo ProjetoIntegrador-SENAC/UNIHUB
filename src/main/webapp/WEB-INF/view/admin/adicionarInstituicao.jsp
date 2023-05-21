@@ -5,7 +5,7 @@
 <form class="mt-5" action="/admin?acao=AdicionarInstituicao" method="post">
     <div class="mb-3">
       <label for="nome" class="form-label"> Nome </label>
-      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da instituição">
+      <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome da instituição" required>
     </div>
 
     <div class="mb-3">

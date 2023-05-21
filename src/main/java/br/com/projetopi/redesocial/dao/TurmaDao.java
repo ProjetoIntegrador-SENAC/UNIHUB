@@ -7,6 +7,7 @@ import br.com.projetopi.redesocial.model.Instituicao;
 import br.com.projetopi.redesocial.model.Turma;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
 
+import java.security.cert.TrustAnchor;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -102,7 +103,6 @@ public class TurmaDao implements Dao<Turma> {
             try(ResultSet set = statement.getResultSet()) {
                 while (set.next()) {
                     Turma turma = new Turma();
-
                     turma.setId(set.getInt("id"));
                     turma.setCurso_id(set.getInt("id_curso"));
                     turma.setTurno(set.getString("turno"));
@@ -138,5 +138,53 @@ public class TurmaDao implements Dao<Turma> {
             System.out.println(e);
         }
         return false;
+    }
+
+    public ArrayList<Turma> findAllByCursoId(int id) {
+        String sql = "select * from turma where id_curso = ? order by data_inicio desc ";
+        try(PreparedStatement ps = conexao.prepareStatement(sql)){
+            ps.setInt(1, id);
+            ArrayList<Turma> turmas = new ArrayList<>();
+            ResultSet resultSet = ps.executeQuery();
+            fillResultSet(resultSet, turmas);
+            return turmas;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private void fillResultSet(ResultSet set, ArrayList<Turma> turmas){
+        Turma turma = new Turma();
+        while (true){
+            try {
+                if (!set.next()) break;
+                turma.setId(set.getInt("id"));
+                turma.setCurso_id(set.getInt("id_curso"));
+                turma.setTurno(set.getString("turno"));
+                turma.setLetra(set.getString("letra"));
+                turma.setSemestre(set.getString("semestre"));
+                turma.setData_inicio(set.getDate("data_inicio"));
+                turmas.add(turma);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+    }
+
+    public int getCount(){
+        String sqlQuery = "select count(*) from turma";
+        try (PreparedStatement statement = conexao.prepareStatement(sqlQuery)){
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }else{
+                return 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

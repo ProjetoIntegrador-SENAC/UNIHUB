@@ -165,4 +165,19 @@ public class PostagemDao implements Dao<Postagem> {
         return postagens;
     }
 
+    public int getCount(){
+        String sqlQuery = "select count(*) from postagem";
+        try (PreparedStatement statement = conexao.prepareStatement(sqlQuery)){
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }else{
+                return 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }

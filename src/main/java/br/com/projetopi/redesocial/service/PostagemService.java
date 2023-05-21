@@ -47,4 +47,9 @@ public class PostagemService implements Service<Postagem> {
     public ArrayList<Postagem> findByAccountId(int conta_id,int  qtd_elementos, int num_inicio){
         return this.postagemDao.findByAccountPageable(conta_id, qtd_elementos, num_inicio);
     }
+
+    public int getCount(){
+        return this.postagemDao.getCount();
+    }
+
 }

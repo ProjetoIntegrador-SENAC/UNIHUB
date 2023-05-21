@@ -45,4 +45,11 @@ public class TurmaService implements Service<Turma> {
     public boolean exists(String dataInicio, String turno, String semestre, String letra, int curso_id) {
         return this.turmaDao.exists(dataInicio, turno, semestre, letra, curso_id);
     }
+
+    public ArrayList<Turma> getAllByCursoId(int id) {
+        return this.turmaDao.findAllByCursoId(id);
+    }
+    public int getCount(){
+        return this.turmaDao.getCount();
+    }
 }

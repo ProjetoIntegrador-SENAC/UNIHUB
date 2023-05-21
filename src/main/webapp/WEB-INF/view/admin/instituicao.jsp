@@ -2,6 +2,15 @@
 <%@ include file="menu.jsp" %>
 <div class="col-10">
 
+<c:if test="${fn:contains(message, 'sucesso')}">
+    <h4 class="text-success"> ${message} </h4>
+</c:if>
+
+<c:if test="${fn:contains(message, 'erro')}">
+    <h4 class="text-danger"> ${message} </h4>
+</c:if>
+
+
 <a href="/admin?acao=ExibirTelaAdicionarInstituicao">
 <span class="material-icons mt-5 text-success bg-dark p-2">
     add

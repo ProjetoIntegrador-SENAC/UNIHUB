@@ -1,5 +1,6 @@
 package br.com.projetopi.redesocial.controller.admin.action;
 
+import br.com.projetopi.redesocial.dao.UsuarioDao;
 import br.com.projetopi.redesocial.interfaces.Action;
 import br.com.projetopi.redesocial.model.Usuario;
 import br.com.projetopi.redesocial.service.UsuarioService;
@@ -16,6 +17,7 @@ public class EditarUsuario implements Action {
     public EditarUsuario() {
         this.usuarioService = new UsuarioService();
     }
+
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -29,6 +31,14 @@ public class EditarUsuario implements Action {
         usuario.setSenha(senha);
         usuario.setPapel(papel);
 
+        boolean sucesso = usuarioService.update(usuario);
 
-        return null;
+        if (sucesso) {
+            return ("sucesso.jsp");
+        } else {
+            return ("erro.jsp");
+        }
+
+
+    }
 }

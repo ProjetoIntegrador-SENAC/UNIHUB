@@ -82,7 +82,7 @@ public class CursoDao {
     }
 
     public boolean delete(int id) {
-        String sql = "DELETE FROM curso WHERE id = ?";
+        String sql = "update curso set ic_ativo = 0 where id = ?";
         try(PreparedStatement statement = connection.prepareStatement(sql)){
             statement.setInt(1, id);
             statement.execute();
@@ -94,7 +94,7 @@ public class CursoDao {
     }
 
     public ArrayList<Curso> getCursosByInstituicaoId(int instituicaoId) {
-        String sqlQuery = "select * from curso where instituicao_id = ?";
+        String sqlQuery = "select * from curso where instituicao_id = ? and ic_ativo = 1";
         ArrayList<Curso> cursos = new ArrayList<>();
         try(PreparedStatement ps = connection.prepareStatement(sqlQuery)){
             ps.setInt(1, instituicaoId);
@@ -115,5 +115,20 @@ public class CursoDao {
             System.out.println(e.getMessage());
         }
         return cursos;
+    }
+
+    public int getCount(){
+        String sqlQuery = "select count(*) from curso";
+        try (PreparedStatement statement = connection.prepareStatement(sqlQuery)){
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }else{
+                return 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

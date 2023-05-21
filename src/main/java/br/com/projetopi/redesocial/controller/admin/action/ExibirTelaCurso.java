@@ -35,8 +35,6 @@ public class ExibirTelaCurso implements Action {
 
             Instituicao instituicao = this.instituicaoService.getInstituicaoById(id);
             request.setAttribute("instituicao_atual", instituicao);
-
-
         }
 
         return "forward:curso.jsp";

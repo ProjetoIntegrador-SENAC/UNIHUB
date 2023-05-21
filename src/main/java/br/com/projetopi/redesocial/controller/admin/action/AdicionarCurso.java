@@ -30,10 +30,10 @@ public class AdicionarCurso implements Action {
         curso.setInstituicao_id(inst_id);
 
         if (this.cursoService.add(curso)){
-            request.setAttribute("message", "curso adicionada com sucesso!");
+            request.setAttribute("message", "Curso adicionado com sucesso!");
             request.setAttribute("id", inst_id);
         }else {
-            request.setAttribute("message", "curso adicionada com sucesso!");
+            request.setAttribute("message", "Erro ao adicionar curso!");
             request.setAttribute("id", inst_id);
         }
 

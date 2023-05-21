@@ -21,7 +21,6 @@ public class ExibirTelaAdicionarCurso implements Action {
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         ArrayList<Instituicao> instituicoes = this.instituicaoService.getInstituicaoAll(20, 0);
         request.setAttribute("instituicoes", instituicoes);
 

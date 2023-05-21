@@ -31,4 +31,7 @@ public class CursoService {
         return this.cursoDao.delete(id);
     }
 
+    public int getCount() {
+        return this.cursoDao.getCount();
+    }
 }

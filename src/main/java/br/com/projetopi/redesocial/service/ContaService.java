@@ -67,5 +67,7 @@ public class ContaService implements Service<Conta> {
          this.contaDao.removePost(id);
     }
 
-
+    public int getCount(){
+        return this.contaDao.getCount();
+    }
 }

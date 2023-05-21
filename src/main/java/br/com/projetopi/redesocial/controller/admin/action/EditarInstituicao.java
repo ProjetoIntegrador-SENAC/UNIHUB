@@ -23,9 +23,15 @@ public class EditarInstituicao implements Action {
         Instituicao instituicao = new Instituicao();
         instituicao.setId(instituicao_id);
         instituicao.setNome(nome);
-        this.instituicaoService.update(instituicao);
+        ;
 
-        return "redrect:admin?acao=ExibirTelaInstituicao";
+        if(this.instituicaoService.update(instituicao)){
+            request.setAttribute("message", "Instituição atualizada com sucesso");
+        }else {
+            request.setAttribute("message", "Erro ao atualizar Instituição");
+        }
+
+        return "forward:admin?acao=ExibirTelaInstituicao";
 
     }
 }

@@ -52,4 +52,7 @@ public class UsuarioService implements Service<Usuario> {
         return this.usuarioDao.getByEmail(email);
     }
 
+    public int getCount(){
+        return this.usuarioDao.getCount();}
+
 }

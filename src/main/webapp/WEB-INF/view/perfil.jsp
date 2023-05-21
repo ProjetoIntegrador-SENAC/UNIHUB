@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./style/perfil.css">
     <link rel="stylesheet" href="./style/modalPerfil.css">
     <script src="./js/perfil.js" defer></script>
+    <script src="./js/modalPerfil.js" defer></script>
     
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
@@ -39,8 +40,7 @@
             <div class="user">
                 <img src="./img/user.png"> <!-- TODO: Adicionar Foto user -->
                 <div id="edit-img">
-                    <label for="file-imgUser" class="custom-file-imgUser-label material-symbols-outlined">edit</label>
-                    <input type="file" name="file-imgUser" id="file-imgUser" capture="user" required>
+                    <span class="btnPhoto material-symbols-outlined">edit</span>
                 </div>
             </div>
             <div class="titles">
@@ -60,10 +60,27 @@
                     <span id="btnDelet" class="icon material-symbols-outlined">
                         delete
                     </span>
-                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}" alt=""> <!--TODO:Adicionar foto postagem-->
+                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}">
                 </div>
             </c:forEach>
         </div>
     </main>
+    <!-- Modal Edit Photo Perfil -->
+    <div id="modal-overlay">
+        <div id="modal" class="modal-content">
+            <h2>Foto De Perfil</h2>
+            <img id="preview-image">
+            <form action="" method="post" enctype="multipart/form-data"> <!--TODO: É só adicionar o action do form não precisa mexer em mais nada-->
+                <div id="img">
+                    <label for="filePerfil" class="custom-file-label">Escolher imagem</label>
+                    <input type="file" name="filePerfil" id="filePerfil" capture="user" required>
+                </div>
+                <div class="btnModal">
+                    <button id="btnCancelar">Cancelar</button>
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

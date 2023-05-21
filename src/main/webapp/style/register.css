@@ -98,10 +98,10 @@ form{
     flex: 1 0 100%;
 }
 .fields span{
-    font-size: 1.1rem;
     position: absolute;
+    font-size: 0.9rem;
     top: 10px;
-    left: 0;
+    left: 2px;
     visibility: hidden;
 }
 .fields small {

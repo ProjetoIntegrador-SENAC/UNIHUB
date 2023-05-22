@@ -21,19 +21,19 @@ body{
 }
 
 .menu-item{
-    box-shadow: 0 0 1px #888;
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
     border-bottom: gray solid 1px;
-
 }
 
 .menu-item a{
     color: gray;
+    shadow: 1px;
 }
 
-.row.no_border{
-    border: 0;
+.no_border{
+    border: none;
     padding: 0px;
-    margin: 0px
+    margin: 0px;
 }
 
 .card{
@@ -43,3 +43,13 @@ body{
      margin: 0;
      padding: 0;
  }
+
+.no-gutter-row {
+   margin-right: 0;
+   margin-left: 0;
+}
+
+.no-gutter-col {
+  padding-right: 0;
+  padding-left: 0;
+}

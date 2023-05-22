@@ -69,6 +69,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+
   const ctx2 = document.getElementById('grafico2');
   const ctx = document.getElementById('myChart');
 
@@ -111,8 +112,6 @@ new Chart(ctx2, {
       }]
     }
   });
-
-
 
 </script>
 

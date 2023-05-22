@@ -2,7 +2,9 @@ package br.com.projetopi.redesocial.service;
 
 import br.com.projetopi.redesocial.dao.CursoDao;
 import br.com.projetopi.redesocial.model.Curso;
+import br.com.projetopi.redesocial.model.dto.AreaCursoChat;
 
+import java.awt.geom.Area;
 import java.util.ArrayList;
 
 public class CursoService {
@@ -33,5 +35,9 @@ public class CursoService {
 
     public int getCount() {
         return this.cursoDao.getCount();
+    }
+
+    public ArrayList<AreaCursoChat> getAreaCursoGroupQtd(){
+        return this.cursoDao.getAreaQtd();
     }
 }

@@ -2,6 +2,7 @@ package br.com.projetopi.redesocial.dao;
 
 import br.com.projetopi.redesocial.model.Curso;
 import br.com.projetopi.redesocial.model.Instituicao;
+import br.com.projetopi.redesocial.model.dto.AreaCursoChat;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
 
 import java.sql.*;
@@ -129,6 +130,22 @@ public class CursoDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+    public ArrayList<AreaCursoChat> getAreaQtd(){
+        String sqlQuery = "select area, count(*) qtd from curso group by area";
+        ArrayList<AreaCursoChat> items = new ArrayList<>();
+        try(PreparedStatement ps = connection.prepareStatement(sqlQuery)){
+            ResultSet result = ps.executeQuery();
+            while(result.next()){
+                AreaCursoChat areaCursoChat = new AreaCursoChat(result.getString("area"), result.getInt("qtd"));
+                items.add(areaCursoChat);
+            }
+            return items;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
 }

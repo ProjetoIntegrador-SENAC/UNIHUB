@@ -35,6 +35,10 @@ public class ContaService implements Service<Conta> {
         this.contaDao.add(conta);
     }
 
+    public boolean addFoto(int id_conta, int id_foto){
+        return this.contaDao.addFoto(id_conta, id_foto);
+    }
+
     @Override
     public boolean update(Conta object) {
         return false;

@@ -94,7 +94,7 @@ public class CursoDao {
     }
 
     public ArrayList<Curso> getCursosByInstituicaoId(int instituicaoId) {
-        String sqlQuery = "select * from curso where instituicao_id = ? and ic_ativo = 1";
+        String sqlQuery = "select * from curso where instituicao_id = ?";
         ArrayList<Curso> cursos = new ArrayList<>();
         try(PreparedStatement ps = connection.prepareStatement(sqlQuery)){
             ps.setInt(1, instituicaoId);

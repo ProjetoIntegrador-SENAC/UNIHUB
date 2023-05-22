@@ -1,5 +1,7 @@
 package br.com.projetopi.redesocial.model;
 
+import br.com.projetopi.redesocial.util.ContaUtils;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -20,6 +22,8 @@ public class Conta {
     private int curso_id;
     private int foto_id;
     private int turma_id;
+
+    private String foto;
 
 
     public Conta(){
@@ -147,6 +151,23 @@ public class Conta {
 
     public void setFoto_id(int foto_id) {
         this.foto_id = foto_id;
+
+        ContaUtils contaUtils = new ContaUtils();
+
+        if(foto_id != 0){
+            Foto foto = contaUtils.getFotoById(foto_id);
+
+            setFoto(foto.getCd_foto());
+
+        }
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public String getFoto() {
+        return foto;
     }
 
     public int getTurma_id() {

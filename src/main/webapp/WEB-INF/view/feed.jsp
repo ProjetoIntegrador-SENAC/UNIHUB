@@ -33,7 +33,7 @@
             <c:forEach items="${postagens}" var="postagem">
                 <div class="post">
                     <div class="userPost">
-                        <img src="./img/user.png"> <!-- TODO: Adicionar foto do dono do post -->
+                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.conta.foto}">
                         <h6>${postagem.conta.nome}</h6>
                     </div>
                     <div class="img">
@@ -71,7 +71,7 @@
     <aside>
         <section class="profile">
             <div class="user">
-                <img id="imageProfile" src="./img/user.png"> <!-- TODO:Adicionar foto usuario -->
+                <img id="imageProfile" src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${usuariologado.foto}"> <!-- TODO:Adicionar foto usuario -->
             </div>
             <div class="config">
                 <span class="icon material-symbols-outlined">
@@ -94,7 +94,7 @@
             <div class="friends">
                 <c:forEach items="${contas}" var="conta">
                 <div class="friend">
-                    <img src="./img/user.png"> <!-- TODO:Adicionar foto friend -->
+                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}"> <!-- TODO:Adicionar foto friend -->
                     <h4>${conta.nome}</h4>
                 </div>
                 </c:forEach>

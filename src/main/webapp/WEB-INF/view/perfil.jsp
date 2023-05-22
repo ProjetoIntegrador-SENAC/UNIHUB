@@ -38,7 +38,7 @@
         </div>
         <div class="profile">
             <div class="user">
-                <img src="./img/user.png"> <!-- TODO: Adicionar Foto user -->
+                <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.cd_foto}"> <!-- TODO: Adicionar Foto user -->
                 <div id="edit-img">
                     <span class="btnPhoto material-symbols-outlined">edit</span>
                 </div>
@@ -70,7 +70,7 @@
         <div id="modal" class="modal-content">
             <h2>Foto De Perfil</h2>
             <img id="preview-image">
-            <form action="" method="post" enctype="multipart/form-data"> <!--TODO: É só adicionar o action do form não precisa mexer em mais nada-->
+            <form action="/fotoperfil" method="post" enctype="multipart/form-data"> <!--TODO: É só adicionar o action do form não precisa mexer em mais nada-->
                 <div id="img">
                     <label for="filePerfil" class="custom-file-label">Escolher imagem</label>
                     <input type="file" name="filePerfil" id="filePerfil" capture="user" required>

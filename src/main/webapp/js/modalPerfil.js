@@ -1,14 +1,16 @@
 // Obtém o elemento do botão de adicionar
 const editButton = document.querySelector('#edit-img');
+const deletPhotoButtons = document.querySelectorAll('.btnDelet')
 
 // Obtém o elemento do modal
-const modalOverlay = document.getElementById('modal-overlay');
-
-// Obtém o formulário do modal
-const form = document.getElementById('modal-form');
+const modals = document.querySelectorAll('.modal-overlay');
+const modalEditPhoto = document.getElementById('editPhoto');
+const modalDeletPost = document.getElementById('deletPost');
 
 // Obtém o botão cancelar do modal
 const btnCancelar = document.getElementById('btnCancelar');
+const noDelet = document.getElementById('noDelet');
+const yesDelet = document.getElementById('yesDelet');
 
 // Obtém o input da imagem
 const inputImg = document.getElementById('img');
@@ -17,19 +19,42 @@ const inputImg = document.getElementById('img');
 const imageInput = document.getElementById('filePerfil');
 const previewImage = document.getElementById('preview-image');
 
+
+
 // Adiciona um ouvinte de evento de clique ao botão de adicionar
 editButton.addEventListener('click', () => {
     // Exibe o modal
-    modalOverlay.style.display = 'flex';
+    modalEditPhoto.style.display = 'flex';
+});
+
+
+
+deletPhotoButtons.forEach((deletPhotoButton) => {
+    deletPhotoButton.addEventListener('click', e => {
+        // Verifica se o clique foi fora do modal
+        if (e.target === deletPhotoButton) {
+            // Fecha o modal
+            modalDeletPost.style.display = 'flex';
+        }
+    });
+
+    noDelet.addEventListener('click', limpar)
+
+    yesDelet.addEventListener('click', () => {
+        location.href='/conta?acao=ExibirFeed' // TODO: @RonaldAG é só colocar o caminho da ação de deletar aqui!
+    })
 });
 
 // Limpe o formulário
 function limpar() {
-    // Feche o modal
-    modalOverlay.style.display = 'none';
+    // Fechar o modal de edição de foto de perfil
+    modalEditPhoto.style.display = 'none';
     inputImg.style.display = 'block';
     previewImage.src = '';
     previewImage.display = 'none';
+
+    // Fechar o modal de exclusão de postagem
+    modalDeletPost.style.display = 'none';
 }
 
 // Adiciona um ouvinte de evento de cancelar o envio ao formulário do modal
@@ -38,13 +63,16 @@ btnCancelar.addEventListener('click', e => {
     limpar()
 });
 
-// Adiciona um ouvinte de evento de clique ao objeto modalOverlay
-modalOverlay.addEventListener('click', e => {
-    // Verifica se o clique foi fora do modal
-    if (e.target === modalOverlay) {
-        // Fecha o modal
-        modalOverlay.style.display = 'none';
-    }
+
+// Adiciona um ouvinte de evento de clique a cada objeto modalOverlay
+modals.forEach((modalOverlay) => {
+    modalOverlay.addEventListener('click', e => {
+        // Verifica se o clique foi fora do modal
+        if (e.target === modalOverlay) {
+            // Fecha o modal
+            modalOverlay.style.display = 'none';
+        }
+    });
 });
 
 

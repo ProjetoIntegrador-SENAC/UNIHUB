@@ -11,13 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
-    
+
     <link rel="stylesheet" href="../../style/feed.css">
     <link rel="stylesheet" href="../../style/modal.css">
+
     <script src="../../js/feed.js" defer></script>
     <script src="../../js/modal.js" defer></script>
 
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
         <!-- HEADER -->
         <header>
             <div class="logo">
-                <img src="./img/logo-white.png" alt="">
+                <img src="../../img/logo-white.png" alt="">
             </div>
         </header>
         <!-- POST's -->
@@ -60,7 +61,7 @@
                     </div>
                 </div>
             </c:forEach>
-
+        </div>
         <!-- BTN ADD POST -->
         <nav>
             <span class="icon material-symbols-outlined">

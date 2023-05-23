@@ -18,11 +18,11 @@
 
 :root{
     /* Colors */
-    --black: #000;
-    --white: #FFF;
-    --black: #222;
-    --emphasis: #F04;
-    --black-mono: #191528cf;
+    --white: #FFFFFF;
+    --black: #222222;
+    --offWhite: #EEEEEE;
+    --emphasis: #FF0044;
+    --black-mono: #191528CF;
     --white-mono: #38383970;
 
     /* Paddings */
@@ -107,7 +107,7 @@ main .post{
     position: relative;
     display: flex;
     flex-direction: column;
-    background: #EEE;
+    background: var(--offWhite);
     border-radius: 1rem;
     box-shadow: 1px 1px 10px var(--black-mono);
     width: min-content;
@@ -121,7 +121,7 @@ main .post::before{
     position: absolute;
     display: flex;
     flex-direction: column;
-    background: #EEE;
+    background: var(--offWhite);
     border-radius: 1rem;
     width: 5rem;
     top: -8px;
@@ -140,14 +140,15 @@ main .post .userPost {
     padding-right: 0.5rem;
     width: 5.5rem;
     backdrop-filter: blur(15px);
-    color: #000;
+    color: var(--black);
     box-shadow: inset 0px 0px 5px var(--black-mono);
     border-radius: 1rem;
 }
 main .post .userPost > img{
     height: 15px;
-    border-radius: 1rem;
+    width: 15px;
     object-fit: cover;
+    border-radius: 1rem;
 }
 main .post .img{
     display: flex;
@@ -295,7 +296,7 @@ aside .container .search > input{
     border-radius: 1rem;
     padding: 0.5rem 1.1rem 0.5rem 0.5rem;
     backdrop-filter: blur(15px);
-    background: #FFF;
+    background: var(--offWhite);
     box-shadow: var(--box-shadow);
     --webkit-backdrop-filter: blur(15px);
     box-shadow: inset 1px 1px 5px var(--black-mono), inset -1px -1px 5px var(--black-mono);
@@ -311,12 +312,11 @@ aside .container .friends{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 7.5rem;
     height: 100%;
     gap: 0.5rem;
     border-radius: 0.5rem;
     padding: 0.5rem;
-    overflow-y: scroll;
     overflow-x: hidden;
     backdrop-filter: blur(15px);
     background: #00000059;
@@ -327,14 +327,13 @@ aside .container .friends{
 aside .container .friends .friend{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 0.5rem;
     width: 90%;
     padding: 0.5rem;
     border-radius: 0.5rem;
     color: var(--black);
-    background: #EEE;
+    background: var(--offWhite);
     box-shadow: 0 0 10px var(--black),inset 0px 0px 10px var(--black-mono);
-
 }
 aside .container .friends .friend > img{
     width: 1.5rem;

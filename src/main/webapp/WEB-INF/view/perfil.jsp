@@ -11,19 +11,19 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
     
-    <link rel="stylesheet" href="./style/perfil.css">
-    <link rel="stylesheet" href="./style/modalPerfil.css">
-    <script src="./js/perfil.js" defer></script>
-    <script src="./js/modalPerfil.js" defer></script>
+    <link rel="stylesheet" href="../../style/perfil.css">
+    <link rel="stylesheet" href="../../style/modalPerfil.css">
+    <script src="../../js/perfil.js" defer></script>
+    <script src="../../js/modalPerfil.js" defer></script>
     
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
 </head>
 <body>
     <header>
         <div class="headerTop">
             <div class="logo">
-                <img src="./img/logo-white.png">
+                <img src="../../img/logo-white.png">
             </div>
             <div class="config">
                 <span class="icon material-symbols-outlined">
@@ -57,7 +57,7 @@
         <div class="container">
             <c:forEach items="${postagens}" var="postagem">
                 <div class="post">
-                    <span id="btnDelet" class="icon material-symbols-outlined">
+                    <span class="btnDelet icon material-symbols-outlined">
                         delete
                     </span>
                     <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}">
@@ -66,11 +66,11 @@
         </div>
     </main>
     <!-- Modal Edit Photo Perfil -->
-    <div id="modal-overlay">
-        <div id="modal" class="modal-content">
+    <div class="modal-overlay" id="editPhoto">
+        <div class="modal modal-content">
             <h2>Foto De Perfil</h2>
             <img id="preview-image">
-            <form action="/fotoperfil" method="post" enctype="multipart/form-data"> <!--TODO: É só adicionar o action do form não precisa mexer em mais nada-->
+            <form class="form-modal" action="/fotoperfil" method="post" enctype="multipart/form-data"> <!--TODO: É só adicionar o action do form não precisa mexer em mais nada-->
                 <div id="img">
                     <label for="filePerfil" class="custom-file-label">Escolher imagem</label>
                     <input type="file" name="filePerfil" id="filePerfil" capture="user" required>
@@ -80,6 +80,18 @@
                     <button type="submit">Enviar</button>
                 </div>
             </form>
+        </div>
+    </div>
+    <!-- Modal Delet Post -->
+    <div class="modal-overlay" id="deletPost">
+        <div class="modal modal-content">
+            <h2>Deseja deletar está postagem?</h2>
+            <div class="form-modal">
+                <div class="btnModal">
+                    <button id="noDelet">Cancelar</button>
+                    <button id="yesDelet">Deletar</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

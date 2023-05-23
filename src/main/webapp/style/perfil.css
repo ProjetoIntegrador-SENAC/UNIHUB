@@ -18,8 +18,9 @@
 
 :root{
     /* Colors */
-    --white: #FFF;
+    --white: #fff;
     --black: #222;
+    --offWhite: #EEE;
     --emphasis: #F04;
     --black-mono: #191528cf;
     --white-mono: #38383970;
@@ -169,7 +170,7 @@ main .container:hover :not(:hover){
 main .post{
     display: flex;
     flex-direction: column;
-    background: #EEE;
+    background: var(--offWhite);
     border-radius: 1rem;
     box-shadow: 1px 1px 10px var(--black-mono);
     width: 350px;
@@ -184,7 +185,7 @@ main .post:hover{
 main .post > span{
     position: absolute;
     color: var(--emphasis);
-    background: #EEE;
+    background: var(--offWhite);
     box-shadow: inset 0px 0px 2px var(--black-mono);
     font-size: 0.9rem;
     right: 0.17rem;

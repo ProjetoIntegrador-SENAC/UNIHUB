@@ -19,7 +19,8 @@ form.addEventListener('submit', (e) => {
     const valida = checkInputs();
     
     if (valida === false){
-        e.preventDefault();
+        e.preventDefault()
+        launch_toast()
     }
 });
 
@@ -114,15 +115,13 @@ function checkInputs() {
     } else {
         setSuccessFor(passwordConfirmation);
     }
-
+    
     const formControls = form.querySelectorAll(".fields")
     const formIsValid = [...formControls].every(fields => {
         return (fields.classList.contains("success"));
     });
 
     // Validação do submit
-
-    console.log(formIsValid)
     if (formIsValid) {
         return true;
     } else {
@@ -226,3 +225,45 @@ document.querySelector('#instituicao').addEventListener('change', (e) => {
     id = document.querySelector('#instituicao').value
     getCursosByInstituicaoId(id)
 })
+
+
+const toggleIcons = document.querySelectorAll(".toggle-password");
+
+toggleIcons.forEach((toggleIcon) => {
+    toggleIcon.addEventListener('click', togglePasswordVisibility);
+});
+
+function togglePasswordVisibility(e) {
+    const toggleIcon = event.target;
+    const password = toggleIcon.previousElementSibling;
+
+    if (password.type === "password") {
+        password.type = "text";
+        toggleIcon.classList.add("password-visible");
+        toggleIcon.textContent = "visibility";
+    } else {
+        password.type = "password";
+        toggleIcon.classList.remove("password-visible");
+        toggleIcon.textContent = "visibility_off";
+    }
+}
+
+
+function launch_toast() {
+    var toast = document.getElementById("toast");
+    var desc = document.getElementById("desc");
+    
+    toast.className = "show";
+    
+    setTimeout(function () {
+      desc.style.opacity = "1";
+    }, 600);
+    
+    setTimeout(function () {
+      desc.style.opacity = "0";
+    }, 4200);
+    
+    setTimeout(function () {
+      toast.className = toast.className.replace("show", "");
+    }, 5000);
+}

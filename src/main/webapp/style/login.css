@@ -32,7 +32,6 @@
     text-decoration: none;
     font-family: 'Gumela', 'GumelaRegular';
     font-weight: normal;
-    font-size: 1.25rem;
 }
 
 body{
@@ -41,19 +40,21 @@ body{
     background-position: center;
     background-size: cover;
     color: var(--white);
+    width: 100vw;
+    height: 100vh;
 }
 
 header{
     display: flex;
     background: transparent;
     position: fixed;
-    margin: 1.5rem;
+    margin: 2rem;
 }
 
 .logo > a > img{
     align-items: left;
-    width: 5rem;
-    height: 5rem;
+    width: 6rem;
+    height: 6rem;
 }
 
 main{
@@ -136,6 +137,8 @@ main{
     gap: 1rem;
     background: var(--white-mono);
     border-radius: var(--borderRadiusCard);
+    box-shadow: inset 0px 0px 10px var(--black-mono);
+    position: relative;
 }
 
 .cardRight h2{
@@ -143,10 +146,8 @@ main{
     font-weight: bold;
 }
 
-.inputs > span{
-    position: absolute;
-    font-size: 1.0rem;
-    margin: 0.4rem 0 0 0.3rem;
+.inputs {
+    position: relative;
 }
 
 .inputs > input{
@@ -155,15 +156,36 @@ main{
     padding: 0.2rem 0.9rem 0.2rem 1.5rem;
     border-radius: 1rem;
     border-bottom: 2px solid var(--white);
-    width: 9rem;
+    width: 9.6rem;
     height: 1.5rem;
     font-size: 0.9rem;
     box-shadow: inset 2px 2px 10px #000;
 }
 
+.inputs > #password {
+    width: 9rem;
+    padding: 0.2rem 1.5rem 0.2rem 1.5rem;
+}
+
 .inputs > input:focus{
     border-bottom: 2px solid var(--emphasis);
     outline: none;
+}
+
+.inputs > span{
+    position: absolute;
+    font-size: 1.0rem;
+    margin: 0.4rem 0 0 0.3rem;
+    color: var(--white);
+}
+
+.toggle-password {
+    right: 0.3rem;
+    cursor: pointer;
+}
+
+.toggle-password.password-visible {
+    color: var(--emphasis);
 }
 
 .btnLogin{
@@ -204,6 +226,6 @@ footer{
 }
 
 footer > p{
-    font-size: small;
+    font-size: 0.7rem;
     font-style: italic;
 }

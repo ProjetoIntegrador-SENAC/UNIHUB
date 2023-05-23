@@ -32,7 +32,7 @@ public class DatabaseInitializer implements ServletContextListener {
         return """         
                 create table usuario (\s
                 id integer primary key AUTO_INCREMENT,
-                email varchar (30) not null,
+                email varchar (50) not null,
                 senha varchar (500) not null,
                 papel varchar (100) DEFAULT  ('aluno') not null
                 );                

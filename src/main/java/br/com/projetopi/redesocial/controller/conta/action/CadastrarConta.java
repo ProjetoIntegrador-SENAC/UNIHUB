@@ -4,6 +4,7 @@ import br.com.projetopi.redesocial.interfaces.Action;
 import br.com.projetopi.redesocial.model.Conta;
 import br.com.projetopi.redesocial.model.Turma;
 import br.com.projetopi.redesocial.model.Usuario;
+import br.com.projetopi.redesocial.repository.ConnectionFactory;
 import br.com.projetopi.redesocial.service.AuthService;
 import br.com.projetopi.redesocial.service.ContaService;
 import br.com.projetopi.redesocial.service.TurmaService;
@@ -104,6 +105,7 @@ public class CadastrarConta implements Action {
             if (contaService.exists(cpf)){
                 req.setAttribute("cadastro", "erro");
                 req.setAttribute("mensagem", "a conta já existe");
+                usuarioService.remove(id);
                 return "forward:register.jsp";
             }
             contaService.add(conta);

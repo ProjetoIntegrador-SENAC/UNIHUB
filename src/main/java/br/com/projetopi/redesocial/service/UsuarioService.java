@@ -26,7 +26,7 @@ public class UsuarioService implements Service<Usuario> {
 
     @Override
     public boolean remove(int id) {
-       return false;
+        return usuarioDao.remove(id);
     }
 
     @Override

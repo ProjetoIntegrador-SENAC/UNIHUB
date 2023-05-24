@@ -44,6 +44,7 @@ public class UsuarioDao {
         String sqlQuery = "insert into usuario " +
                 "(email, senha, papel)" +
                 "values (?,?,?)";
+
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
             ps.setString(1, usuario.getEmail());
             ps.setString(2, usuario.getSenha());
@@ -54,14 +55,16 @@ public class UsuarioDao {
         }
     }
 
-    public void remove(Usuario usuario) {
+    public boolean remove(int id) {
         String sqlQuery = "DELETE FROM usuario WHERE id =?";
         try {PreparedStatement ps = conexao.prepareStatement(sqlQuery);
-            ps.setInt(1,usuario.getId());
+            ps.setInt(1, id);
             ps.execute();
+
+            return true;
         }catch (SQLException e){
             e.printStackTrace();
-
+            return false;
         }
     }
 

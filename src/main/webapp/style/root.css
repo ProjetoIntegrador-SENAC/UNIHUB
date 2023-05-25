@@ -1,0 +1,18 @@
+:root{
+    /* Colors */
+    --icon: #FFF;
+    --white: #FFF;
+    --black: #282729;
+    --offWhite: #EEE;
+    --emphasis: #F04;
+    --black-mono: #191528CF;
+    --white-mono: #38383970;
+
+    /* Paddings */
+    --paddingCard: 1.5rem;
+    --paddingButton: 0.5rem;
+
+    /* BorderRadius */
+    --borderRadiusCard: 3.125rem;
+    --borderRadiusButton: 0.625rem;
+}

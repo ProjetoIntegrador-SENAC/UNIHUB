@@ -6,7 +6,7 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px); /* Aplica o efeito de desfoque */
+    backdrop-filter: blur(5px);
     z-index: 5;
 }
 /* Estilo do modal */
@@ -22,11 +22,12 @@
     text-align: center;  
     border-radius: 0.5rem;
     box-shadow: 0 2px 10px #0007;
-    background-color: var(--white); /* Cor de fundo do modal */
+    background-color: var(--white);
 }
 
 .modal-content h2 {
     margin-top: 0;
+    color: var(--black);
 }
 
 #preview-image {
@@ -34,7 +35,7 @@
     width: 150px;
     max-height: 150px;
     object-fit: cover;
-    box-shadow: 0 0 10px var(--black-mono);
+    box-shadow: 0 0 10px #000;
     border-radius: 0.5rem;
 }
 
@@ -47,7 +48,7 @@
     width: 90%;
     padding: 1rem;
     border-radius: 0.5rem;
-    box-shadow: inset 0px 0px 10px var(--black-mono);
+    box-shadow: inset 0px 0px 10px #000;
 }
 
 #file {
@@ -59,17 +60,17 @@
     display: inline-block;
     padding: 8px 12px;
     background-color: var(--emphasis);
-    color: var(--white);
+    color: var(--icon);
     border-radius: 4px;
     cursor: pointer;
     width: 8rem;
-    box-shadow: 0 2px 8px var(--black);
+    box-shadow: 0 2px 8px #000;
     margin-bottom: 10px;
 }
 .custom-file-label:hover {
     background: var(--white);
     color: var(--emphasis);
-    box-shadow: inset 2px 2px 10px var(--black);
+    box-shadow: inset 2px 2px 10px #000;
 }
 #file::-webkit-file-upload-button {
     /* Oculta o nome do arquivo selecionado */
@@ -79,16 +80,18 @@
 .modal-content textarea {
     margin-bottom: 10px;
     padding: 8px;
-    border: 1px solid #ccc;
     border-radius: 4px;
     width: 90%;
     height: 80px;
     resize: none;
-    box-shadow: inset 0px 0px 10px var(--black-mono);
+    box-shadow: inset 0px 0px 10px #000;
+    background: var(--white);
+    color: var(--black);
 }
 
 textarea:focus {
-    outline-color: var(--emphasis);
+    outline: 0;
+    border: 2px solid var(--emphasis);
 }
 
 .modal-content .btnModal {
@@ -99,14 +102,14 @@ textarea:focus {
 .modal-content button {
     padding: 8px 16px;
     background: var(--emphasis);
-    color: var(--white);
+    color: var(--icon);
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    box-shadow: 0 2px 8px var(--black);
+    box-shadow: 0 2px 8px #000;
 }
 .modal-content button:hover {
     background: var(--white);
     color: var(--emphasis);
-    box-shadow: inset 2px 2px 10px var(--black);
+    box-shadow: inset 2px 2px 10px #000;
 }

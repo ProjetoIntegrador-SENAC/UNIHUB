@@ -12,9 +12,11 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
 
+    <link rel="stylesheet" href="../../style/root.css">
     <link rel="stylesheet" href="../../style/feed.css">
     <link rel="stylesheet" href="../../style/modal.css">
 
+    <script src="../../js/theme.js" defer></script>
     <script src="../../js/feed.js" defer></script>
     <script src="../../js/modal.js" defer></script>
 
@@ -26,7 +28,9 @@
         <!-- HEADER -->
         <header>
             <div class="logo">
-                <img src="../../img/logo-white.png" alt="">
+                <a href="/conta?acao=ExibirFeed">
+                    <img src="../../img/logo-white.png">
+                </a>
             </div>
         </header>
         <!-- POST's -->

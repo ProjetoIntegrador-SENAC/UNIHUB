@@ -75,8 +75,8 @@
                 <img id="imageProfile" src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${usuariologado.foto}"> <!-- TODO:Adicionar foto usuario -->
             </div>
             <div class="config">
-                <span class="icon material-symbols-outlined">
-                    settings
+                <span id="btnTheme" data-theme="dark" class="icon material-symbols-outlined">
+                    dark_mode
                 </span>
                 <a class="exit" href="login?acao=Deslogar">
                     <span class="icon material-symbols-outlined">

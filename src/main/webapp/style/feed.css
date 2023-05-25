@@ -18,10 +18,11 @@
 
 :root{
     /* Colors */
-    --white: #FFFFFF;
-    --black: #222222;
-    --offWhite: #EEEEEE;
-    --emphasis: #FF0044;
+    --icon: #FFF;
+    --white: #FFF;
+    --black: #282729;
+    --offWhite: #EEE;
+    --emphasis: #F04;
     --black-mono: #191528CF;
     --white-mono: #38383970;
 
@@ -101,6 +102,7 @@ main .container{
     overflow-x: hidden;
     padding-top: 1rem;
     gap: 2rem;
+    background: var(--white);
 }
 
 main .post{
@@ -186,6 +188,7 @@ main .post .legend > textarea{
     overflow: hidden;
     white-space: pre-wrap;
     text-overflow: ellipsis;
+    border-radius: 0.5rem;
 }
 main .post .legend > textarea.expanded {
     -webkit-line-clamp: unset;
@@ -196,6 +199,7 @@ main .post .legend > button{
     bottom: -1.5rem;
     right: 0.1rem;
     background: transparent;
+    color: (--black);
 }
 
 main .post .interactions{
@@ -204,6 +208,8 @@ main .post .interactions{
     position: relative;
 }
 main .post .interactions > button{
+    background: transparent;
+    color: (--black);
     cursor: pointer;
 }
 
@@ -215,11 +221,11 @@ main nav{
     padding: 0.1rem;
     border-radius: 0.5rem;
     background: var(--emphasis);
-    color: var(--white);
+    color: var(--icon);
     bottom: 1rem;
     transition: all ease-out 250ms;
     cursor: pointer;
-    box-shadow: 0 0 10px var(--black),inset 0px 0px 10px var(--black-mono);
+    box-shadow: 0 0 10px #222, inset 0px 0px 10px var(--black-mono);
     z-index: 2;
 }
 main nav:hover{
@@ -270,7 +276,7 @@ aside .profile .user > img{
 aside .profile .config .icon{
     font-size: 1rem;
     cursor: pointer;
-    color: var(--white);
+    color: var(--icon);
 }
 
 aside .container{
@@ -297,7 +303,6 @@ aside .container .search > input{
     padding: 0.5rem 1.1rem 0.5rem 0.5rem;
     backdrop-filter: blur(15px);
     background: var(--offWhite);
-    box-shadow: var(--box-shadow);
     --webkit-backdrop-filter: blur(15px);
     box-shadow: inset 1px 1px 5px var(--black-mono), inset -1px -1px 5px var(--black-mono);
 }
@@ -320,7 +325,6 @@ aside .container .friends{
     overflow-x: hidden;
     backdrop-filter: blur(15px);
     background: #00000059;
-    box-shadow: var(--box-shadow);
     --webkit-backdrop-filter: blur(15px);
     box-shadow: inset 1px 1px 20px var(--black-mono);
 }
@@ -333,7 +337,7 @@ aside .container .friends .friend{
     border-radius: 0.5rem;
     color: var(--black);
     background: var(--offWhite);
-    box-shadow: 0 0 10px var(--black),inset 0px 0px 10px var(--black-mono);
+    box-shadow: 0 0 10px #222, inset 0px 0px 10px var(--black-mono);
 }
 aside .container .friends .friend > img{
     width: 1.5rem;

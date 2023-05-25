@@ -72,6 +72,27 @@ const imageProfile = document.getElementById('imageProfile')
 imageProfile.addEventListener('click', onPress);
 
 function onPress(){
-
     location.href = './conta?acao=ExibirPerfil'
 }
+
+const btnTheme = document.getElementById('btnTheme')
+const root = document.querySelector(':root')
+
+btnTheme.addEventListener('click', () => {
+
+    if (btnTheme.dataset.theme === 'dark') {
+            btnTheme.innerText = 'light_mode'
+            root.style.setProperty('--white', '#282729')
+            root.style.setProperty('--offWhite', '#363537')
+            root.style.setProperty('--black', '#FFF')
+
+            btnTheme.dataset.theme = 'light'
+    } else {
+        btnTheme.innerText = 'dark_mode'
+        root.style.setProperty('--white', '#FFF')
+        root.style.setProperty('--offWhite', '#EEE')
+        root.style.setProperty('--black', '#282729')
+        btnTheme.dataset.theme = 'dark'
+    }
+
+})

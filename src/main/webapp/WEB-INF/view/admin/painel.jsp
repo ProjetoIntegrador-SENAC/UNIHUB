@@ -73,13 +73,35 @@
   const ctx2 = document.getElementById('grafico2');
   const ctx = document.getElementById('myChart');
 
+  let area = []
+  let qtd = []
+
+  fetch('http://localhost:8080/api_chart_area_curso')
+  .then(response => response.json())
+  .then(data => {
+      data.forEach(element => {
+        area.push(element.area)
+        qtd.push(element.qtd)
+      });
+  })
+  .catch(error => {
+    // Tratar erros
+    console.error('Ocorreu um erro:', error);
+  });
+
+  console.log(area);
+  console.log(qtd);
+
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: area,
       datasets: [{
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: qtd,
+        backgroundColor: [
+          'rgb(200, 0, 0)'
+        ],
         borderWidth: 1
       }]
     },
@@ -104,9 +126,9 @@ new Chart(ctx2, {
         label: 'My First Dataset',
         data: [300, 50, 100],
         backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)'
+          'rgb(255, 23, 0)',
+          'rgb(255, 21, 43)',
+          'rgb(255, 1, 81)'
         ],
         hoverOffset: 4
       }]

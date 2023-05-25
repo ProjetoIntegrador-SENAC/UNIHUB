@@ -22,8 +22,6 @@ public class HomeFilter implements Filter {
 
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
-
-
         AuthService authService = new AuthService();
 
         boolean userLogged = authService.userSessionIsActive(req);
@@ -33,7 +31,6 @@ public class HomeFilter implements Filter {
             return;
         }
 
-
         Usuario usuario = authService.getLoggedUser(req);
 
         if(usuario.getPapel().equals("Aluno")){
@@ -42,7 +39,6 @@ public class HomeFilter implements Filter {
             resp.sendRedirect("admin?acao=ExibirPainel");
         }
         return;
-
     }
 
     @Override

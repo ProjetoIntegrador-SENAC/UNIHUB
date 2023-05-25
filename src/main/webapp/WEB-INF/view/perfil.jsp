@@ -10,9 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
-    
+
+    <link rel="stylesheet" href="../../style/root.css">
     <link rel="stylesheet" href="../../style/perfil.css">
     <link rel="stylesheet" href="../../style/modalPerfil.css">
+
+    <script src="../../js/theme.js" defer></script>
     <script src="../../js/perfil.js" defer></script>
     <script src="../../js/modalPerfil.js" defer></script>
     
@@ -23,11 +26,13 @@
     <header>
         <div class="headerTop">
             <div class="logo">
-                <img src="../../img/logo-white.png">
+                <a href="/conta?acao=ExibirFeed">
+                    <img src="../../img/logo-white.png">
+                </a>
             </div>
             <div class="config">
-                <span class="icon material-symbols-outlined">
-                    settings
+                <span id="btnTheme" data-theme="dark" class="icon material-symbols-outlined">
+                    dark_mode
                 </span>
                 <a href="/conta?acao=ExibirFeed">
                     <span class="icon material-symbols-outlined">

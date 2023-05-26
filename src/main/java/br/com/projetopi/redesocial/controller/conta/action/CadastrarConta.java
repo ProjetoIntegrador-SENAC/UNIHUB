@@ -83,7 +83,7 @@ public class CadastrarConta implements Action {
             String data_nascimento = req.getParameter("data_nascimento");
             String sobre = req.getParameter("sobre");
             String instituicao_id = req.getParameter("instituicao");
-            String foto_id = null; //req.getParameter("foto_id");
+            String foto_id = "1";
             int turma_id = turma.getId();
             String genero = req.getParameter("genero");
 
@@ -97,7 +97,7 @@ public class CadastrarConta implements Action {
             conta.setUsuario_id(Integer.valueOf(id));
             conta.setInstituiacao_id(Integer.valueOf(instituicao_id));
             conta.setCurso_id(Integer.valueOf(curso_id));
-            //conta.setFoto_id(Integer.valueOf(foto_id));
+            conta.setFoto_id(Integer.valueOf(foto_id));
             conta.setTurma_id(Integer.valueOf(turma_id));
 
             ContaService contaService = new ContaService();

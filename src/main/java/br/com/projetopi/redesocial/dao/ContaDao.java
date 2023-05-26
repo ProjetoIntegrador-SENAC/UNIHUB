@@ -20,8 +20,8 @@ public class ContaDao {
 
     public void add(Conta conta){
         String sqlQuery = "insert into conta " +
-                "(cpf, nome, data_nascimento, sobre, usuario_id, instituicao_id, curso_id, turma_id, genero, sobrenome)" +
-                "values (?,?,?,?,?,?,?,?,?,?)";
+                "(cpf, nome, data_nascimento, sobre, usuario_id, instituicao_id, curso_id, turma_id, genero, sobrenome, foto_id)" +
+                "values (?,?,?,?,?,?,?,?,?,?,?)";
 
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -35,6 +35,7 @@ public class ContaDao {
             ps.setInt(8, conta.getTurma_id());
             ps.setString(9, conta.getGenero());
             ps.setString(10, conta.getSobrenome());
+            ps.setInt(11, conta.getFoto_id());
             ps.execute();
 
             try(ResultSet set = ps.getGeneratedKeys()){

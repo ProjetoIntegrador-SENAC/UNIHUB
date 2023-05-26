@@ -56,7 +56,7 @@
                 </ul>
             </div>
             <div class="h-100">
-                <a href="admin?acao=ExibirTelaTurma" class="text-decoration-none">
+                <a href="login?acao=Deslogar" class="text-decoration-none">
                 <span class="material-icons text-danger d-flex justify-content-center">
                        exit_to_app
                </span>

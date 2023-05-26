@@ -2,6 +2,12 @@
 <%@ include file="menu.jsp" %>
 <div class="col-10" style="height: 100vh;overflow-y: auto;">
 
+     <a href="/admin?acao=ExibirTelaAdicionarCurso">
+       <span class="material-icons mt-5 text-success bg-dark p-2">
+           add
+       </span>
+       </a>
+
     <form class="mt-5" action="/admin?acao=ExibirTelaCurso" method="post">
 
         <select class="form-select" name="id" aria-label="Default select example">
@@ -29,12 +35,6 @@
     </c:if>
 
     <c:if test="${not empty cursos}">
-
-       <a href="/admin?acao=ExibirTelaAdicionarCurso">
-       <span class="material-icons mt-5 text-success bg-dark p-2">
-           add
-       </span>
-       </a>
 
       <table class="table table-dark table-striped mt-2">
           <thead>

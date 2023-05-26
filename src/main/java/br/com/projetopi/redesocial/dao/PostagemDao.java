@@ -65,7 +65,7 @@ public class PostagemDao implements Dao<Postagem> {
     }
 
     public ArrayList<Postagem> findAllPostagem(){
-        String SQL = "SELECT * FROM POSTAGEM ORDER BY ID DESC";
+        String SQL = "select * from postagem order by id desc";
 
         ArrayList<Postagem> postagens = new ArrayList<>();
 

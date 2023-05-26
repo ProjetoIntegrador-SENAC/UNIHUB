@@ -39,10 +39,10 @@ public class FotoDAO{
         return -1;
     }
 
-    public boolean remove(Foto foto) {
+    public boolean remove(int id) {
         String DELETE = "DELETE FROM foto WHERE id =?";
         try (PreparedStatement stmt = conexao.prepareStatement(DELETE)) {
-            stmt.setInt(1, foto.getId());
+            stmt.setInt(1, id);
             stmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();

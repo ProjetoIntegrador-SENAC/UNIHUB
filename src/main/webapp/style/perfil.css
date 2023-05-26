@@ -103,6 +103,7 @@ header .profile .user{
 header .profile .user > img{
     content: "";
     height: 5rem;
+    width: 5rem;
     border-radius: 5rem;
     cursor: pointer;
 }

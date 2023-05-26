@@ -115,6 +115,7 @@ public class DatabaseInitializer implements ServletContextListener {
                 foreign key (conta_destinatario_id) references conta(id));   
                 INSERT INTO INSTITUICAO (ID, NOME) VALUES (1, 'CENTRO UNIVERSITARIO SENAC');
                 INSERT INTO CURSO (ID, NOME, TIPO, AREA, INSTITUICAO_ID) VALUES (1, 'ANALISE E DESENVOLVIMENTO DE SISTEMAS', 'TECNOLOGO', 'TECNOLOGIA DA INFORMACAO', 1);
+                INSERT INTO FOTO(CD_FOTO) VALUES ('img/fotos/user.png');
                 """;
 
        // --INSERT INTO USUARIO (ID, EMAIL, SENHA, PAPEL) VALUES (1, 'ALUNO_EXEMPLO@EMAIL.COM', '123', 'ALUNO');

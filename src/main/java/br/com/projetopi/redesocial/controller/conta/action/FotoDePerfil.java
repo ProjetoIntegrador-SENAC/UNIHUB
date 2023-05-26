@@ -74,7 +74,7 @@ public class FotoDePerfil  extends HttpServlet {
                     checkFieldType(fileItem, requestParameters);
                 }
             } catch (Exception e){
-                requestParameters.put("image", "img/default-image.png");
+                requestParameters.put("image", "img/fotos/user.png");
             }
         }
 
@@ -89,7 +89,7 @@ public class FotoDePerfil  extends HttpServlet {
         } else {
 
             String fileName = processUploadedFile(fileItem);
-            requestParameters.put("image", "img/".concat(fileName));
+            requestParameters.put("image", "img/fotos/".concat(fileName));
 
         }
     }
@@ -97,7 +97,7 @@ public class FotoDePerfil  extends HttpServlet {
     private String processUploadedFile(FileItem fileItem) throws Exception {
         Long currentTime = new Date().getTime();
         String fileName = currentTime.toString().concat("-").concat(fileItem.getName().replace(" ", ""));
-        String filePath = this.getServletContext().getRealPath("img").concat(File.separator).concat(fileName);
+        String filePath = this.getServletContext().getRealPath("img/fotos").concat(File.separator).concat(fileName);
         fileItem.write(new File(filePath));
         return fileName;
     }

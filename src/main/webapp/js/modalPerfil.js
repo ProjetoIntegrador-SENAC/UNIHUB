@@ -28,21 +28,25 @@ editButton.addEventListener('click', () => {
 });
 
 
-
 deletPhotoButtons.forEach((deletPhotoButton) => {
-    deletPhotoButton.addEventListener('click', e => {
-        // Verifica se o clique foi fora do modal
-        if (e.target === deletPhotoButton) {
-            // Fecha o modal
-            modalDeletPost.style.display = 'flex';
-        }
+  deletPhotoButton.addEventListener('click', () => {
+    const postId = deletPhotoButton.dataset.postId; // Obter o ID da postagem
+    // Open the modal
+    modalDeletPost.style.display = 'flex';
+
+    const yesDeletButton = document.getElementById('yesDelet');
+    const noDeletButton = document.getElementById('noDelet');
+
+    yesDeletButton.addEventListener('click', () => {
+      // Perform the deletion action
+      location.href = '/conta?acao=ExcluirPostagem&id=' + postId;
     });
 
-    noDelet.addEventListener('click', limpar)
-
-    yesDelet.addEventListener('click', () => {
-        location.href='/conta?acao=ExibirFeed' // TODO: @RonaldAG é só colocar o caminho da ação de deletar aqui!
-    })
+    noDeletButton.addEventListener('click', () => {
+      // Close the modal
+      modalDeletPost.style.display = 'none';
+    });
+  });
 });
 
 // Limpe o formulário

@@ -14,21 +14,21 @@
     <script src="../../js/login.js" defer></script>
     <script src="../../js/modalLogin.js" defer></script>
 
-    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
 </head>
 
 <body>
     <header class="logo">
         <a href="./login?acao=ExibirTelaLogin">
-            <img src="../../img/logo-white.png">
+            <img src="../../img/system/logo-white.png">
         </a>
     </header>
     <main class="login">
         <section class="left">
             <h1>
                 Seja bem vindo a UNIHUB
-                <img src="../../img/logo-small-white.png">
+                <img src="../../img/system/logo-small-white.png">
             </h1>
             <div class="cardLeft">
                 <h4>Somos uma rede social focada em universitários...</h4>
@@ -83,7 +83,7 @@
     <!-- Toast -->
     <div id="toast">
         <div id="img" class="material-symbols-outlined">error</div>
-        <div id="desc">Email e/ou senha inválidos!</div>
+        <div id="desc">${message}</div>
     </div>
 </body>
 </html>

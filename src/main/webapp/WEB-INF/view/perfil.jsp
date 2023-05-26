@@ -19,7 +19,7 @@
     <script src="../../js/perfil.js" defer></script>
     <script src="../../js/modalPerfil.js" defer></script>
     
-    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
 </head>
 <body>
@@ -27,7 +27,7 @@
         <div class="headerTop">
             <div class="logo">
                 <a href="/conta?acao=ExibirFeed">
-                    <img src="../../img/logo-white.png">
+                    <img src="../../img/system/logo-white.png">
                 </a>
             </div>
             <div class="config">

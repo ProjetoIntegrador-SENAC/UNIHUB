@@ -41,6 +41,7 @@ public class DatabaseInitializer implements ServletContextListener {
                 nome varchar (30) not null);             
                 create table curso(
                 id integer primary key AUTO_INCREMENT,
+                ic_ativo integer DEFAULT 1,
                 nome varchar (100) not null,
                 tipo varchar (100) not null,
                 area varchar (100) not null,

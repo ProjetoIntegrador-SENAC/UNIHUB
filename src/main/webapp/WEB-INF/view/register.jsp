@@ -20,13 +20,13 @@
     <!-- JAVASCRIPT -->
     <script src="../../js/register.js" defer></script>
 
-    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
 </head>
 <body onload="getInstituicoes()">
     <header class="logo">
         <a href="./login?acao=ExibirTelaLogin">
-            <img src="../../img/logo-white.png" alt="">
+            <img src="../../img/system/logo-white.png" alt="">
         </a>
     </header>
     <main>

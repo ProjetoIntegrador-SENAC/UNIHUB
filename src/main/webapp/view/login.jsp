@@ -8,24 +8,27 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../../style/login.css">
+    <link rel="stylesheet" href="../../style/modalLogin.css">
     <link rel="stylesheet" href="../../style/toast.css">
-    <script src="../../js/login.js" defer></script>
 
-    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
+    <script src="../../js/login.js" defer></script>
+    <script src="../../js/modalLogin.js" defer></script>
+
+    <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
 </head>
 
 <body>
     <header class="logo">
         <a href="./login?acao=ExibirTelaLogin">
-            <img src="../../img/logo-white.png">
+            <img src="../../img/system/logo-white.png">
         </a>
     </header>
     <main class="login">
         <section class="left">
             <h1>
                 Seja bem vindo a UNIHUB
-                <img src="../../img/logo-small-white.png">
+                <img src="../../img/system/logo-small-white.png">
             </h1>
             <div class="cardLeft">
                 <h4>Somos uma rede social focada em universitários...</h4>
@@ -51,20 +54,36 @@
                     </div>
                     <button type="submit" class="btnLogin">LOGAR</button>
                     <span>
-                        <a href="">
+                        <p id="recuperar">
                             Esqueceu a sua senha?
-                        </a>
+                        </p>
                     </span>
                 </form>
             </div>
         </section>
+        <!-- Modal -->
+        <div id="modal-overlay">
+            <div id="modal" class="modal-content">
+                <h2>Recuperação de senha</h2>
+                <p id="msgError">Credenciais inválidas!</p>
+                <form action="" method="post" enctype="multipart/form-data" id="modal-form">
+                    <input type="text" id="nomeUser" name="nomeUser" placeholder="Nome completo" required>
+                    <input  type="text" id="emailUser" name="emailUser" placeholder="E-mail cadastrado" required></input>
+                    <div class="btnModal">
+                        <button id="btnCancelar">Cancelar</button>
+                        <button type="submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
     <footer>
         <p>&copy; UNIHUB. Todos os direitos reservados.</p>
     </footer>
+    <!-- Toast -->
     <div id="toast">
         <div id="img" class="material-symbols-outlined">error</div>
-        <div id="desc">Email e/ou senha inválidos!</div>
+        <div id="desc">${message}</div>
     </div>
 </body>
 </html>

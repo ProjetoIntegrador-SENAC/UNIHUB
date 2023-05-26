@@ -47,8 +47,7 @@ public class Logar implements Action {
                 }
             }
         }
-        request.setAttribute("message", "E-mail e/ou senha inválidos!");
-        request.getRequestDispatcher("login?acao=ExibirTelaLogin").forward(request, response);
+        request.setAttribute("message","E-mail e/ou senha inválidos!");
         return "forward:login?acao=ExibirTelaLogin";
     }
 }

@@ -46,7 +46,7 @@ public class CursoDao {
     }
 
     public List<Curso> findAll() throws SQLException {
-        String sql = "SELECT * FROM curso";
+        String sql = "SELECT * FROM curso and ic_ativo = 1";
 
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.execute();
@@ -95,7 +95,7 @@ public class CursoDao {
     }
 
     public ArrayList<Curso> getCursosByInstituicaoId(int instituicaoId) {
-        String sqlQuery = "select * from curso where instituicao_id = ?";
+        String sqlQuery = "select * from curso where ic_ativo = 1 and instituicao_id = ? ";
         ArrayList<Curso> cursos = new ArrayList<>();
         try(PreparedStatement ps = connection.prepareStatement(sqlQuery)){
             ps.setInt(1, instituicaoId);

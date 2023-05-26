@@ -35,7 +35,7 @@
             </span>
             </td>
             <td>
-                <a href="/admin?excluir_conta&id=${conta.id}">
+                <a href="/admin?acao=ExcluirConta&id=${conta.id}">
                 <span class="material-icons">
                     delete_forever
                 </span>

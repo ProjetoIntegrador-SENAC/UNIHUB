@@ -91,7 +91,23 @@ public class UsuarioDao {
 
         return true;
     }
+    public boolean updatePasswordByEmail(String email, String password) {
+        String sqlQuery = "UPDATE USUARIO SET SENHA = ? WHERE EMAIL = ?";
 
+        try { PreparedStatement ps = conexao.prepareStatement(sqlQuery); {
+            ps.setString(1, password);
+            ps.setString(2, email);
+
+            ps.execute();
+            return true;
+        }
+
+        }catch (SQLException e){
+            System.out.println("Ocorreu erro " + e );
+        }
+
+        return false;
+    }
     public ArrayList<Usuario> findAllPageable(int qtd_elementos, int num_inicio, String email, String senha, String papel) {
         ArrayList<Usuario> usuarios = new ArrayList<>();
         String sqlQuery = "SELECT * FROM usuario WHERE email = ? AND senha = ? AND papel = ? LIMIT ? OFFSET ?;";
@@ -117,6 +133,25 @@ public class UsuarioDao {
         return usuarios;
     }
 
+    public ArrayList<Usuario> findAll() {
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        String sqlQuery = "SELECT * FROM usuario;";
+        try (PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setId(rs.getInt("id"));
+                    usuario.setEmail(rs.getString("email"));
+                    usuario.setSenha(rs.getString("senha"));
+                    usuario.setPapel(rs.getString("papel"));
+                    usuarios.add(usuario);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return usuarios;
+    }
     public Usuario findById(int id) {
         String sqlQuery = "select * from usuario where id = ?";
         ResultSet result;

@@ -25,7 +25,7 @@ public class ContaDao {
 
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
 
-            ps.setString(1, conta.getCpf().replace(".", "").replace(",", ""));
+            ps.setString(1, conta.getCpf().replace(".", "").replace(",", "").replace("-", ""));
             ps.setString(2, conta.getNome());
             ps.setDate(3, conta.getData_nascimento());
             ps.setString(4, conta.getSobre());

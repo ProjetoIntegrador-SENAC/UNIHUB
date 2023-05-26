@@ -26,7 +26,7 @@ create table instituicao(
 
 create table curso(
     id integer primary key AUTO_INCREMENT,
-    ic_activo integer DEFAULT 1,
+    ic_ativo integer DEFAULT 1,
     nome varchar (50) not null,
     tipo varchar (30) not null,
     area varchar (30) not null,

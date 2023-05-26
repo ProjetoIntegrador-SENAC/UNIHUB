@@ -42,7 +42,7 @@ public class Logar implements Action {
                     session.setAttribute("contaLogado", conta);
                     return "forward:conta?acao=ExibirFeed";
                 } else if (usuario.getPapel().toUpperCase().equals("ADMIN")) {
-                    session.setAttribute("adminLogado", usuario);
+                    session.setAttribute("usuarioLogado", usuario);
                     return "forward:admin?acao=ExibirPainel";
                 }
             }

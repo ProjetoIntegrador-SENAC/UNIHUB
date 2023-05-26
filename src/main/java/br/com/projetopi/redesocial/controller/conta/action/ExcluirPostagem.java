@@ -11,14 +11,15 @@ import java.io.IOException;
 public class ExcluirPostagem implements Action {
     private ContaService contaService;
 
-    ExcluirPostagem(){
+    public ExcluirPostagem(){
         this.contaService = new ContaService();
     }
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.valueOf(request.getParameter("id"));
-        this.contaService.removePost(id);
-        return "redrect:conta?acao=ExibirPerfil";
+        System.out.println("ID DA POSTAGEM: " + id);
+//        this.contaService.removePost(id, conta_id); TODO: ARRUMAR METODO REMOVEPOST PARA EXECUTAR A SEGUINTE QUERY DELETE FROM POSTAGEM WHERE CONTA_ID = ? LIMIT=1 OFFSET=?
+        return "redirect:conta?acao=ExibirPerfil";
     }
 }

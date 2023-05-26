@@ -5,7 +5,7 @@
 <form class="mt-5" action="/admin?acao=ExibirTelaTurma" method="post">
     <div class="mb-3 mt-2">
         <select class="form-select" name="instituicao_id" id="instituicao_turma" aria-label="Default select example">
-          <option selected value="0">Selecione </option>
+          <option selected value="0">Selecione a instituição </option>
            <c:forEach items="${instituicoes}" var="instituicao">
           <option value="${instituicao.id}"> ${instituicao.nome} </option>
           </c:forEach>
@@ -14,7 +14,7 @@
 
     <div class="mb-3 mt-2">
         <select class="form-select" name="curso_id" aria-label="Default select example" id="turmas_select">
-          <option selected value="0">Selecione </option>
+          <option selected value="0">Selecione o curso </option>
         </select>
     </div>
 

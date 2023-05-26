@@ -1,4 +1,3 @@
-
 // Obtém o elemento do botão de adicionar
 const addButton = document.querySelector('nav');
 

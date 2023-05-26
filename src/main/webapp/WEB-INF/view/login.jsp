@@ -66,9 +66,9 @@
             <div id="modal" class="modal-content">
                 <h2>Recuperação de senha</h2>
                 <p id="msgError">Credenciais inválidas!</p>
-                <form action="" method="post" enctype="multipart/form-data" id="modal-form">
+                <form action="/recupera-senha" method="post" id="modal-form">
                     <input type="text" id="nomeUser" name="nomeUser" placeholder="Nome completo" required>
-                    <input  type="text" id="emailUser" name="emailUser" placeholder="E-mail cadastrado" required></input>
+                    <input  type="text" id="emailUser" name="emailUser" placeholder="E-mail cadastrado" required>
                     <div class="btnModal">
                         <button id="btnCancelar">Cancelar</button>
                         <button type="submit">Enviar</button>

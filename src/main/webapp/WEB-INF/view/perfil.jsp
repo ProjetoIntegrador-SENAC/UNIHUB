@@ -62,7 +62,7 @@
         <div class="container">
             <c:forEach items="${postagens}" var="postagem">
                 <div class="post">
-                    <span class="btnDelet icon material-symbols-outlined">
+                    <span class="btnDelet icon material-symbols-outlined" data-post-id="${postagem.id}">
                         delete
                     </span>
                     <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}">

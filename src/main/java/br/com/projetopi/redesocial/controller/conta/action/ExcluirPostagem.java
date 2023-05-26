@@ -17,9 +17,9 @@ public class ExcluirPostagem implements Action {
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.valueOf(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         System.out.println("ID DA POSTAGEM: " + id);
-//        this.contaService.removePost(id, conta_id); TODO: ARRUMAR METODO REMOVEPOST PARA EXECUTAR A SEGUINTE QUERY DELETE FROM POSTAGEM WHERE CONTA_ID = ? LIMIT=1 OFFSET=?
+        this.contaService.removePost(id);
         return "redirect:conta?acao=ExibirPerfil";
     }
 }

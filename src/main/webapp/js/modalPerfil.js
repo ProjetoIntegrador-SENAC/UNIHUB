@@ -28,8 +28,9 @@ editButton.addEventListener('click', () => {
 });
 
 
-deletPhotoButtons.forEach((deletPhotoButton, index) => {
+deletPhotoButtons.forEach((deletPhotoButton) => {
   deletPhotoButton.addEventListener('click', () => {
+    const postId = deletPhotoButton.dataset.postId; // Obter o ID da postagem
     // Open the modal
     modalDeletPost.style.display = 'flex';
 
@@ -38,7 +39,7 @@ deletPhotoButtons.forEach((deletPhotoButton, index) => {
 
     yesDeletButton.addEventListener('click', () => {
       // Perform the deletion action
-      location.href = '/conta?acao=ExcluirPostagem&id=' + index;
+      location.href = '/conta?acao=ExcluirPostagem&id=' + postId;
     });
 
     noDeletButton.addEventListener('click', () => {

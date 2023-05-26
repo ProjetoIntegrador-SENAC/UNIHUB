@@ -29,4 +29,8 @@ public class FotoService {
     public Foto getFotoById(int id){
         return fotoDAO.findById(id).get();
     }
+
+    public boolean remove(int id){
+         return this.fotoDAO.remove(id);
+    }
 }

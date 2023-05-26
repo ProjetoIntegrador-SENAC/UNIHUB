@@ -167,6 +167,33 @@ public class PostagemDao implements Dao<Postagem> {
         return postagens;
     }
 
+    public Postagem findById(int id){
+        String SQL = "SELECT * FROM POSTAGEM WHERE ID=?";
+        Postagem postagem = new Postagem();
+
+        try(PreparedStatement statement = conexao.prepareStatement(SQL)){
+
+            statement.setInt(1, id);
+            statement.execute();
+
+            try(ResultSet rs = statement.getResultSet()){
+
+                while(rs.next()){
+                    postagem.setId(rs.getInt("id"));
+                    postagem.setConteudo(rs.getString("conteudo"));
+                    postagem.setConta_id(rs.getInt("conta_id"));
+                    postagem.setFoto_id(rs.getInt("foto_id"));
+                    postagem.setData_postagem(rs.getDate("data_postagem"));
+                    postagem.setFoto(rs.getString("foto"));
+                }
+            }
+
+            return postagem;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public int getCount(){
         String sqlQuery = "select count(*) from postagem";
         try (PreparedStatement statement = conexao.prepareStatement(sqlQuery)){

@@ -48,6 +48,10 @@ public class PostagemService implements Service<Postagem> {
         return this.postagemDao.findByAccountPageable(conta_id, qtd_elementos, num_inicio);
     }
 
+    public Postagem findById(int id){
+        return this.postagemDao.findById(id);
+    }
+
     public int getCount(){
         return this.postagemDao.getCount();
     }

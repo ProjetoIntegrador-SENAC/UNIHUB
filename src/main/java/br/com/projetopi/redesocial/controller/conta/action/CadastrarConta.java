@@ -4,6 +4,7 @@ import br.com.projetopi.redesocial.interfaces.Action;
 import br.com.projetopi.redesocial.model.Conta;
 import br.com.projetopi.redesocial.model.Turma;
 import br.com.projetopi.redesocial.model.Usuario;
+import br.com.projetopi.redesocial.repository.ConnectionFactory;
 import br.com.projetopi.redesocial.service.AuthService;
 import br.com.projetopi.redesocial.service.ContaService;
 import br.com.projetopi.redesocial.service.TurmaService;
@@ -82,7 +83,7 @@ public class CadastrarConta implements Action {
             String data_nascimento = req.getParameter("data_nascimento");
             String sobre = req.getParameter("sobre");
             String instituicao_id = req.getParameter("instituicao");
-            String foto_id = null; //req.getParameter("foto_id");
+            String foto_id = "1";
             int turma_id = turma.getId();
             String genero = req.getParameter("genero");
 
@@ -96,7 +97,7 @@ public class CadastrarConta implements Action {
             conta.setUsuario_id(Integer.valueOf(id));
             conta.setInstituiacao_id(Integer.valueOf(instituicao_id));
             conta.setCurso_id(Integer.valueOf(curso_id));
-            //conta.setFoto_id(Integer.valueOf(foto_id));
+            conta.setFoto_id(Integer.valueOf(foto_id));
             conta.setTurma_id(Integer.valueOf(turma_id));
 
             ContaService contaService = new ContaService();
@@ -104,6 +105,7 @@ public class CadastrarConta implements Action {
             if (contaService.exists(cpf)){
                 req.setAttribute("cadastro", "erro");
                 req.setAttribute("mensagem", "a conta já existe");
+                usuarioService.remove(id);
                 return "forward:register.jsp";
             }
             contaService.add(conta);

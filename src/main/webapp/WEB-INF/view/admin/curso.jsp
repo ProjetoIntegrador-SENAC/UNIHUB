@@ -16,6 +16,14 @@
         </div>
     <form>
 
+    <c:if test="${fn:contains(message, 'sucesso')}">
+        <h4 class="text-success"> ${message} </h4>
+    </c:if>
+
+   <c:if test="${fn:contains(message, 'erro')}">
+        <h4 class="text-danger"> ${message} </h4>
+   </c:if>
+
     <c:if test="${not empty instituicao_atual}">
         <h4> ${instituicao_atual.nome} </h4>
     </c:if>

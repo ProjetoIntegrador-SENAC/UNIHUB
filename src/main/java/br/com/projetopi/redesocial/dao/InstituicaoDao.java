@@ -50,12 +50,12 @@ public class InstituicaoDao {
             ps.setString(1, instituicao.getNome());
             ps.setInt(2, instituicao.getId());
             ps.execute();
+            return true;
         }catch (SQLException e){
             System.out.println("Ocorreu o erro " + e);
             e.printStackTrace();
             return false;
         }
-        return true;
     }
 
     public Instituicao findById(int id){
@@ -134,4 +134,20 @@ public class InstituicaoDao {
 
         return instituicao;
     }
+
+    public int getCount(){
+        String sqlQuery = "select count(*) from instituicao";
+        try (PreparedStatement statement = con.prepareStatement(sqlQuery)){
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }else{
+                return 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 }

@@ -20,8 +20,8 @@ public class ContaDao {
 
     public void add(Conta conta){
         String sqlQuery = "insert into conta " +
-                "(cpf, nome, data_nascimento, sobre, usuario_id, instituicao_id, curso_id, turma_id, genero, sobrenome)" +
-                "values (?,?,?,?,?,?,?,?,?,?)";
+                "(cpf, nome, data_nascimento, sobre, usuario_id, instituicao_id, curso_id, turma_id, genero, sobrenome, foto_id)" +
+                "values (?,?,?,?,?,?,?,?,?,?,?)";
 
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -35,6 +35,7 @@ public class ContaDao {
             ps.setInt(8, conta.getTurma_id());
             ps.setString(9, conta.getGenero());
             ps.setString(10, conta.getSobrenome());
+            ps.setInt(11, conta.getFoto_id());
             ps.execute();
 
             try(ResultSet set = ps.getGeneratedKeys()){
@@ -45,6 +46,24 @@ public class ContaDao {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public boolean addFoto(int id_conta, int foto_id){
+        String SQL = "UPDATE CONTA SET FOTO_ID = ? WHERE ID = ?";
+
+        try(PreparedStatement statement = conexao.prepareStatement(SQL)){
+
+            statement.setInt(1, foto_id);
+            statement.setInt(2, id_conta);
+
+            statement.execute();
+
+            return true;
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return false;
     }
     public boolean update(Conta conta){
         String sqlQuery = """
@@ -125,13 +144,32 @@ public class ContaDao {
 
     public ArrayList<Conta> findAllPageableByTurmaId(int turma_id, int qtd_elementos, int num_inicio){
         ArrayList<Conta> contas = new ArrayList<>();
-        String sqlQuery = "select * from conta where turma_id = ?  LIMIT ? OFFSET ?;"; //TODO
+        String sqlQuery = "select * from conta where turma_id = ? LIMIT ? OFFSET ?;";
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
             ps.setInt(1, turma_id);
             ps.setInt(2, qtd_elementos);
             ps.setInt(3, num_inicio);
-            ResultSet result = ps.executeQuery();
-            fillResultSet(contas, result);
+
+            ps.execute();
+
+            try(ResultSet result = ps.getResultSet()){
+                while(result.next()){
+                    Conta conta = new Conta();
+                    conta.setCpf(result.getString("cpf"));
+                    conta.setNome(result.getString("nome"));
+                    conta.setData_nascimento(result.getDate("data_nascimento"));
+                    conta.setGenero(result.getString("genero"));
+                    conta.setSobre(result.getString("sobre"));
+                    conta.setUsuario_id(result.getInt("usuario_id"));
+                    conta.setInstituiacao_id(result.getInt("instituicao_id"));
+                    conta.setCurso_id(result.getInt("curso_id"));
+                    conta.setFoto_id(result.getInt("foto_id"));
+                    conta.setTurma_id(result.getInt("turma_id"));
+                    conta.setId(result.getInt("id"));
+
+                    contas.add(conta);
+                }
+            }
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -292,6 +330,21 @@ public class ContaDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int getCount(){
+        String sqlQuery = "select count(*) from conta";
+        try (PreparedStatement statement = conexao.prepareStatement(sqlQuery)){
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }else{
+                return 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 }

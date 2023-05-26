@@ -45,6 +45,7 @@ btnComments.forEach(btnComment => {
             comment.dataset.comment = 'open'
         } else {
             comment.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 0'
+            comment.style.color = 'var(--black)'
             comment.dataset.comment = 'closed'
         }
     })
@@ -72,6 +73,5 @@ const imageProfile = document.getElementById('imageProfile')
 imageProfile.addEventListener('click', onPress);
 
 function onPress(){
-
     location.href = './conta?acao=ExibirPerfil'
 }

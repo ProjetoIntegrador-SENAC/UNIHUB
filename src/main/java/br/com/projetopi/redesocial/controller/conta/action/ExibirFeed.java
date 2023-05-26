@@ -36,6 +36,7 @@ public class ExibirFeed implements Action {
 
         request.setAttribute("postagens", postagens);
         request.setAttribute("contas", contas);
+        request.setAttribute("usuariologado",  contaService.getContaById(conta.getId()));
 
         return "forward:feed.jsp";
     }

@@ -12,8 +12,8 @@ public class FotoService {
     public FotoService(){
         this.fotoDAO = new FotoDAO();
     }
-    public void add(Foto foto) {
-        new FotoDAO().toadd(foto);
+    public int add(Foto foto) {
+        return new FotoDAO().toadd(foto);
     }
     public Optional<Boolean> update(Foto foto) {
         new FotoDAO().findById(foto.getId())
@@ -24,5 +24,13 @@ public class FotoService {
                     return Optional.of(false);
                 });
         return Optional.ofNullable(null);
+    }
+
+    public Foto getFotoById(int id){
+        return fotoDAO.findById(id).get();
+    }
+
+    public boolean remove(int id){
+         return this.fotoDAO.remove(id);
     }
 }

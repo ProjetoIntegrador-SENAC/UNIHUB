@@ -26,7 +26,7 @@ public class UsuarioService implements Service<Usuario> {
 
     @Override
     public boolean remove(int id) {
-       return false;
+        return usuarioDao.remove(id);
     }
 
     @Override
@@ -51,5 +51,8 @@ public class UsuarioService implements Service<Usuario> {
     public Usuario getByEmail(String email){
         return this.usuarioDao.getByEmail(email);
     }
+
+    public int getCount(){
+        return this.usuarioDao.getCount();}
 
 }

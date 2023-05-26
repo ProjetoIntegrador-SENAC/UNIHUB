@@ -11,13 +11,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0..1,0" />
-    
+
+    <link rel="stylesheet" href="../../style/root.css">
     <link rel="stylesheet" href="../../style/feed.css">
     <link rel="stylesheet" href="../../style/modal.css">
+
+    <script src="../../js/theme.js" defer></script>
     <script src="../../js/feed.js" defer></script>
     <script src="../../js/modal.js" defer></script>
 
-    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../img/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
 </head>
 <body>
@@ -25,7 +28,9 @@
         <!-- HEADER -->
         <header>
             <div class="logo">
-                <img src="./img/logo-white.png" alt="">
+                <a href="/conta?acao=ExibirFeed">
+                    <img src="../../img/logo-white.png">
+                </a>
             </div>
         </header>
         <!-- POST's -->
@@ -33,7 +38,7 @@
             <c:forEach items="${postagens}" var="postagem">
                 <div class="post">
                     <div class="userPost">
-                        <img src="./img/user.png"> <!-- TODO: Adicionar foto do dono do post -->
+                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.conta.foto}">
                         <h6>${postagem.conta.nome}</h6>
                     </div>
                     <div class="img">
@@ -60,7 +65,7 @@
                     </div>
                 </div>
             </c:forEach>
-
+        </div>
         <!-- BTN ADD POST -->
         <nav>
             <span class="icon material-symbols-outlined">
@@ -71,11 +76,11 @@
     <aside>
         <section class="profile">
             <div class="user">
-                <img id="imageProfile" src="./img/user.png"> <!-- TODO:Adicionar foto usuario -->
+                <img id="imageProfile" src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${usuariologado.foto}"> <!-- TODO:Adicionar foto usuario -->
             </div>
             <div class="config">
-                <span class="icon material-symbols-outlined">
-                    settings
+                <span id="btnTheme" data-theme="dark" class="icon material-symbols-outlined">
+                    dark_mode
                 </span>
                 <a class="exit" href="login?acao=Deslogar">
                     <span class="icon material-symbols-outlined">
@@ -94,7 +99,7 @@
             <div class="friends">
                 <c:forEach items="${contas}" var="conta">
                 <div class="friend">
-                    <img src="./img/user.png"> <!-- TODO:Adicionar foto friend -->
+                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}"> <!-- TODO:Adicionar foto friend -->
                     <h4>${conta.nome}</h4>
                 </div>
                 </c:forEach>

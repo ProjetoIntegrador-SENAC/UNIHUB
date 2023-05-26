@@ -30,13 +30,8 @@
     color: var(--black);
 }
 
-#preview-image {
+.modal-content p {
     display: none;
-    width: 150px;
-    max-height: 150px;
-    object-fit: cover;
-    box-shadow: 0 0 10px #000;
-    border-radius: 0.5rem;
 }
 
 .modal-content form {
@@ -51,45 +46,18 @@
     box-shadow: inset 0px 0px 10px #000;
 }
 
-#file {
-    /* Estilos do input de arquivo */
-    display: none;
-}
-.custom-file-label {
-    /* Estilos do texto personalizado */
-    display: inline-block;
-    padding: 8px 12px;
-    background-color: var(--emphasis);
-    color: var(--icon);
-    border-radius: 4px;
-    cursor: pointer;
-    width: 8rem;
-    box-shadow: 0 2px 8px #000;
-    margin-bottom: 10px;
-}
-.custom-file-label:hover {
-    background: var(--white);
-    color: var(--emphasis);
-    box-shadow: inset 2px 2px 10px #000;
-}
-#file::-webkit-file-upload-button {
-    /* Oculta o nome do arquivo selecionado */
-    visibility: hidden;
-}
-
-.modal-content textarea {
+.modal-content input {
     margin-bottom: 10px;
     padding: 8px;
     border-radius: 4px;
     width: 90%;
-    height: 80px;
     resize: none;
     box-shadow: inset 0px 0px 10px #000;
     background: var(--white);
     color: var(--black);
 }
 
-textarea:focus {
+input:focus {
     outline: 0;
     border: 2px solid var(--emphasis);
 }

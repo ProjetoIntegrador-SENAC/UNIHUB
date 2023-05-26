@@ -44,6 +44,7 @@ public class UsuarioDao {
         String sqlQuery = "insert into usuario " +
                 "(email, senha, papel)" +
                 "values (?,?,?)";
+
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
             ps.setString(1, usuario.getEmail());
             ps.setString(2, usuario.getSenha());
@@ -54,18 +55,20 @@ public class UsuarioDao {
         }
     }
 
-    public void remove(Usuario usuario) {
+    public boolean remove(int id) {
         String sqlQuery = "DELETE FROM usuario WHERE id =?";
         try {PreparedStatement ps = conexao.prepareStatement(sqlQuery);
-            ps.setInt(1,usuario.getId());
+            ps.setInt(1, id);
             ps.execute();
+
+            return true;
         }catch (SQLException e){
             e.printStackTrace();
-
+            return false;
         }
     }
 
-    public boolean update(Usuario usuario) {
+    public boolean update( Usuario usuario ) {
         String sqlQuery = """
         update usuario
         set 
@@ -170,6 +173,21 @@ public class UsuarioDao {
             System.out.println("Erro " + e.getMessage());
             return null;
         }
+    }
+
+    public int getCount(){
+        String sqlQuery = "select count(*) from turma";
+        try (PreparedStatement statement = conexao.prepareStatement(sqlQuery)){
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }else{
+                return 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
 

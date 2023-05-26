@@ -15,27 +15,34 @@ public class FotoDAO{
         conexao = ConnectionFactory.getConnectionH2();
     }
 
-    public void toadd(Foto foto) {
+    public int toadd(Foto foto) {
         String INSERT = "insert into foto (cd_foto) values (?)";
 
         try (PreparedStatement statement = conexao.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, foto.getCd_foto());
             statement.execute();
 
+            int id = 0;
+
             try(ResultSet rst = statement.getGeneratedKeys()){
                 while(rst.next()) {
                     foto.setId(rst.getInt(1));
+                    id = rst.getInt(1);
                 }
             }
+            return id;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return -1;
     }
 
-    public boolean remove(Foto foto) {
+    public boolean remove(int id) {
         String DELETE = "DELETE FROM foto WHERE id =?";
         try (PreparedStatement stmt = conexao.prepareStatement(DELETE)) {
-            stmt.setInt(1, foto.getId());
+            stmt.setInt(1, id);
             stmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,7 +84,4 @@ public class FotoDAO{
         return Optional.empty();
     }
 
-
-    public void getId() {
-    }
 }

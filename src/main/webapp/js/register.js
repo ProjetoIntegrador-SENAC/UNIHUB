@@ -9,78 +9,18 @@ const course = document.getElementById("curso")
 const shift = document.getElementById("shift")
 const year = document.getElementById("year")
 const semester = document.getElementById("semester")
-const team = document.getElementById("team")
+const team = document.getElementById("turma_id")
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 const passwordConfirmation = document.getElementById("passwordConfirmation")
-
-// Traz Instituições do banco
-function getInstituicoes() {
-    console.log("funcao chamada")
-    return fetch("http://localhost:8080/api_instituicoes")
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            return data
-        })
-}
-// Traz Cursos do banco
-function getCursosByInstituicaoId(id){
-    return fetch("http://localhost:8080/api_cursos?instituicao_id="+id)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-            return data
-        })
-}
-
-// Traz Turmas do banco
-function getTurmaByCursoId(id){
-    return fetch("http://localhost:8080/api_turma_specific?ano_inicio=2022&semestre=SEGUNDO&id_curso=1&turno=noturno")
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-}
-
-window.addEventListener('load', () => {
-
-    getInstituicoes().then(dados =>{
-        dados.forEach(dado => {
-            const option = document.createElement("option")
-            option.value = dado['id']
-            option.textContent = dado['nome']
-            university.appendChild(option)
-        })
-    }).then( () => {
-        university.addEventListener('change', () => {
-            const id = university.value
-            let index = university.options[id].value;
-            getCursosByInstituicaoId(index).then(dados =>{
-                // limpa opções anteriores, exceto a opção com value="0"
-                const options = course.querySelectorAll('option:not([value="0"])');
-                options.forEach(option => option.remove())
-                const optionZero = course.querySelector('option[value="0"]')
-                optionZero.selected = true
-
-                dados.forEach(dado => {
-                    option = document.createElement("option")
-                    option.value = dado['id'];
-                    option.textContent = dado['nome'];
-                    course.appendChild(option)
-                })
-            })
-        })
-    })
-})
-
 
 form.addEventListener('submit', (e) => {
 
     const valida = checkInputs();
     
     if (valida === false){
-        e.preventDefault();
+        e.preventDefault()
+        launch_toast()
     }
 });
 
@@ -175,15 +115,13 @@ function checkInputs() {
     } else {
         setSuccessFor(passwordConfirmation);
     }
-
+    
     const formControls = form.querySelectorAll(".fields")
     const formIsValid = [...formControls].every(fields => {
         return (fields.classList.contains("success"));
     });
 
     // Validação do submit
-
-    console.log(formIsValid)
     if (formIsValid) {
         return true;
     } else {
@@ -234,32 +172,98 @@ function checkEmail(email) {
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
 
-function getInstituicoes(){
-    console.log("funcao chamada")
-    fetch("http://localhost:8080/api_instituicoes")
+
+// Traz Instituições do banco
+function getInstituicoes() {
+    return fetch("http://localhost:8080/api_instituicoes")
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            return data
         })
 }
-
+// Traz Cursos do banco
 function getCursosByInstituicaoId(id){
-    fetch("http://localhost:8080/api_cursos_by_email?instituicao_id="+id)
+    return fetch("http://localhost:8080/api_cursos?instituicao_id="+id)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
+            return data
         })
 }
 
-function getTurmaByCursoId(id){
-    fetch("http://localhost:8080/api_turma_specific?data_inicio=2022&semestre=SEGUNDO&id_curso=1&turno=noturno")
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
+window.addEventListener('load', () => {
+
+    getInstituicoes().then(dados =>{
+        dados.forEach(dado => {
+            const option = document.createElement("option")
+            option.value = dado['id']
+            option.textContent = dado['nome']
+            university.appendChild(option)
         })
-}
+    }).then( () => {
+        university.addEventListener('change', () => {
+            const id = university.value
+            let index = university.options[id].value;
+            getCursosByInstituicaoId(index).then(dados =>{
+                // limpa opções anteriores, exceto a opção com value="0"
+                const options = course.querySelectorAll('option:not([value="0"])');
+                options.forEach(option => option.remove())
+                const optionZero = course.querySelector('option[value="0"]')
+                optionZero.selected = true
+
+                dados.forEach(dado => {
+                    option = document.createElement("option")
+                    option.value = dado['id'];
+                    option.textContent = dado['nome'];
+                    course.appendChild(option)
+                })
+            })
+        })
+    })
+})
 
 document.querySelector('#instituicao').addEventListener('change', (e) => {
     id = document.querySelector('#instituicao').value
     getCursosByInstituicaoId(id)
 })
+
+
+const toggleIcons = document.querySelectorAll(".toggle-password");
+
+toggleIcons.forEach((toggleIcon) => {
+    toggleIcon.addEventListener('click', togglePasswordVisibility);
+});
+
+function togglePasswordVisibility(e) {
+    const toggleIcon = event.target;
+    const password = toggleIcon.previousElementSibling;
+
+    if (password.type === "password") {
+        password.type = "text";
+        toggleIcon.classList.add("password-visible");
+        toggleIcon.textContent = "visibility";
+    } else {
+        password.type = "password";
+        toggleIcon.classList.remove("password-visible");
+        toggleIcon.textContent = "visibility_off";
+    }
+}
+
+
+function launch_toast() {
+    var toast = document.getElementById("toast");
+    var desc = document.getElementById("desc");
+    
+    toast.className = "show";
+    
+    setTimeout(function () {
+      desc.style.opacity = "1";
+    }, 600);
+    
+    setTimeout(function () {
+      desc.style.opacity = "0";
+    }, 4200);
+    
+    setTimeout(function () {
+      toast.className = toast.className.replace("show", "");
+    }, 5000);
+}

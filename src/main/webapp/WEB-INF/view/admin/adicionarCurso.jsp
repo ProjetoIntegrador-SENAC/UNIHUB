@@ -5,7 +5,7 @@
 <form class="mt-5" action="/admin?acao=AdicionarCurso" method="post">
 
     <div class="mb-3">
-        <select class="form-select" name="instituicao_id" aria-label="Default select example">
+        <select class="form-select" name="instituicao_id" aria-label="Default select example" required>
           <option selected>Selecione a instituição</option>
           <c:forEach items="${instituicoes}" var="instituicao">
             <option value="${instituicao.id}"> ${instituicao.nome} </option>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="mb-3">
-    <select class="form-select" name="tipo" aria-label="Default select example">
+    <select class="form-select" name="tipo" aria-label="Default select example" required>
       <option selected>Selecione o tipo de graduação</option>
       <option value="TENOLOGO">TECNÓLOGO</option>
       <option value="BACHARELADO">BACHARELADO</option>

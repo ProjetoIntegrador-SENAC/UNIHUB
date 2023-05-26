@@ -25,8 +25,8 @@ public class InstituicaoService {
         return instituicaoDao.findById(id);
     }
 
-    public void update(Instituicao instituicao){
-        this.instituicaoDao.update(instituicao);
+    public boolean update(Instituicao instituicao){
+        return this.instituicaoDao.update(instituicao);
     }
 
     public boolean remove(int id) {
@@ -37,5 +37,9 @@ public class InstituicaoService {
         Instituicao instituicao = new Instituicao();
         instituicao.setNome(nome);
         return this.instituicaoDao.add(instituicao);
+    }
+
+    public int getCount(){
+        return this.instituicaoDao.getCount();
     }
 }

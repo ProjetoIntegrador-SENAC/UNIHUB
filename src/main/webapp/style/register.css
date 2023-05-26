@@ -98,12 +98,22 @@ form{
     flex: 1 0 100%;
 }
 .fields span{
-    font-size: 1.1rem;
     position: absolute;
+    font-size: 0.9rem;
     top: 10px;
-    left: 0;
+    left: 0.5rem;
     visibility: hidden;
 }
+.fields > .toggle-password{
+    visibility: visible;
+    left: 16rem;
+    color: var(--black);
+    cursor: pointer;
+}
+.toggle-password.password-visible {
+    color: var(--emphasis);
+}
+
 .fields small {
     position: absolute;
     bottom: 10px;
@@ -127,7 +137,7 @@ form{
 
 .field{
     margin: 0 0.5rem 0.5rem 0;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.5rem;
     border: 1px solid #CCC;
     border-radius: 1rem;
     box-shadow: inset 2px 2px 10px #000, 0 4px 10px #000;
@@ -173,7 +183,7 @@ form{
     cursor: pointer;
     padding: var(--paddingButton);
     border-radius: var(--borderRadiusButton);
-    color: var(--color);
+    color: var(--white);
     background: var(--emphasis);
     font-weight: bold;
     font-size: 1rem;
@@ -197,7 +207,7 @@ footer{
 }
 
 footer > p{
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-style: italic;
 }
 

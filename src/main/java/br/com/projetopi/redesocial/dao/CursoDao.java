@@ -2,6 +2,7 @@ package br.com.projetopi.redesocial.dao;
 
 import br.com.projetopi.redesocial.model.Curso;
 import br.com.projetopi.redesocial.model.Instituicao;
+import br.com.projetopi.redesocial.model.dto.AreaCursoChat;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
 
 import java.sql.*;
@@ -82,7 +83,7 @@ public class CursoDao {
     }
 
     public boolean delete(int id) {
-        String sql = "DELETE FROM curso WHERE id = ?";
+        String sql = "update curso set ic_ativo = 0 where id = ?";
         try(PreparedStatement statement = connection.prepareStatement(sql)){
             statement.setInt(1, id);
             statement.execute();
@@ -116,4 +117,35 @@ public class CursoDao {
         }
         return cursos;
     }
+
+    public int getCount(){
+        String sqlQuery = "select count(*) from curso";
+        try (PreparedStatement statement = connection.prepareStatement(sqlQuery)){
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }else{
+                return 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public ArrayList<AreaCursoChat> getAreaQtd(){
+        String sqlQuery = "select area, count(*) qtd from curso group by area";
+        ArrayList<AreaCursoChat> items = new ArrayList<>();
+        try(PreparedStatement ps = connection.prepareStatement(sqlQuery)){
+            ResultSet result = ps.executeQuery();
+            while(result.next()){
+                AreaCursoChat areaCursoChat = new AreaCursoChat(result.getString("area"), result.getInt("qtd"));
+                items.add(areaCursoChat);
+            }
+            return items;
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
 }

@@ -1,5 +1,8 @@
 package br.com.projetopi.redesocial.model.dto;
 
+import br.com.projetopi.redesocial.model.Foto;
+import br.com.projetopi.redesocial.util.ContaUtils;
+
 import java.util.Date;
 
 public class ContaPerfilDto {
@@ -19,7 +22,7 @@ public class ContaPerfilDto {
     private String curso_nome;
     private String curso_tipo;
     private String curso_area;
-    private byte[] cd_foto;
+    private String cd_foto;
     private Date data_inicio;
     private String turno;
     private String semestre;
@@ -108,6 +111,12 @@ public class ContaPerfilDto {
 
     public void setFoto_id(int foto_id) {
         this.foto_id = foto_id;
+
+        if(foto_id != 0){
+            ContaUtils contaUtils = new ContaUtils();
+            Foto foto = contaUtils.getFotoById(foto_id);
+            setCd_foto(foto.getCd_foto());
+        }
     }
 
     public int getTurma_id() {
@@ -150,11 +159,11 @@ public class ContaPerfilDto {
         this.curso_area = curso_area;
     }
 
-    public byte[] getCd_foto() {
+    public String getCd_foto() {
         return cd_foto;
     }
 
-    public void setCd_foto(byte[] cd_foto) {
+    public void setCd_foto(String cd_foto) {
         this.cd_foto = cd_foto;
     }
 

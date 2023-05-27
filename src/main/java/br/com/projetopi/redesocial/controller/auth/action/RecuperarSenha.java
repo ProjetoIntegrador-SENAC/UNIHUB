@@ -83,11 +83,12 @@ public class RecuperarSenha extends HttpServlet {
 
             System.out.println("E-mail enviado com sucesso!");
 
-            resp.sendRedirect("/login?acao=ExibirTelaLogin");
-
         } catch (MessagingException e){
             e.printStackTrace();
         }
+
+        resp.sendRedirect("/login?acao=ExibirTelaLogin");
+
     }
 
 }

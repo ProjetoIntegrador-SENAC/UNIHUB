@@ -25,6 +25,7 @@ actButton.addEventListener('click', () => {
 
 // Adiciona um ouvinte de evento de clique ao botão submit
 form.addEventListener('submit', e => {
+    e.preventDefault();
     getEmails().then(data => {
       if (!data.includes(emailUser.value)) {
         msgError.style.display = 'block'

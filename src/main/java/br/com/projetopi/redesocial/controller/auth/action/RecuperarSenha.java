@@ -2,6 +2,7 @@ package br.com.projetopi.redesocial.controller.auth.action;
 
 
 import br.com.projetopi.redesocial.model.Usuario;
+import br.com.projetopi.redesocial.service.AuthService;
 import br.com.projetopi.redesocial.service.UsuarioService;
 import br.com.projetopi.redesocial.util.RecuperarSenhaUtils;
 
@@ -22,9 +23,11 @@ import java.util.stream.Collectors;
 public class RecuperarSenha extends HttpServlet {
 
     private UsuarioService usuarioService;
+    private AuthService authService;
 
     public RecuperarSenha(){
         this.usuarioService = new UsuarioService();
+        this.authService = new AuthService();
     }
 
     @Override
@@ -60,20 +63,27 @@ public class RecuperarSenha extends HttpServlet {
         });
 
         try{
+
+            // Pega a senha criptografada e descriptografa
+            String passwordcyphed = usuarioService.getPasswordByEmail(recipient);
+            String passwordDecyphed = authService.getPassword(passwordcyphed);
+
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
             message.setSubject("Recuperação de senha");
             message.setText("Prezado(a) " + recipientName +
                     "\nSegue sua senha para login: \n" +
-                    "123\n" +
+                    passwordDecyphed +"\n" +
                     "Clique no link para retornar a página de login: http://localhost:8080");
 
             Transport.send(message);
 
-//            usuarioService.updatePasswordByEmail(recipient, "123");
+
 
             System.out.println("E-mail enviado com sucesso!");
+
+            resp.sendRedirect("/login?acao=ExibirTelaLogin");
 
         } catch (MessagingException e){
             e.printStackTrace();

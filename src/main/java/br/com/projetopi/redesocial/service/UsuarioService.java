@@ -42,8 +42,8 @@ public class UsuarioService implements Service<Usuario> {
         return usuarioDao.findAll();
     }
 
-    public boolean updatePasswordByEmail(String email, String password){
-        return this.usuarioDao.updatePasswordByEmail(email, password);
+    public String getPasswordByEmail(String email){
+        return this.usuarioDao.getPasswordByEmail(email);
     }
 
     public int getIdByEmail(String email){

@@ -27,17 +27,11 @@ actButton.addEventListener('click', () => {
 form.addEventListener('submit', e => {
     getEmails().then(data => {
       if (!data.includes(emailUser.value)) {
-        alert("O dado não está presente na lista.");
         msgError.style.display = 'block'
         e.preventDefault();
         location.href = '/login?acao=ExibirTelaLogin';
       }
-      else {
-        alert("O dado está presente na lista");
-      }
 
-      alert(data)
-      alert(emailUser.value)
     }).catch(error => {
       alert("Ocorreu um erro ao obter os dados: " + error);
     });

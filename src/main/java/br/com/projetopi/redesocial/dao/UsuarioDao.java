@@ -91,22 +91,24 @@ public class UsuarioDao {
 
         return true;
     }
-    public boolean updatePasswordByEmail(String email, String password) {
-        String sqlQuery = "UPDATE USUARIO SET SENHA = ? WHERE EMAIL = ?";
+    public String getPasswordByEmail(String email) {
+        String sqlQuery = "SELECT SENHA FROM USUARIO WHERE EMAIL = ?";
 
         try { PreparedStatement ps = conexao.prepareStatement(sqlQuery); {
-            ps.setString(1, password);
-            ps.setString(2, email);
-
+            ps.setString(1, email);
             ps.execute();
-            return true;
+
+            try(ResultSet resultSet = ps.getResultSet()){
+                while(resultSet.next()){
+                    return resultSet.getString(1);
+                }
+            }
         }
 
         }catch (SQLException e){
             System.out.println("Ocorreu erro " + e );
         }
-
-        return false;
+        return null;
     }
     public ArrayList<Usuario> findAllPageable(int qtd_elementos, int num_inicio, String email, String senha, String papel) {
         ArrayList<Usuario> usuarios = new ArrayList<>();

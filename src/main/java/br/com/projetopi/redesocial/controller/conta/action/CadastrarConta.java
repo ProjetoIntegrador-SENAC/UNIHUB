@@ -42,9 +42,8 @@ public class CadastrarConta implements Action {
             Usuario usuario = new Usuario(email, senha, papel);
 
             if (usuarioService.exists(email)){
-                req.setAttribute("cadastro", "erro");
-                req.setAttribute("mensagem", "usuário já existe");
-                return "forward:register.jsp";
+                req.setAttribute("message", "Conta já existe!");
+                return "forward:login?acao=ExibirTelaLogin";
             }else{
                 usuarioService.add(usuario);
             }
@@ -103,10 +102,9 @@ public class CadastrarConta implements Action {
             ContaService contaService = new ContaService();
 
             if (contaService.exists(cpf)){
-                req.setAttribute("cadastro", "erro");
-                req.setAttribute("mensagem", "a conta já existe");
+                req.setAttribute("message", "Conta já existe!");
                 usuarioService.remove(id);
-                return "forward:register.jsp";
+                return "forward:login?acao=ExibirTelaLogin";
             }
             contaService.add(conta);
             req.setAttribute("cadastro", "sucesso");
@@ -114,9 +112,8 @@ public class CadastrarConta implements Action {
         catch (Exception e){
             System.out.println("Erro: " + e.getMessage());
             req.setAttribute("cadastro", "fracasso");
-            return "forward:register.jsp";
+            return "forward:conta?acao=ExibirCadastroConta";
         }
-
         return "forward:login?acao=ExibirTelaLogin";
 
     }

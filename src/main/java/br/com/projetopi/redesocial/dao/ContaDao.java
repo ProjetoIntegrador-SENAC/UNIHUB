@@ -333,7 +333,7 @@ public class ContaDao {
     }
 
     public int getCount(){
-        String sqlQuery = "select count(*) from conta";
+        String sqlQuery = "select count(*) from conta where ic_ativo = 1";
         try (PreparedStatement statement = conexao.prepareStatement(sqlQuery)){
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){

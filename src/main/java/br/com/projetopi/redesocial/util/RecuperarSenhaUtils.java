@@ -9,7 +9,6 @@ public enum RecuperarSenhaUtils {
     RecuperarSenhaUtils(String info){
         this.info = info;
     }
-
     public String getInfo(){
         return this.info;
     }

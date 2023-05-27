@@ -60,16 +60,17 @@ public class CursoDao {
     }
 
     public Curso findById(int id)  {
-        String sql =  "SELECT * FROM curso WHERE id = " + id;
-
-        try( PreparedStatement statement = connection.prepareStatement(sql)) {
+        String sql =  "select * from curso where ic_ativo = 1 and id = ?";
+        try(PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
             statement.execute();
             try(ResultSet set = statement.getResultSet()) {
                 while (set.next()) {
-                    Instituicao instituicao = new Instituicao();
-                    instituicao.setId(set.getInt(5));
-                    Curso curso = new Curso(set.getInt(1), set.getString(2), set.getString(3),
-                            set.getString(4), instituicao, instituicao.getId());
+                    Curso curso = new Curso();
+                    curso.setArea(set.getString("area"));
+                    curso.setTipo(set.getString("tipo"));
+                    curso.setNome(set.getString("nome"));
+                    curso.setInstituicao_id(set.getInt("instituicao_id"));
                     return curso;
                 }
             }catch (SQLException e){
@@ -119,7 +120,7 @@ public class CursoDao {
     }
 
     public int getCount(){
-        String sqlQuery = "select count(*) from curso";
+        String sqlQuery = "select count(*) from curso where ic_ativo";
         try (PreparedStatement statement = connection.prepareStatement(sqlQuery)){
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
@@ -133,7 +134,7 @@ public class CursoDao {
     }
 
     public ArrayList<AreaCursoChat> getAreaQtd(){
-        String sqlQuery = "select area, count(*) qtd from curso group by area";
+        String sqlQuery = "select area, count(*) qtd from curso  where ic_ativo = 1 group by area";
         ArrayList<AreaCursoChat> items = new ArrayList<>();
         try(PreparedStatement ps = connection.prepareStatement(sqlQuery)){
             ResultSet result = ps.executeQuery();

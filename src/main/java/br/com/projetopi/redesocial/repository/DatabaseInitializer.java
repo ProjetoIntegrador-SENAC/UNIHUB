@@ -38,9 +38,11 @@ public class DatabaseInitializer implements ServletContextListener {
                 );                
                 create table instituicao(
                 id integer primary key AUTO_INCREMENT,
+                ic_ativo integer DEFAULT 1,
                 nome varchar (30) not null);             
                 create table curso(
                 id integer primary key AUTO_INCREMENT,
+                ic_ativo integer DEFAULT 1,
                 nome varchar (100) not null,
                 tipo varchar (100) not null,
                 area varchar (100) not null,
@@ -116,8 +118,9 @@ public class DatabaseInitializer implements ServletContextListener {
                 INSERT INTO INSTITUICAO (ID, NOME) VALUES (1, 'CENTRO UNIVERSITARIO SENAC');
                 INSERT INTO CURSO (ID, NOME, TIPO, AREA, INSTITUICAO_ID) VALUES (1, 'ANALISE E DESENVOLVIMENTO DE SISTEMAS', 'TECNOLOGO', 'TECNOLOGIA DA INFORMACAO', 1);
                 INSERT INTO FOTO(CD_FOTO) VALUES ('img/fotos/user.png');
+                insert into usuario (email, senha, papel) values ('admin@admin.com', '$2a$10$gk3kCbYR2d0sy9FcuKlE1.VTtIHLoyoou4CcD0W4kb9.zsZnS.aBa', 'Admin');
+                insert into usuario (email, senha, papel) values ('jho@jho.com', '$2a$10$gk3kCbYR2d0sy9FcuKlE1.VTtIHLoyoou4CcD0W4kb9.zsZnS.aBa', 'Aluno');
                 """;
-
        // --INSERT INTO USUARIO (ID, EMAIL, SENHA, PAPEL) VALUES (1, 'ALUNO_EXEMPLO@EMAIL.COM', '123', 'ALUNO');
        // --INSERT INTO CONTA (ID, CPF,IC_ATIVO, NOME, DATA_NASCIMENTO, SOBRE, USUARIO_ID, INSTITUICAO_ID, CURSO_ID, FOTO_ID, TURMA_ID, GENERO) VALUES (1, '45194845804', 1, 'ALUNO EXEMPLO', '1994-04-04', 'APRESENTACAO PESSOAL', 1, 1, 1, 1, 1, 'MASCULINO');
        // --INSERT INTO CONTA (ID, CPF,IC_ATIVO, NOME, DATA_NASCIMENTO, SOBRE, USUARIO_ID, INSTITUICAO_ID, CURSO_ID, FOTO_ID, TURMA_ID, GENERO) VALUES (2, '45194845805', 1, 'ALUNA EXEMPLO', '1994-06-04', 'APRESENTACAO PESSOAL2', 1, 1, 1, 1, 1, 'FEMININO');

@@ -25,12 +25,18 @@ actButton.addEventListener('click', () => {
 
 // Adiciona um ouvinte de evento de clique ao botão submit
 form.addEventListener('submit', e => {
-    // if(/*verifica se exite o nome e email de usuario não existem*/) { TODO: Adicionar a verificação aqui
-    //     msgError.style.display = 'block'
-    //     e.preventDefault();
-    // }
-    msgError.style.display = 'none'
-    // TODO: Adicionar o metodo de enviar email aqui!
+    e.preventDefault();
+    getEmails().then(data => {
+      if (!data.includes(emailUser.value)) {
+        msgError.style.display = 'block'
+        e.preventDefault();
+        location.href = '/login?acao=ExibirTelaLogin';
+      }
+
+    }).catch(error => {
+      alert("Ocorreu um erro ao obter os dados: " + error);
+    });
+
 })
 
 
@@ -58,3 +64,12 @@ modalOverlay.addEventListener('click', e => {
         limpar()
     }
 });
+
+// Traz emails cadastrados do banco
+function getEmails() {
+    return fetch("http://localhost:8080/api_email")
+        .then(response => response.json())
+        .then(data => {
+            return data
+        })
+}

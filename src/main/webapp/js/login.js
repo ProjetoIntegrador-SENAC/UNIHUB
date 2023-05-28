@@ -1,35 +1,32 @@
 const btnSingUp = document.getElementById('singUp')
 const formLogin = document.getElementById('form-login')
 
+const desc = document.getElementById("desc");
+const toast = document.getElementById("toast");
+
 btnSingUp.addEventListener('click', onPress);
 
 function onPress(){
     location.href = './conta?acao=ExibirCadastroConta'
 }
 
-formLogin.addEventListener('submit', (e) => {
-
-    if(senha !== banco) {
-        e.preventDefault()
+window.addEventListener('load',() => {
+    if(desc.innerHTML !== '') {
         launch_toast()
     }
-
-});
+})
 
 function launch_toast() {
-    var toast = document.getElementById("toast");
-    var desc = document.getElementById("desc");
-    
     toast.className = "show";
-    
+
     setTimeout(function () {
       desc.style.opacity = "1";
     }, 600);
-    
+
     setTimeout(function () {
       desc.style.opacity = "0";
     }, 4200);
-    
+
     setTimeout(function () {
       toast.className = toast.className.replace("show", "");
     }, 5000);

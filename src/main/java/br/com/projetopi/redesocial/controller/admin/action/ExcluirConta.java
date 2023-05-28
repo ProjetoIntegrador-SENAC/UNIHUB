@@ -19,6 +19,6 @@ public class ExcluirConta implements Action {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.valueOf(request.getParameter("id"));
         this.contaService.remove(id);
-        return "forward:conta?acao=ExibirTelaConta";
+        return "forward:admin?acao=ExibirTelaConta";
     }
 }

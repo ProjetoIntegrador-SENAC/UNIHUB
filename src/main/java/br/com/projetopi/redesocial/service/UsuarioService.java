@@ -38,6 +38,13 @@ public class UsuarioService implements Service<Usuario> {
         return usuarioDao.findAllPageableByRole(papel,qtd_elementos,num_inicio);
     }
 
+    public ArrayList<Usuario> getUsuarioAll(){
+        return usuarioDao.findAll();
+    }
+
+    public String getPasswordByEmail(String email){
+        return this.usuarioDao.getPasswordByEmail(email);
+    }
 
     public int getIdByEmail(String email){
         int id = usuarioDao.getIdByEmail(email);

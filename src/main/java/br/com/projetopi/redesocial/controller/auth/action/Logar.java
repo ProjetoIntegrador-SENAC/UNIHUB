@@ -37,7 +37,7 @@ public class Logar implements Action {
             boolean validaSenha = this.authService.checkPassword(senha, usuario.getSenha());
             if (usuario != null && validaSenha) {
                 HttpSession session = request.getSession();
-                if (usuario.getPapel().toUpperCase().equals("ALUNO")){
+                if (usuario.getPapel().toUpperCase().equals("ALUNO")) {
                     session.setAttribute("usuarioLogado", usuario);
                     session.setAttribute("contaLogado", conta);
                     return "forward:conta?acao=ExibirFeed";
@@ -47,6 +47,7 @@ public class Logar implements Action {
                 }
             }
         }
-        return "redirect:login?acao=ExibirTelaLogin";
+        request.setAttribute("message","E-mail e/ou senha inválidos!");
+        return "forward:login?acao=ExibirTelaLogin";
     }
 }

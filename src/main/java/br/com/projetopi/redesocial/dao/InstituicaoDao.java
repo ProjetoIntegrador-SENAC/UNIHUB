@@ -97,7 +97,6 @@ public class InstituicaoDao {
         }
         return instituicoes;
     }
-
     public ArrayList<Instituicao> findAll(){
         ArrayList<Instituicao> instituicoes = new ArrayList<>();
 
@@ -136,7 +135,7 @@ public class InstituicaoDao {
     }
 
     public int getCount(){
-        String sqlQuery = "select count(*) from instituicao";
+        String sqlQuery = "select count(*) from instituicao where ic_ativo = 1";
         try (PreparedStatement statement = con.prepareStatement(sqlQuery)){
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){
@@ -147,7 +146,5 @@ public class InstituicaoDao {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
-
 }

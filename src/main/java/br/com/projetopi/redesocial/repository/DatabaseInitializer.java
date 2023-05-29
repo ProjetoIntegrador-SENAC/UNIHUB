@@ -118,8 +118,15 @@ public class DatabaseInitializer implements ServletContextListener {
                 INSERT INTO INSTITUICAO (ID, NOME) VALUES (1, 'CENTRO UNIVERSITARIO SENAC');
                 INSERT INTO CURSO (ID, NOME, TIPO, AREA, INSTITUICAO_ID) VALUES (1, 'ANALISE E DESENVOLVIMENTO DE SISTEMAS', 'TECNOLOGO', 'TECNOLOGIA DA INFORMACAO', 1);
                 INSERT INTO FOTO(CD_FOTO) VALUES ('img/fotos/user.png');
-                insert into usuario (email, senha, papel) values ('admin@admin.com', '$2a$10$gk3kCbYR2d0sy9FcuKlE1.VTtIHLoyoou4CcD0W4kb9.zsZnS.aBa', 'Admin');
-                insert into usuario (email, senha, papel) values ('jho@jho.com', '$2a$10$gk3kCbYR2d0sy9FcuKlE1.VTtIHLoyoou4CcD0W4kb9.zsZnS.aBa', 'Aluno');
+                insert into turma values (1, 1, '2022-01-01', 'Norturno', 'Primeiro', 'A');
+                insert into usuario (id, email, senha, papel) values (1, 'admin@unihub.com', '$2a$10$DZRMqR7U7hZR8gvjZdhuhugESSDG8ct1HtHsygIR7Qd078UnczlIi', 'Admin');
+                insert into usuario (id, email, senha, papel) values (2, 'admin2@unihub.com', '$2a$10$DZRMqR7U7hZR8gvjZdhuhugESSDG8ct1HtHsygIR7Qd078UnczlIi', 'Admin');
+                insert into usuario (id, email, senha, papel) values (3, 'jho@unihub.com', '$2a$10$DZRMqR7U7hZR8gvjZdhuhugESSDG8ct1HtHsygIR7Qd078UnczlIi', 'Aluno');
+                insert into usuario (id, email, senha, papel) values (4, 'jho2@unihub.com', '$2a$10$DZRMqR7U7hZR8gvjZdhuhugESSDG8ct1HtHsygIR7Qd078UnczlIi', 'Aluno');
+                insert into usuario (id, email, senha, papel) values (5, 'jho3@unihub.com', '$2a$10$DZRMqR7U7hZR8gvjZdhuhugESSDG8ct1HtHsygIR7Qd078UnczlIi', 'Aluno');
+                insert into conta (id, cpf, ic_ativo, nome, data_nascimento, sobre, genero, sobrenome, usuario_id, instituicao_id, curso_id, foto_id, turma_id ) values (2, '45179292804', 1, 'jhonatan2', '2002-12-31', '', 'Masculino', 'rocha', 3, 1,1,null,1);
+                insert into conta (id, cpf, ic_ativo, nome, data_nascimento, sobre, genero, sobrenome, usuario_id, instituicao_id, curso_id, foto_id, turma_id ) values (1, '45179292805', 1, 'jhonatan', '2002-12-31', '', 'Masculino', 'rocha', 4, 1,1,null,1);
+                insert into conta (id, cpf, ic_ativo, nome, data_nascimento, sobre, genero, sobrenome, usuario_id, instituicao_id, curso_id, foto_id, turma_id ) values (3, '45179292806', 1, 'jhonatan3', '2002-12-31', '', 'Masculino', 'rocha', 5, 1,1,null,1);
                 """;
        // --INSERT INTO USUARIO (ID, EMAIL, SENHA, PAPEL) VALUES (1, 'ALUNO_EXEMPLO@EMAIL.COM', '123', 'ALUNO');
        // --INSERT INTO CONTA (ID, CPF,IC_ATIVO, NOME, DATA_NASCIMENTO, SOBRE, USUARIO_ID, INSTITUICAO_ID, CURSO_ID, FOTO_ID, TURMA_ID, GENERO) VALUES (1, '45194845804', 1, 'ALUNO EXEMPLO', '1994-04-04', 'APRESENTACAO PESSOAL', 1, 1, 1, 1, 1, 'MASCULINO');

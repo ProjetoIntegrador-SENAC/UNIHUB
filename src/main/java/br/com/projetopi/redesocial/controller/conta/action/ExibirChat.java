@@ -1,4 +1,4 @@
-package br.com.projetopi.redesocial.controller.admin.action;
+package br.com.projetopi.redesocial.controller.conta.action;
 
 import br.com.projetopi.redesocial.interfaces.Action;
 

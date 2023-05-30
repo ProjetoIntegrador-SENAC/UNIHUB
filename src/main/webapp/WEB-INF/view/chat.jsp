@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,16 +12,27 @@
 </head>
 <body>
 
-  
-  <input type="text" style="display: none;" value="1" id="id_origem">
-  <input type="text" style="display: none;" value="2" id="id_destino">
-  
-  <div id="chat-display">
-  
+  <input type="text" style="display: none;" value="${id_conta_origem}" id="id_origem">
+  <input type="text" style="display: none;" value="${id_conta_destino}" id="id_destino">
+
+  <div>
+  <div id="chat-display" style="height: 300px;  overflow-y: scroll; ">
+  <c:forEach items="${mensagens}" var="mensagem">
+    <c:choose>
+      <c:when test="${mensagem.conta_remente_id == id_conta_origem}">
+        <p> origem:  ${mensagem.conteudo} </p>
+      </c:when>
+      <c:otherwise>
+        <p> destino: ${mensagem.conteudo}</p>
+      </c:otherwise>
+    </c:choose>
+  </c:forEach>
   </div>
+
   <input type="text" placeholder="mensagem para servidor" id="message-input">
   <button onclick="sendMessage()"> Enviar mensagem para o servidor  </button> 
-  
+  </div>
+
   <script>
   
   const socket = new WebSocket('ws://localhost:8080/chat')
@@ -39,6 +54,7 @@
       const newMessage = document.createElement('p');
       newMessage.textContent = message
       chatDisplay.appendChild(newMessage)
+      chatDisplay.scrollTop = 2 ^ 10000;
   
   }
   

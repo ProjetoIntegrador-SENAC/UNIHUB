@@ -31,15 +31,18 @@ public class MensagemDao {
             System.out.println(e);
             return false;
         }
-
     }
-
     public ArrayList<Mensagem> getMessages(int id_origem,int id_destino){
-        String sqlQuery = "select * from mensagem where ((conta_remente_id = 1 or  conta_destinatario_id = 1) and (conta_remente_id = 2 or  conta_destinatario_id = 2)) order by data_mensagem asc";
+        String sqlQuery = "select * from mensagem where ((conta_remente_id = ? or  conta_destinatario_id = ?) and (conta_remente_id = ? or  conta_destinatario_id = ?)) order by data_mensagem asc";
 
         ArrayList<Mensagem> mensagens = new ArrayList<>();
-
         try(PreparedStatement ps = con.prepareStatement(sqlQuery)){
+
+            ps.setInt(1, id_origem);
+            ps.setInt(2, id_origem);
+            ps.setInt(3, id_destino);
+            ps.setInt(4, id_destino);
+
             ResultSet resultSet = ps.executeQuery();
 
             while(resultSet.next()){
@@ -58,8 +61,6 @@ public class MensagemDao {
             System.out.println(e);
             return null;
         }
-
-
     }
 
 }

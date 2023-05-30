@@ -33,6 +33,8 @@
                 </a>
             </div>
         </header>
+        <!-- CHAT -->
+        <div id="chatContainer"></div>
         <!-- POST's -->
         <div class="container">
             <c:forEach items="${postagens}" var="postagem">
@@ -72,7 +74,6 @@
                 add_box
             </span>
         </nav>
-        <div id="chatContainer"></div>
     </main>
     <aside>
         <section class="profile">
@@ -101,7 +102,7 @@
                 <c:forEach items="${contas}" var="conta">
                 <div class="friend">
                     <span data-set="${conta.id}" class="chatFrame">
-                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}"> <!-- TODO:Adicionar foto friend -->
+                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}">
                         <h4>${conta.nome}</h4>
                     </span>
                 </div>
@@ -141,8 +142,11 @@ conta.forEach((e) => {
         iframe.src = stringIframe
         console.log(iframe.src)
         iframe.style.width = "100%";
-        iframe.style.height = "500px";
+        iframe.style.height = "100%";
         iframe.style.border = "none";
+        iframe.style.position = "absolute";
+        iframe.style.zIndex = 3;
+        iframe.style.left = 0;
 
         chatContainer.appendChild(iframe);
 

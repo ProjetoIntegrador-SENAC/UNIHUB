@@ -287,6 +287,10 @@ aside .container .search > input{
     --webkit-backdrop-filter: blur(15px);
     box-shadow: inset 1px 1px 5px var(--black-mono), inset -1px -1px 5px var(--black-mono);
 }
+aside .container .search > input:focus {
+    outline: 0;
+    border: 2px solid var(--emphasis);
+}
 aside .container .search > span{
     position: absolute;
     right: 0.5rem;

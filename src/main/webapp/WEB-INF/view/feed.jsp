@@ -24,6 +24,13 @@
     <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
 </head>
+<style>
+/* Estilo do ícone de fechar */
+input[type="search"]::-webkit-search-cancel-button {
+  filter: invert(43%) sepia(100%) saturate(6860%) hue-rotate(335deg) brightness(98%) contrast(101%);
+  cursor: pointer;
+}
+</style>
 <body>
     <main>
         <!-- HEADER -->
@@ -99,7 +106,7 @@
         </section>
         <section class="container">
             <div class="search">
-                <input type="search" name="" id="">
+                <input type="search">
                 <span class="icon material-symbols-outlined">
                     search
                 </span>
@@ -159,5 +166,21 @@
 
         })
     })
+
+    const searchInput = document.querySelector('input[type="search"]');
+    searchInput.addEventListener('input', filterFriends);
+    function filterFriends() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const friends = document.querySelectorAll('.friend');
+
+      friends.forEach((friend) => {
+        const name = friend.querySelector('h4').textContent.toLowerCase();
+        if (name.includes(searchTerm)) {
+          friend.style.display = 'block';
+        } else {
+          friend.style.display = 'none';
+        }
+      });
+    }
 </script>
 </html>

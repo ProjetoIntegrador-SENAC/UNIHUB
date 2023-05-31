@@ -16,7 +16,12 @@ public class ExcluirUsuario implements Action {
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.valueOf(request.getParameter("id"));
-        this.usuarioService.remove(id);
-        return "forward:admin?acao=ExibirTelaUsuario";
+        if(this.usuarioService.remove(id)){
+            request.setAttribute("message", "Usuário excluído com sucesso!");
+            return "forward:admin?acao=ExibirTelaUsuario";
+        }else{
+            request.setAttribute("message", "erro ao excluir o usuário!");
+            return "forward:admin?acao=ExibirTelaUsuario";
+        }
     }
 }

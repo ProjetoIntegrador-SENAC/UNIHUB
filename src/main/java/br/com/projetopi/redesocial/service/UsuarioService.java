@@ -62,4 +62,9 @@ public class UsuarioService implements Service<Usuario> {
     public int getCount(){
         return this.usuarioDao.getCount();}
 
+    public Usuario getUsuarioById(int id){
+        return usuarioDao.findById(id);
+    }
+
+
 }

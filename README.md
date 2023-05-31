@@ -68,7 +68,7 @@
 - Clique aqui para acessar o [`Figma`](https://www.figma.com/file/HrgD9hKKwYOOyywwUWo0Vg/Untitled?node-id=0%3A1&t=p1XkAMLX9OV2t0n6-1)
 - Clique aqui para testar o [`Protótipo`](https://www.figma.com/proto/HrgD9hKKwYOOyywwUWo0Vg/Untitled?type=design&node-id=2-3&scaling=scale-down&page-id=0%3A1&starting-point-node-id=2%3A3)
 - Clique na imagem abaixo para visualizar todas as telas prototipadas
-[![Documentação](prototipagem/login.png)](prototipagem/)
+[![Documentação](prototipagem/Login.png)](prototipagem/)
 
 <hr>
 

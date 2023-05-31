@@ -55,7 +55,8 @@
         </div>
 
         <div class="interactionSend">
-            <input type="text" placeholder="Enviar mensagem" id="message-input" required>
+            <input type="text" maxlength="400" placeholder="Enviar mensagem" id="message-input" oninput="updateCharCount()" required>
+            <span id="char-count"><b>400</b> caracteres restantes</span>
             <button onclick="sendMessage()" class="material-symbols-outlined">
                 send
             </button>

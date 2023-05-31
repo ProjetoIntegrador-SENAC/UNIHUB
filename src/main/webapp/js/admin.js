@@ -20,9 +20,9 @@ function getCursos(id){
 
 editar_elements = document.querySelectorAll('.editar')
 
-editar_elements.forEach(e => {
-    e.addEventListener('click', function (e){
-        id = e.target.getAttribute('data-id')
+editar_elements.forEach((editarElement) => {
+    editarElement.addEventListener('click',  (e) => {
+        const id = e.target.getAttribute('data-id')
         console.log(id)
         var dados
         fetch("http://localhost:8080/api_conta_editar?id="+id)

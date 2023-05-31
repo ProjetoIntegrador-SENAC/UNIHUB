@@ -53,6 +53,12 @@
                             Turma
                         </a>
                     </li>
+                    <li class="nav-item menu-item d-flex justify-content-center">
+                        <a class="nav-link" href="admin?acao=ExibirTelaUsuario">
+                            Usuario
+                        </a>
+                    </li>
+
                 </ul>
             </div>
             <div class="h-100">

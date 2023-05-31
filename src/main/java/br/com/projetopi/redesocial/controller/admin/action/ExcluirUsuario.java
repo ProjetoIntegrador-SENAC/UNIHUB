@@ -17,6 +17,6 @@ public class ExcluirUsuario implements Action {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.valueOf(request.getParameter("id"));
         this.usuarioService.remove(id);
-        return "forward:admin?acao=ExibirUsuario";
+        return "forward:admin?acao=ExibirTelaUsuario";
     }
 }

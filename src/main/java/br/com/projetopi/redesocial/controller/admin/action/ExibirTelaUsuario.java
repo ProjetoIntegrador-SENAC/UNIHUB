@@ -10,17 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ExibirUsuario implements Action {
+public class ExibirTelaUsuario implements Action {
 
     private UsuarioService usuarioService;
 
-    public ExibirUsuario(){
+    public ExibirTelaUsuario(){
         this.usuarioService = new UsuarioService();
     }
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Usuario> usuarios = usuarioService.getUsuarioAll("admin",10,0);
+        ArrayList<Usuario> usuarios = usuarioService.getUsuarioAll();
         request.setAttribute("usuarios", usuarios);
-        return "forward:usuarios.jsp";
+        return "forward:usuario.jsp";
     }
 }

@@ -44,6 +44,12 @@
         </div>
     </header>
     <main>
+        <div class="search">
+            <input type="search">
+            <span class="icon material-symbols-outlined">
+                search
+            </span>
+        </div>
         <h1>Turma</h1>
         <div class="container">
             <c:forEach items="${postagens}" var="postagem">

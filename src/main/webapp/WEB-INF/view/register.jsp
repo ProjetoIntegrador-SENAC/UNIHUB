@@ -9,6 +9,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
 
+    <!-- Tippy.js -->
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
     <!-- CSS -->
     <link rel="stylesheet" href="../../style/register.css">
     <link rel="stylesheet" href="../../style/toast.css">
@@ -132,14 +137,14 @@
                 </div>
 
                 <div class="fields field13">
-                    <input type="password" name="senha" id="password" class="field"placeholder="Senha">
+                    <input type="password" name="senha" id="password" class="field tooltip"placeholder="Senha">
                     <span class="toggle-password icon material-symbols-outlined">visibility_off</span>
                     <span class="error material-icons-round">error</span>
                     <span class="success material-icons-round">check_circle</span>
                 </div>
 
                 <div class="fields field14">
-                    <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="field"placeholder="Confirmar senha">
+                    <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="field tooltip"placeholder="Confirmar senha">
                     <span class="toggle-password icon material-symbols-outlined">visibility_off</span>
                     <span class="error material-icons-round">error</span>
                     <span class="success material-icons-round">check_circle</span>
@@ -159,4 +164,16 @@
         <div id="desc">Verifique os campos com erro!</div>
     </div>
 </body>
+<script>
+    // Inicializar tooltips
+    tippy('.tooltip', {
+        content: 'A senha deve ter pelo menos 8 caracteres.',
+        placement: 'bottom', // Altere a posição do tooltip conforme necessário
+        arrow: false, // Desativar seta do tooltip
+        allowHTML: true, // Permitir conteúdo HTML no tooltip
+        trigger: 'focus',
+        duration: 1000,
+        animation: 'scale'
+    });
+</script>
 </html>

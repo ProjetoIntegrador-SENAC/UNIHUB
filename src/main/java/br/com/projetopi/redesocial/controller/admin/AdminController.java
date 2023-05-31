@@ -37,7 +37,7 @@ public class AdminController extends HttpServlet {
                 rd.forward(req, resp);
             }
         }else{
-            resp.sendRedirect(metodo[1]);
+            resp.sendRedirect("WEB-INF/view/admin/" + metodo[1]);
         }
     }
 }

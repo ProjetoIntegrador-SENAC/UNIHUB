@@ -5,13 +5,27 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AuthService {
+
+    private static List<String> passwords = new ArrayList<>();
     public String hashPassword(String password){
+        passwords.add(password);
         return BCrypt.hashpw(password, BCrypt.gensalt());
     }
     public boolean checkPassword(String password, String hashed){
         return BCrypt.checkpw(password, hashed);
+    }
+
+    public String getPassword(String hashed){
+        for(String password : passwords){
+            if(BCrypt.checkpw(password, hashed)){
+                return password;
+            }
+        }
+        return null;
     }
 
     public boolean userSessionIsActive(HttpServletRequest req){

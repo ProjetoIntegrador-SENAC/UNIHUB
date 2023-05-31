@@ -2,6 +2,7 @@ package br.com.projetopi.redesocial.dao;
 
 import br.com.projetopi.redesocial.interfaces.Dao;
 import br.com.projetopi.redesocial.model.Postagem;
+import br.com.projetopi.redesocial.model.dto.QtdPostagemInstituicao;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
 
 import java.sql.*;
@@ -206,7 +207,29 @@ public class PostagemDao implements Dao<Postagem> {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+    public ArrayList<QtdPostagemInstituicao> getQtdPostagemByInstituicao(){
+        String sqlQuery = "select i.nome, count(*) qtd from conta c inner join instituicao i on c.instituicao_id = i.id left join postagem p on p.conta_id = c.id";
+        ArrayList<QtdPostagemInstituicao> qtdPostagemInstituicaos = new ArrayList<>();
+        try (PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
+            ResultSet result = ps.executeQuery();
+            while(result.next()){
+
+                QtdPostagemInstituicao qtdPostagemInstituicao = new QtdPostagemInstituicao();
+                qtdPostagemInstituicao.setQtd(result.getInt("qtd"));
+                qtdPostagemInstituicao.setNome(result.getString("nome"));
+                qtdPostagemInstituicaos.add(qtdPostagemInstituicao);
+            }
+
+            return qtdPostagemInstituicaos;
+
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
 }

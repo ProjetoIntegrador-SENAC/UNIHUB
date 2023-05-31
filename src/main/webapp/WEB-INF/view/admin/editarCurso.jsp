@@ -9,12 +9,12 @@
     </div>
 
     <div class="mb-3">
-          <label for="tipo" class="form-label"> Nome </label>
+          <label for="tipo" class="form-label"> Tipo </label>
           <input type="text" class="form-control" id="tipo" name="tipo" value="${curso.tipo}">
         </div>
 
     <div class="mb-3">
-      <label for="area" class="form-label"> Nome </label>
+      <label for="area" class="form-label"> Área </label>
       <input type="text" class="form-control" id="area" name="area" value="${curso.area}">
     </div>
 

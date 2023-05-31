@@ -1,5 +1,6 @@
 package br.com.projetopi.redesocial.controller.auth.action;
 
+import br.com.projetopi.redesocial.chat.ActiveSessionSingleton;
 import br.com.projetopi.redesocial.interfaces.Action;
 import br.com.projetopi.redesocial.model.Conta;
 import br.com.projetopi.redesocial.model.Usuario;
@@ -11,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 import java.io.IOException;
 
 public class Logar implements Action {
@@ -40,15 +42,16 @@ public class Logar implements Action {
                 if (usuario.getPapel().toUpperCase().equals("ALUNO")) {
                     session.setAttribute("usuarioLogado", usuario);
                     session.setAttribute("contaLogado", conta);
+                    ActiveSessionSingleton.setContaId(conta.getId());
                     return "forward:conta?acao=ExibirFeed";
                 } else if (usuario.getPapel().toUpperCase().equals("ADMIN")) {
                     session.setAttribute("usuarioLogado", usuario);
+                    ActiveSessionSingleton.setContaId(conta.getId());
                     return "forward:admin?acao=ExibirPainel";
                 }
             }
         }
-        request.setAttribute("message", "E-mail e/ou senha inválidos!");
-        request.getRequestDispatcher("login?acao=ExibirTelaLogin").forward(request, response);
+        request.setAttribute("message","E-mail e/ou senha inválidos!");
         return "forward:login?acao=ExibirTelaLogin";
     }
 }

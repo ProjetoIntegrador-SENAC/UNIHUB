@@ -142,13 +142,14 @@ public class ContaDao {
         return contas;
     }
 
-    public ArrayList<Conta> findAllPageableByTurmaId(int turma_id, int qtd_elementos, int num_inicio){
+    public ArrayList<Conta> findAllPageableByTurmaId(int turma_id, int qtd_elementos, int num_inicio, int usuario_id){
         ArrayList<Conta> contas = new ArrayList<>();
-        String sqlQuery = "select * from conta where turma_id = ? LIMIT ? OFFSET ?;";
+        String sqlQuery = "select * from conta where turma_id = ? and usuario_id != ? LIMIT ? OFFSET ?;";
         try(PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
             ps.setInt(1, turma_id);
-            ps.setInt(2, qtd_elementos);
-            ps.setInt(3, num_inicio);
+            ps.setInt(2, usuario_id);
+            ps.setInt(3, qtd_elementos);
+            ps.setInt(4, num_inicio);
 
             ps.execute();
 
@@ -333,7 +334,7 @@ public class ContaDao {
     }
 
     public int getCount(){
-        String sqlQuery = "select count(*) from conta";
+        String sqlQuery = "select count(*) from conta where ic_ativo = 1";
         try (PreparedStatement statement = conexao.prepareStatement(sqlQuery)){
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){

@@ -33,6 +33,8 @@
                 </a>
             </div>
         </header>
+        <!-- CHAT -->
+        <div id="chatContainer"></div>
         <!-- POST's -->
         <div class="container">
             <c:forEach items="${postagens}" var="postagem">
@@ -99,8 +101,10 @@
             <div class="friends">
                 <c:forEach items="${contas}" var="conta">
                 <div class="friend">
-                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}"> <!-- TODO:Adicionar foto friend -->
-                    <h4>${conta.nome}</h4>
+                    <span data-set="${conta.id}" class="chatFrame">
+                        <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}">
+                        <h4>${conta.nome}</h4>
+                    </span>
                 </div>
                 </c:forEach>
             </div>
@@ -124,4 +128,31 @@
         </div>
     </div>
 </body>
+<script>
+var conta = document.querySelectorAll('.chatFrame')
+
+conta.forEach((e) => {
+    e.addEventListener('click', function(e){
+        chatContainer.innerHTML = ''
+        id = e.currentTarget.getAttribute('data-set')
+        console.log(id);
+        var iframe = document.createElement("iframe");
+        var stringIframe = 'http://localhost:8080/conta?acao=ExibirChat&id_conta_destino='+id;
+        console.log(stringIframe)
+        iframe.src = stringIframe
+        console.log(iframe.src)
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none";
+        iframe.style.position = "absolute";
+        iframe.style.zIndex = 3;
+        iframe.style.left = 0;
+
+        chatContainer.appendChild(iframe);
+
+    })
+})
+
+
+</script>
 </html>

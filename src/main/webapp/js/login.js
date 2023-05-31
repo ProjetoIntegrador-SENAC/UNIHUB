@@ -10,13 +10,10 @@ function onPress(){
     location.href = './conta?acao=ExibirCadastroConta'
 }
 
-formLogin.addEventListener('submit', (e) => {
-
+window.addEventListener('load',() => {
     if(desc.innerHTML !== '') {
-        e.preventDefault()
         launch_toast()
     }
-
 })
 
 function launch_toast() {
@@ -32,10 +29,6 @@ function launch_toast() {
 
     setTimeout(function () {
       toast.className = toast.className.replace("show", "");
-    }, 5000);
-
-    setTimeout(function () {
-        window.location.href="/"
     }, 5000);
 }
 

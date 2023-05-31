@@ -3,6 +3,7 @@ package br.com.projetopi.redesocial.service;
 import br.com.projetopi.redesocial.dao.PostagemDao;
 import br.com.projetopi.redesocial.interfaces.Service;
 import br.com.projetopi.redesocial.model.Postagem;
+import br.com.projetopi.redesocial.model.dto.QtdPostagemInstituicao;
 
 import java.util.ArrayList;
 
@@ -54,6 +55,10 @@ public class PostagemService implements Service<Postagem> {
 
     public int getCount(){
         return this.postagemDao.getCount();
+    }
+
+    public ArrayList<QtdPostagemInstituicao> getQtdPostagens(){
+        return this.postagemDao.getQtdPostagemByInstituicao();
     }
 
 }

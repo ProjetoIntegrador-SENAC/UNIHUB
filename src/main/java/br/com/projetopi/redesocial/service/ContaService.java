@@ -63,8 +63,8 @@ public class ContaService implements Service<Conta> {
         return this.contaDao.getContaPerfilData(conta_id);
     }
 
-    public ArrayList<Conta> findAllPageableByTurmaId(int turma_id, int qtd_elementos, int num_inicio){
-        return contaDao.findAllPageableByTurmaId(turma_id, qtd_elementos, num_inicio);
+    public ArrayList<Conta> findAllPageableByTurmaId(int turma_id, int qtd_elementos, int num_inicio, int id_usuario){
+        return contaDao.findAllPageableByTurmaId(turma_id, qtd_elementos, num_inicio, id_usuario);
     }
 
     public int getCount(){

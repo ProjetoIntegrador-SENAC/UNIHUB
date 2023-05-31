@@ -68,10 +68,11 @@ btnShares.forEach(btnShare => {
     })
 })
 
+// Exibir Perfil
 const imageProfile = document.getElementById('imageProfile')
 
 imageProfile.addEventListener('click', onPress);
 
-function onPress(){
+function onPress() {
     location.href = './conta?acao=ExibirPerfil'
 }

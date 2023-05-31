@@ -19,6 +19,7 @@
     <script src="../../js/theme.js" defer></script>
     <script src="../../js/feed.js" defer></script>
     <script src="../../js/modal.js" defer></script>
+    <script src="../../js/allFriends.js" defer></script>
 
     <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
@@ -35,6 +36,8 @@
         </header>
         <!-- CHAT -->
         <div id="chatContainer"></div>
+        <!-- ALL FRIENDS -->
+        <div id="allFriends"></div>
         <!-- POST's -->
         <div class="container">
             <c:forEach items="${postagens}" var="postagem">
@@ -84,6 +87,9 @@
                 <span id="btnTheme" data-theme="dark" class="icon material-symbols-outlined">
                     dark_mode
                 </span>
+                <span id="btnFriendsAll" class="icon material-symbols-outlined">
+                    contacts
+                </span>
                 <a class="exit" href="login?acao=Deslogar">
                     <span class="icon material-symbols-outlined">
                         logout
@@ -129,30 +135,29 @@
     </div>
 </body>
 <script>
-var conta = document.querySelectorAll('.chatFrame')
+    // Exibir Chat
+    var conta = document.querySelectorAll('.chatFrame')
 
-conta.forEach((e) => {
-    e.addEventListener('click', function(e){
-        chatContainer.innerHTML = ''
-        id = e.currentTarget.getAttribute('data-set')
-        console.log(id);
-        var iframe = document.createElement("iframe");
-        var stringIframe = 'http://localhost:8080/conta?acao=ExibirChat&id_conta_destino='+id;
-        console.log(stringIframe)
-        iframe.src = stringIframe
-        console.log(iframe.src)
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "none";
-        iframe.style.position = "absolute";
-        iframe.style.zIndex = 3;
-        iframe.style.left = 0;
+    conta.forEach((e) => {
+        e.addEventListener('click', function(e){
+            chatContainer.innerHTML = ''
+            id = e.currentTarget.getAttribute('data-set')
+            console.log(id);
+            var iframe = document.createElement("iframe");
+            var stringIframe = 'http://localhost:8080/conta?acao=ExibirChat&id_conta_destino='+id;
+            console.log(stringIframe)
+            iframe.src = stringIframe
+            console.log(iframe.src)
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            iframe.style.position = "absolute";
+            iframe.style.zIndex = 3;
+            iframe.style.left = 0;
 
-        chatContainer.appendChild(iframe);
+            chatContainer.appendChild(iframe);
 
+        })
     })
-})
-
-
 </script>
 </html>

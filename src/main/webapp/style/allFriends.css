@@ -1,0 +1,146 @@
+@font-face {
+    font-family: 'Gumela';
+    src: local('Gumela'), url('../font/Gumela-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'GumelaRegular';
+    src: local('GumelaRegular'), url('../font/Gumela-Regular.ttf') format('truetype');
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 3px;
+    background: var(--offWhite);
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #A6A6A6;
+    border-radius: 1rem;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Gumela', 'GumelaRegular';
+    font-weight: normal;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 5rem;
+    padding: 1rem;
+    background: var(--emphasis);
+    box-shadow: 1px 3px 10px var(--black-mono);
+    z-index: 1;
+}
+header .headerTop {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+header .logo a > img{
+    width: 6rem;
+    height: 6rem;
+}
+header .config .icon{
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--icon);
+}
+
+main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 4rem 0.7rem;
+    gap: 2rem;
+    background: var(--white);
+}
+
+main h1 {
+    color: var(--black);
+}
+
+main .container{
+    display: flex;
+    width: 100%;
+    min-height: 250px;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding: 0.7rem;
+    gap: 2rem;
+    margin-top: -1.5rem;
+}
+
+main .container::-webkit-scrollbar-thumb {
+    background: var(--emphasis);
+    border-radius: 1rem;
+}
+
+main .friend{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--offWhite);
+    border-radius: 1rem;
+    box-shadow: 1px 1px 10px var(--black-mono);
+    width: 200px;
+    height: 200px;
+    padding: 1rem;
+    position: relative;
+}
+main .friend:hover{
+    transform: scale(1.1);
+}
+main .friend > img{
+    content: "";
+    width: 170px;
+    height: 170px;
+    border-radius: 0.5rem;
+    object-fit: cover;
+    box-shadow: inset 0px 0px 10px var(--black-mono);
+}
+.friend img:not(:hover){
+    filter: grayscale(1);
+    transition: 0.7s;
+}
+.friend p {
+    position: absolute;
+    bottom: 0;
+    font-size: small;
+    color: var(--black);
+}

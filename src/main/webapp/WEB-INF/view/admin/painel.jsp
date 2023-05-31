@@ -76,6 +76,22 @@
   let area = []
   let qtd = []
 
+  let nome_inst = []
+  let qtd_postagem = []
+
+  fetch('http://localhost:8080/api_post_by_inst')
+  .then(response => response.json())
+  .then(data => {
+      data.forEach(element => {
+        nome_inst.push(element.nome)
+        qtd_postagem.push(element.qtd)
+      });
+  })
+  .catch(error => {
+    // Tratar erros
+    console.error('Ocorreu um erro:', error);
+  });
+
   fetch('http://localhost:8080/api_chart_area_curso')
   .then(response => response.json())
   .then(data => {
@@ -97,7 +113,7 @@
     data: {
       labels: area,
       datasets: [{
-        label: '# of Votes',
+        label: 'Quantidade de cursos por área',
         data: qtd,
         backgroundColor: [
           'rgb(200, 0, 0)'
@@ -117,17 +133,13 @@
 new Chart(ctx2, {
     type: 'pie',
     data : {
-      labels: [
-        'Red',
-        'Blue',
-        'Yellow'
-      ],
+      labels: [nome_inst],
       datasets: [{
         label: 'My First Dataset',
-        data: [300, 50, 100],
+        data: [qtd_postagem],
         backgroundColor: [
-          'rgb(255, 23, 0)',
-          'rgb(255, 21, 43)',
+          'rgb(255, 120, 0)',
+          'rgb(255, 50, 43)',
           'rgb(255, 1, 81)'
         ],
         hoverOffset: 4

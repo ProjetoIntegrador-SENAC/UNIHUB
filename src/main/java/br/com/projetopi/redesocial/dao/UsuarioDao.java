@@ -69,27 +69,20 @@ public class UsuarioDao {
     }
 
     public boolean update( Usuario usuario ) {
-        String sqlQuery = """
-        update usuario
-        set 
-         email = ?,
-         senha = ?,
-         papel = ?,
-         where id = ? 
-               """;
+        String sqlQuery = "update usuario set email = ?, senha = ?, papel = ?, where id = ?";
 
-        try { PreparedStatement ps = conexao.prepareStatement(sqlQuery); {
+        try (PreparedStatement ps = conexao.prepareStatement(sqlQuery)) {
             ps.setString(1, usuario.getEmail());
             ps.setString(2, usuario.getSenha());
             ps.setString(3,usuario.getPapel());
             ps.setInt(4,usuario.getId());
-        }
-
+            ps.execute();
+            return true;
         }catch (SQLException e){
-            System.out.println("Ocorreu erro " + e );
+            System.out.println("Ocorreu o erro " + e);
+            e.printStackTrace();
+            return false;
         }
-
-        return true;
     }
     public String getPasswordByEmail(String email) {
         String sqlQuery = "SELECT SENHA FROM USUARIO WHERE EMAIL = ?";
@@ -155,9 +148,9 @@ public class UsuarioDao {
         return usuarios;
     }
     public Usuario findById(int id) {
-        String sqlQuery = "select * from usuario where id = ?";
         ResultSet result;
         Usuario usuario = new Usuario();
+        String sqlQuery = "select * from usuario where id = ?";
         try {
             PreparedStatement ps = conexao.prepareStatement(sqlQuery);
             ps.setInt(1, id);

@@ -20,25 +20,24 @@ public class EditarUsuario implements Action {
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         String papel = request.getParameter("papel");
+        int usuario_id = Integer.valueOf(request.getParameter("id"));
 
         Usuario usuario = new Usuario();
-        usuario.setId(id);
         usuario.setEmail(email);
         usuario.setSenha(senha);
         usuario.setPapel(papel);
+        usuario.setId(usuario_id);
 
-        boolean sucesso = usuarioService.update(usuario);
-
-        if (sucesso) {
-            return ("sucesso.jsp");
+        if (this.usuarioService.update(usuario)) {
+            request.setAttribute("message", "Usuário atualizado com sucesso");
         } else {
-            return ("erro.jsp");
-        }
+            request.setAttribute("message", "Erro ao atualizar o Usuário");
 
+        }
+        return "forward:admin?acao=ExibirTelaUsuario";
 
     }
 }

@@ -27,7 +27,7 @@ public class HomeFilter implements Filter {
         boolean userLogged = authService.userSessionIsActive(req);
 
         if (!userLogged) {
-            resp.sendRedirect("/login?acao=ExibirTelaLogin");
+            resp.sendRedirect("/view/preloader.jsp");
             return;
         }
 

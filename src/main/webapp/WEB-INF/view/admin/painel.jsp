@@ -55,7 +55,7 @@
 <div class="container-fluid mt-5">
     <div class="row h-100" style="max-height: 200px">
       <div class="col-8 bg-light opacity-75 shadow">
-        <div class="chart-container">
+        <div class="chart-container" style="transform: scale(0.9);">
           <canvas id="myChart" class="w-100 h-100"></canvas>
         </div>
       </div>
@@ -86,6 +86,23 @@
         nome_inst.push(element.nome)
         qtd_postagem.push(element.qtd)
       });
+
+      new Chart(ctx2, {
+      type: 'pie',
+      data : {
+        labels: [nome_inst],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [qtd_postagem],
+          backgroundColor: [
+            'rgb(255, 120, 0)',
+            'rgb(255, 50, 43)',
+            'rgb(255, 1, 81)'
+          ],
+          hoverOffset: 4
+        }]
+      }
+  });
   })
   .catch(error => {
     // Tratar erros
@@ -99,6 +116,30 @@
         area.push(element.area)
         qtd.push(element.qtd)
       });
+
+      new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: area,
+        datasets: [{
+          label: 'Quantidade de cursos por área',
+          data: qtd,
+          backgroundColor: [
+            'rgb(200, 0, 0)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+
   })
   .catch(error => {
     // Tratar erros
@@ -108,44 +149,7 @@
   console.log(area);
   console.log(qtd);
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: area,
-      datasets: [{
-        label: 'Quantidade de cursos por área',
-        data: qtd,
-        backgroundColor: [
-          'rgb(200, 0, 0)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-new Chart(ctx2, {
-    type: 'pie',
-    data : {
-      labels: [nome_inst],
-      datasets: [{
-        label: 'My First Dataset',
-        data: [qtd_postagem],
-        backgroundColor: [
-          'rgb(255, 120, 0)',
-          'rgb(255, 50, 43)',
-          'rgb(255, 1, 81)'
-        ],
-        hoverOffset: 4
-      }]
-    }
-  });
+  
 
 </script>
 

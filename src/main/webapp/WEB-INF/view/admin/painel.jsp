@@ -71,13 +71,18 @@
 <script>
 
   const ctx2 = document.getElementById('grafico2');
+  const ctx3 = document.getElementById('grafico3');
   const ctx = document.getElementById('myChart');
+
 
   let area = []
   let qtd = []
 
   let nome_inst = []
   let qtd_postagem = []
+
+  let data_postagem = []
+  let qtd_postagem_data = []
 
   fetch('http://localhost:8080/api_post_by_inst')
   .then(response => response.json())
@@ -146,8 +151,43 @@
     console.error('Ocorreu um erro:', error);
   });
 
-  console.log(area);
-  console.log(qtd);
+    fetch('http://localhost:8080/http://localhost:8080/api_postagens_data')
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(element => {
+          data_postagem.push(element.data_postagem)
+          qtd_postagem_data.push(element.qtd)
+        });
+
+        new Chart(ctx3, {
+        type: 'bar',
+        data: {
+          labels: area,
+          datasets: [{
+            label: 'Quantidade de cursos por área',
+            data: qtd,
+            backgroundColor: [
+              'rgb(200, 0, 0)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+
+    })
+    .catch(error => {
+      // Tratar erros
+      console.error('Ocorreu um erro:', error);
+    });
+
 
   
 

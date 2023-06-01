@@ -2,8 +2,10 @@ package br.com.projetopi.redesocial.dao;
 
 import br.com.projetopi.redesocial.interfaces.Dao;
 import br.com.projetopi.redesocial.model.Postagem;
+import br.com.projetopi.redesocial.model.dto.QtdPostagemByDate;
 import br.com.projetopi.redesocial.model.dto.QtdPostagemInstituicao;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
+import com.fasterxml.jackson.databind.ext.SqlBlobSerializer;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -238,6 +240,25 @@ public class PostagemDao implements Dao<Postagem> {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ArrayList<QtdPostagemByDate> getQtPostsByDate(){
+        String sqleQuery = "select data_postagem, count(*) qtd from postagem order by data_postagem asc";
+        ArrayList<QtdPostagemByDate> qtdPostagemByDate = new ArrayList<>();
+        try(PreparedStatement ps = conexao.prepareStatement(sqleQuery)){
+            ResultSet result = ps.executeQuery();
+            while(result.next()){
+                QtdPostagemByDate qtdPostagemByDate1 = new QtdPostagemByDate();
+                qtdPostagemByDate1.setData_postagem(result.getDate("data_postagem"));
+                qtdPostagemByDate1.setQtd(result.getInt("qtd"));
+                qtdPostagemByDate.add(qtdPostagemByDate1);
+            }
+            return qtdPostagemByDate;
+
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
     }
 
 

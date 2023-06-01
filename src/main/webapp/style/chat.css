@@ -168,6 +168,14 @@ body {
     border: 2px solid var(--emphasis);
 }
 
+.interactionSend span {
+    position: absolute;
+    bottom: -0.9rem;
+    font-size: 0.6rem;
+    left: 0.5rem;
+    color: #555;
+}
+
 .interactionSend button {
     height: 2rem;
     width: 2.5rem;

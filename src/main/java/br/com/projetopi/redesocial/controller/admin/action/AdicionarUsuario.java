@@ -10,34 +10,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class EditarUsuario implements Action {
-
+public class AdicionarUsuario implements Action {
     private UsuarioService usuarioService;
-
-    public EditarUsuario() {
-        this.usuarioService = new UsuarioService();
-    }
+    public AdicionarUsuario(){this.usuarioService = new UsuarioService();}
 
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String senha = request.getParameter("senha");
         String papel = request.getParameter("papel");
-        int usuario_id = Integer.valueOf(request.getParameter("id"));
 
         Usuario usuario = new Usuario();
         usuario.setEmail(email);
         usuario.setSenha(senha);
         usuario.setPapel(papel);
-        usuario.setId(usuario_id);
 
-        if (this.usuarioService.update(usuario)) {
-            request.setAttribute("message", "Usuário atualizado com sucesso");
-        } else {
-            request.setAttribute("message", "Erro ao atualizar o Usuário");
-
+        UsuarioDao usuarioDAO = new UsuarioDao();
+        try {
+            usuarioDAO.add(usuario);
+            request.setAttribute("message", "Usuário adicionado com sucesso!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("message", "Erro ao adicionar usuário: " + e.getMessage());
         }
         return "forward:admin?acao=ExibirTelaUsuario";
-
     }
+
 }

@@ -18,6 +18,7 @@
     <script src="../../js/theme.js" defer></script>
     <script src="../../js/perfil.js" defer></script>
     <script src="../../js/modalPerfil.js" defer></script>
+    <script src="../../js/allFriends.js" defer></script>
     
     <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
@@ -33,6 +34,9 @@
             <div class="config">
                 <span id="btnTheme" data-theme="dark" class="icon material-symbols-outlined">
                     dark_mode
+                </span>
+                <span id="btnFriendsAll" class="icon material-symbols-outlined">
+                    contacts
                 </span>
                 <a href="/conta?acao=ExibirFeed">
                     <span class="icon material-symbols-outlined">

@@ -56,5 +56,12 @@ function sendMessage() {
         messageInput.value = '';
         
     }
+}
 
+// Contador de caracteres restante
+function updateCharCount() {
+    const input = document.getElementById('message-input');
+    const charCount = document.getElementById('char-count');
+    const remainingChars = 400 - input.value.length;
+    charCount.textContent = remainingChars + ' caracteres restantes';
 }

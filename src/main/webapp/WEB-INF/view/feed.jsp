@@ -19,10 +19,18 @@
     <script src="../../js/theme.js" defer></script>
     <script src="../../js/feed.js" defer></script>
     <script src="../../js/modal.js" defer></script>
+    <script src="../../js/allFriends.js" defer></script>
 
     <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
 </head>
+<style>
+/* Estilo do ícone de fechar */
+input[type="search"]::-webkit-search-cancel-button {
+  filter: invert(43%) sepia(100%) saturate(6860%) hue-rotate(335deg) brightness(98%) contrast(101%);
+  cursor: pointer;
+}
+</style>
 <body>
     <main>
         <!-- HEADER -->
@@ -35,6 +43,8 @@
         </header>
         <!-- CHAT -->
         <div id="chatContainer"></div>
+        <!-- ALL FRIENDS -->
+        <div id="allFriends"></div>
         <!-- POST's -->
         <div class="container">
             <c:forEach items="${postagens}" var="postagem">
@@ -84,6 +94,9 @@
                 <span id="btnTheme" data-theme="dark" class="icon material-symbols-outlined">
                     dark_mode
                 </span>
+                <span id="btnFriendsAll" class="icon material-symbols-outlined">
+                    contacts
+                </span>
                 <a class="exit" href="login?acao=Deslogar">
                     <span class="icon material-symbols-outlined">
                         logout
@@ -93,7 +106,7 @@
         </section>
         <section class="container">
             <div class="search">
-                <input type="search" name="" id="">
+                <input type="search">
                 <span class="icon material-symbols-outlined">
                     search
                 </span>
@@ -129,30 +142,45 @@
     </div>
 </body>
 <script>
-var conta = document.querySelectorAll('.chatFrame')
+    // Exibir Chat
+    var conta = document.querySelectorAll('.chatFrame')
 
-conta.forEach((e) => {
-    e.addEventListener('click', function(e){
-        chatContainer.innerHTML = ''
-        id = e.currentTarget.getAttribute('data-set')
-        console.log(id);
-        var iframe = document.createElement("iframe");
-        var stringIframe = 'http://localhost:8080/conta?acao=ExibirChat&id_conta_destino='+id;
-        console.log(stringIframe)
-        iframe.src = stringIframe
-        console.log(iframe.src)
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "none";
-        iframe.style.position = "absolute";
-        iframe.style.zIndex = 3;
-        iframe.style.left = 0;
+    conta.forEach((e) => {
+        e.addEventListener('click', function(e){
+            chatContainer.innerHTML = ''
+            id = e.currentTarget.getAttribute('data-set')
+            console.log(id);
+            var iframe = document.createElement("iframe");
+            var stringIframe = 'http://localhost:8080/conta?acao=ExibirChat&id_conta_destino='+id;
+            console.log(stringIframe)
+            iframe.src = stringIframe
+            console.log(iframe.src)
+            iframe.style.width = "100%";
+            iframe.style.height = "100%";
+            iframe.style.border = "none";
+            iframe.style.position = "absolute";
+            iframe.style.zIndex = 3;
+            iframe.style.left = 0;
 
-        chatContainer.appendChild(iframe);
+            chatContainer.appendChild(iframe);
 
+        })
     })
-})
 
+    const searchInput = document.querySelector('input[type="search"]');
+    searchInput.addEventListener('input', filterFriends);
+    function filterFriends() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const friends = document.querySelectorAll('.friend');
 
+      friends.forEach((friend) => {
+        const name = friend.querySelector('h4').textContent.toLowerCase();
+        if (name.includes(searchTerm)) {
+          friend.style.display = 'block';
+        } else {
+          friend.style.display = 'none';
+        }
+      });
+    }
 </script>
 </html>

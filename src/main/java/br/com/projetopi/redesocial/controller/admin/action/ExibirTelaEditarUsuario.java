@@ -8,19 +8,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
-public class ExibirUsuario implements Action {
+public class ExibirTelaEditarUsuario implements Action {
 
     private UsuarioService usuarioService;
+    public ExibirTelaEditarUsuario(){this.usuarioService = new UsuarioService();}
 
-    public ExibirUsuario(){
-        this.usuarioService = new UsuarioService();
-    }
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Usuario> usuarios = usuarioService.getUsuarioAll("admin",10,0);
-        request.setAttribute("usuarios", usuarios);
-        return "forward:usuarios.jsp";
-    }
+        int usuarioId = Integer.valueOf(request.getParameter("id"));
+        Usuario usuario = this.usuarioService.getUsuarioById(usuarioId);
+        request.setAttribute("usuario", usuario);
+        return "forward:editarUsuario.jsp";    }
 }

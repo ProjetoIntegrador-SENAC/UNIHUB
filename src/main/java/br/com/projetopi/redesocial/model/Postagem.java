@@ -16,6 +16,16 @@ public class Postagem {
 
     private Conta conta;
 
+    private int qtdLikes;
+
+    public int getQtdLikes() {
+        return qtdLikes;
+    }
+
+    public void setQtdLikes(int qtdLikes) {
+        this.qtdLikes = qtdLikes;
+    }
+
     public Postagem(){}
 
     public Postagem(String conteudo, Integer foto_id, String foto, Integer conta_id, Date data_postagem) {

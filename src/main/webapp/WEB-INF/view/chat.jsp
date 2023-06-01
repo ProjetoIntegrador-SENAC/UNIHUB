@@ -32,7 +32,7 @@
 
     <div class="conteinerChatDisplay">
         <div class="infoFriend">
-            <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}">
+            <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${contaOrigem.foto}">
             <h4>${id_conta_destino}</h4>
         </div>
         <div id="chat-display">
@@ -41,12 +41,12 @@
                     <c:when test="${mensagem.conta_remente_id == id_conta_origem}">
                         <p class="message sender">
                             ${mensagem.conteudo}
-                            <img class='photoSender' src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${usuariologado.foto}">
+                            <img class='photoSender' src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${contaOrigem.foto}">
                         </p>
                     </c:when>
                     <c:otherwise>
                         <p class="message recipient">
-                            <img class='photoRecipient' src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}">
+                            <img class='photoRecipient' src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${contaDestino.foto}">
                             ${mensagem.conteudo}
                         </p>
                     </c:otherwise>

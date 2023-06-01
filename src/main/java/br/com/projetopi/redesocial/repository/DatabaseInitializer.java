@@ -97,9 +97,10 @@ public class DatabaseInitializer implements ServletContextListener {
                 create table comentario_postagem (
                 id integer primary key auto_increment,
                 conteudo varchar (200) not null,
-                usuario_id integer not null,
+                conta_id integer not null,
+                data_comentario date not null,
                 postagem_id integer not null,
-                foreign key (usuario_id) references usuario(id),
+                foreign key (conta_id) references conta(id),
                 foreign key (postagem_id) references postagem(id));      
                 create table curtida_comentario (
                 id integer primary key auto_increment,

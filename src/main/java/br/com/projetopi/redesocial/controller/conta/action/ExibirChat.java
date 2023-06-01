@@ -32,6 +32,7 @@ public class ExibirChat implements Action {
 
         int idContaOrigem = conta.getId();
         int idContaDestino = Integer.valueOf(request.getParameter("id_conta_destino"));
+        Conta contaDestino = contaService.getContaById(idContaDestino);
 //        request.setAttribute("id_conta_origem", idContaOrigem);
 //        request.setAttribute("id_conta_destino", idContaDestino);
 //        ArrayList<Mensagem> mensagens = this.mensagemDao.getMessages(idContaOrigem, idContaDestino);
@@ -41,6 +42,8 @@ public class ExibirChat implements Action {
         ArrayList<Mensagem> mensagens = this.mensagemDao.getMessages(idContaOrigem, idContaDestino);
 
         request.setAttribute("mensagens", mensagens);
+        request.setAttribute("contaOrigem", conta);
+        request.setAttribute("contaDestino", contaDestino);
 
         return "forward:chat.jsp";
     }

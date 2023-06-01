@@ -4,11 +4,11 @@
 <div class="col-10">
 
 <c:if test="${fn:contains(message, 'sucesso')}">
-    <h4 class="text-success"> ${message} </h4>
+    <h4 class="alert alert-success"> ${message} </h4>
 </c:if>
 
 <c:if test="${fn:contains(message, 'erro')}">
-    <h4 class="text-danger"> ${message} </h4>
+    <h4 class="alert alert-danger"> ${message} </h4>
 </c:if>
 
 

@@ -66,7 +66,10 @@ public class PostagemDao implements Dao<Postagem> {
     }
 
     public ArrayList<Postagem> findAllPostagem(){
-        String SQL = "select * from postagem order by id desc";
+        String SQL = "select * \n" +
+                "from postagem p \n" +
+                "left join \n" +
+                "(SELECT  postagem_id, count(*) qtd FROM curtida_postagem group by postagem_id ) c on p.id = c.postagem_id";
 
         ArrayList<Postagem> postagens = new ArrayList<>();
 
@@ -84,6 +87,7 @@ public class PostagemDao implements Dao<Postagem> {
                 postagem.setFoto_id(set.getInt("foto_id"));
                 postagem.setData_postagem(set.getDate("data_postagem"));
                 postagem.setFoto(set.getString("foto"));
+                postagem.setQtdLikes(set.getInt("qtd"));
                 postagens.add(postagem);
             }
             return postagens;
@@ -169,7 +173,11 @@ public class PostagemDao implements Dao<Postagem> {
     }
 
     public Postagem findById(int id){
-        String SQL = "SELECT * FROM POSTAGEM WHERE ID=?";
+        String SQL = "select * \n" +
+                "from postagem p \n" +
+                "left join \n" +
+                "(SELECT  postagem_id, count(*) qtd FROM curtida_postagem group by postagem_id ) c on p.id = c.postagem_id\n" +
+                "where id = ?";
         Postagem postagem = new Postagem();
 
         try(PreparedStatement statement = conexao.prepareStatement(SQL)){
@@ -186,6 +194,7 @@ public class PostagemDao implements Dao<Postagem> {
                     postagem.setFoto_id(rs.getInt("foto_id"));
                     postagem.setData_postagem(rs.getDate("data_postagem"));
                     postagem.setFoto(rs.getString("foto"));
+                    postagem.setQtdLikes(rs.getInt("qtd"));
                 }
             }
 

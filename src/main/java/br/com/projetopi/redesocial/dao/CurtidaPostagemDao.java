@@ -29,9 +29,23 @@ public class CurtidaPostagemDao {
     }
     }
 
-    public Object getAllLike(){
-        String sqlQuery = "SELECT concat(nome, ' ', sobrenome) as nome FROM curtida_postagem inner join conta on conta.id = curtida_postagem.conta_id";
+    public Object getAllLike(int postagem_id){
+        String sqlQuery = "SELECT concat(nome, ' ', sobrenome) as nome FROM curtida_postagem inner join conta on conta.id = curtida_postagem.conta_id where postagem_id = ?";
         return null;
+    }
+
+    public boolean add(int postagem_id, int conta_id){
+        String sqlQuery = "insert into curtida_postagem (postagem_id, conta_id)values (?,?) ";
+        try(PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
+            ps.setInt(1, postagem_id);
+            ps.setInt(2, conta_id);
+            ps.execute();
+            return true;
+        }catch (SQLException e){
+            System.out.println(e);
+            return false;
+        }
+
     }
 
 }

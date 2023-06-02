@@ -1,7 +1,9 @@
 const socket = new WebSocket('ws://localhost:8080/chat')
+const chatDisplay = document.getElementById('chat-display')
 
 socket.onopen = function () {
     console.log('Conexão Estabelecida')
+    chatDisplay.scrollTop = chatDisplay.scrollHeight
 }
 
 // Evento disparado quando uma mensagem é recebida do servidor
@@ -15,23 +17,33 @@ socket.onmessage = function (e) {
     // Exemplo: adicione a mensagem a uma área de exibição na página HTML
     
     id_origem = document.querySelector('#id_origem')
+    const serverScheme = chatDisplay.dataset.parametro1
+    const serverName = chatDisplay.dataset.parametro2
+    const serverPort = chatDisplay.dataset.parametro3
+    const contaOrigemFoto = chatDisplay.dataset.origem
+    const contaDestinoFoto = chatDisplay.dataset.destino
+    const newMessage = document.createElement('p');
+    const imgElement = document.createElement('img')
 
     if(id_origem == jsonObject.conta_remente_id){
-        const chatDisplay = document.getElementById('chat-display')
-        const newMessage = document.createElement('p');
         newMessage.classList.add('message')
         newMessage.classList.add('recipient')
         newMessage.textContent = jsonObject.conteudo
+        imgElement.src = serverScheme + '://' + serverName + ':' + serverPort + '/' + contaDestinoFoto
+        imgElement.classList.add('photoRecipient')
+        newMessage.appendChild(imgElement)
         chatDisplay.appendChild(newMessage)
-        chatDisplay.scrollTop = 2 ^ 10000;
+        chatDisplay.scrollTop = chatDisplay.scrollHeight;
     }else{
         const chatDisplay = document.getElementById('chat-display')
-        const newMessage = document.createElement('p');
         newMessage.classList.add('message')
         newMessage.classList.add('sender')
         newMessage.textContent = jsonObject.conteudo
+        imgElement.src = serverScheme + '://' + serverName + ':' + serverPort + '/' + contaOrigemFoto
+        imgElement.classList.add('photoSender')
+        newMessage.appendChild(imgElement)
         chatDisplay.appendChild(newMessage)
-        chatDisplay.scrollTop = 2 ^ 10000;
+        chatDisplay.scrollTop = chatDisplay.scrollHeight;
     }
 }
 

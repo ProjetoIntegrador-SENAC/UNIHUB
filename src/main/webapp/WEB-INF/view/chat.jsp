@@ -35,7 +35,7 @@
             <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${contaDestino.foto}">
             <h4>${contaDestino.nome}</h4>
         </div>
-        <div id="chat-display">
+        <div id="chat-display" data-parametro1="${pageContext.request.scheme}" data-parametro2="${pageContext.request.serverName}" data-parametro3="${pageContext.request.serverPort}" data-origem="${contaOrigem.foto}" data-destino="${contaDestino.foto}">
             <c:forEach items="${mensagens}" var="mensagem">
                 <c:choose>
                     <c:when test="${mensagem.conta_remente_id == id_conta_origem}">

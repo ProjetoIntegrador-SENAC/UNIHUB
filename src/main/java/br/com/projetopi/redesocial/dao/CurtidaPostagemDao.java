@@ -1,5 +1,6 @@
 package br.com.projetopi.redesocial.dao;
 
+import br.com.projetopi.redesocial.model.dto.CurtidaPostagemDto;
 import br.com.projetopi.redesocial.repository.ConnectionFactory;
 
 import java.sql.Connection;
@@ -67,6 +68,27 @@ public class CurtidaPostagemDao {
             return false;
         }
 
+    }
+
+    public CurtidaPostagemDto like(int postagem_id, int conta_id){
+        CurtidaPostagemDto curtida = new CurtidaPostagemDto();
+        String sqlQuery1 = "select * from curtida_postagem where postagem_id = ? and conta_id = ?";
+        try(PreparedStatement ps = connection.prepareStatement(sqlQuery1)) {
+            ps.setInt(1, postagem_id);
+            ps.setInt(2, conta_id);
+
+            ResultSet resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                curtida.setIsLike("like");
+                return curtida;
+            }
+        }
+        catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+        curtida.setIsLike("dislike");
+        return curtida;
     }
 
 }

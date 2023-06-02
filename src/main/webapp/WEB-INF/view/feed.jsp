@@ -30,12 +30,12 @@ input[type="search"]::-webkit-search-cancel-button {
   cursor: pointer;
 }
 </style>
-<body>
+<body data-usuario-id="${usuariologado.id}">
     <main>
         <!-- HEADER -->
         <header>
             <div class="logo">
-                <a href="/conta?acao=ExibirFeed&id=">
+                <a href="/conta?acao=ExibirFeed">
                     <img src="../../img/system/logo-white.png">
                 </a>
             </div>
@@ -65,7 +65,7 @@ input[type="search"]::-webkit-search-cancel-button {
                     </div>
                     <div class="interaction">
                         <button class="btnFavorite" data-postagem-id="${postagem.id}" data-usuario-logado-id="${usuariologado.id}">
-                            <span class="icon material-symbols-outlined favorite" data-like="dislike">favorite</span>
+                            <span class="icon material-symbols-outlined favorite" data-like="${like}">favorite</span>
                             <span class="icon"><small>${postagem.qtdLikes}</small><span>
                         </button>
                     </div>
@@ -160,21 +160,5 @@ input[type="search"]::-webkit-search-cancel-button {
 
         })
     })
-
-    const searchInput = document.querySelector('input[type="search"]');
-    searchInput.addEventListener('input', filterFriends);
-    function filterFriends() {
-      const searchTerm = searchInput.value.toLowerCase();
-      const friends = document.querySelectorAll('.friend');
-
-      friends.forEach((friend) => {
-        const name = friend.querySelector('h4').textContent.toLowerCase();
-        if (name.includes(searchTerm)) {
-          friend.style.display = 'block';
-        } else {
-          friend.style.display = 'none';
-        }
-      });
-    }
 </script>
 </html>

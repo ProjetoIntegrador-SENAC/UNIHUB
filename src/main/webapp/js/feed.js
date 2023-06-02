@@ -23,18 +23,25 @@ btnFavorites.forEach(btnFavorite => {
     const postId = btnFavorite.dataset.postagemId;
     const userId = btnFavorite.dataset.usuarioLogadoId;
     const fav = btnFavorite.querySelector('.favorite')
+    const outlined = getComputedStyle(document.querySelector('.material-symbols-outlined'))
+    function getCurtidas(){
+        return fetch(`http://localhost:8080/api_curtida_postagem?postagem_id=${postId}&conta_id=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+            fav.dataset.like = data['isLike']
+            if (fav.dataset.like == 'like') {
+                fav.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 1'
+                fav.style.color = 'red'
+            } else {
+                fav.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 0'
+                fav.style.color = 'var(--black)'
+            }
+            return data
+        })
+    }   
+    window.addEventListener('load', getCurtidas)
     fav.addEventListener('click', () => {
-        const outlined = getComputedStyle(document.querySelector('.material-symbols-outlined'))
-        if (fav.dataset.like == 'dislike') {
-            fav.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 1'
-            fav.style.color = 'red'
-            fav.dataset.like = 'like'
             location.href=`conta?acao=CurtirPostagem&postagem_id=${postId}&conta_id=${userId}`
-        } else {
-            fav.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 0'
-            fav.style.color = 'var(--black)'
-            fav.dataset.like = 'dislike'
-        }
     })
 })
 
@@ -54,4 +61,20 @@ function viewAllFriends() {
     location.href = './conta?acao=ExibirFriends'
 }
 
-// Curtir Postagem
+// Buscar amigo
+const searchInput = document.querySelector('input[type="search"]');
+searchInput.addEventListener('input', filterFriends);
+const friends = document.querySelectorAll('.friend');
+
+function filterFriends() {
+    const searchTerm = searchInput.value.toLowerCase();
+
+    friends.forEach((friend) => {
+        const name = friend.querySelector('h5').textContent.toLowerCase();
+    if (name.includes(searchTerm)) {
+        friend.style.display = 'flex';
+    } else {
+        friend.style.display = 'none';
+    }
+    });
+}

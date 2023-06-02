@@ -1,7 +1,9 @@
 package br.com.projetopi.redesocial.service;
 
 import br.com.projetopi.redesocial.dao.PostagemDao;
+import br.com.projetopi.redesocial.dao.CurtidaPostagemDao;
 import br.com.projetopi.redesocial.interfaces.Service;
+import br.com.projetopi.redesocial.model.CurtidaPostagem;
 import br.com.projetopi.redesocial.model.Postagem;
 import br.com.projetopi.redesocial.model.dto.QtdPostagemInstituicao;
 
@@ -11,8 +13,11 @@ public class PostagemService implements Service<Postagem> {
 
     private PostagemDao postagemDao;
 
+    private CurtidaPostagemDao curtidaPostagemDao;
+
     public PostagemService(){
         this.postagemDao = new PostagemDao();
+        this.curtidaPostagemDao = new CurtidaPostagemDao();
     }
 
     @Override

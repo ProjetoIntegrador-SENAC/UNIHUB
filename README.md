@@ -48,18 +48,21 @@
 
 - `RF-009`	Deletar postagem:	deletar postagem
 
-- `RF-010`	Comentar postagem:	comentar postagem
+- `RF-010`	Curtir postagem:	a conta poderá curtir postagem
 
-- `RF-011`	Curtir postagem:	a conta poderá curtir postagem
+- `RF-011`	Listar postagens (feed):	o usuário terá acesso ao feed com postagens de outros usuários vínculados a ele
 
-- `RF-012`	Listar postagens (feed):	o usuário terá acesso ao feed com postagens de outros usuários vínculados a ele
+
+### Chat
+
+- `RF-012`	Abrir um nova conversa:	o usuário poderá iniciar um novo chat
+
+- `RF-013`	Enviar mensagem:	o usuário poderá enviar e receber mensagens pelo chat
 
 
 ### 🚧 Versão 2.0.0 🚧
 
-- `RF-013`	Abrir um nova conversa:	o usuário poderá iniciar um novo chat
-
-- `RF-014`	Enviar mensagem:	o usuário poderá enviar e receber mensagens pelo chat
+- `RF-014`	comentar postagem:	o usuário poderá comentar nas postagens
 
 <hr>
 

@@ -98,15 +98,15 @@ header .profile .user{
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: inset 1px 3px 10px var(--black-mono);
+    box-shadow: inset 0px 0px 10px var(--black-mono);
 }
 header .profile .user:hover{
     border: 2px solid var(--emphasis);
 }
 header .profile .user > img{
     content: "";
-    height: 5rem;
-    width: 5rem;
+    height: 4.8rem;
+    width: 4.8rem;
     border-radius: 5rem;
     cursor: pointer;
 }

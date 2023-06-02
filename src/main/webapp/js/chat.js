@@ -30,8 +30,8 @@ socket.onmessage = function (e) {
         newMessage.classList.add('message')
         newMessage.classList.add('sender')
         newMessage.textContent = jsonObject.conteudo
-        imgElement.src = serverScheme + '://' + serverName + ':' + serverPort + '/' + contaDestinoFoto
-        imgElement.classList.add('photoRecipient')
+        imgElement.src = serverScheme + '://' + serverName + ':' + serverPort + '/' + contaOrigemFoto
+        imgElement.classList.add('photoSender')
         newMessage.appendChild(imgElement)
         chatDisplay.appendChild(newMessage)
         chatDisplay.scrollTop = chatDisplay.scrollHeight;
@@ -40,8 +40,8 @@ socket.onmessage = function (e) {
         newMessage.classList.add('message')
         newMessage.classList.add('recipient')
         newMessage.textContent = jsonObject.conteudo
-        imgElement.src = serverScheme + '://' + serverName + ':' + serverPort + '/' + contaOrigemFoto
-        imgElement.classList.add('photoSender')
+        imgElement.src = serverScheme + '://' + serverName + ':' + serverPort + '/' + contaDestinoFoto
+        imgElement.classList.add('photoRecipient')
         newMessage.appendChild(imgElement)
         chatDisplay.appendChild(newMessage)
         chatDisplay.scrollTop = chatDisplay.scrollHeight;

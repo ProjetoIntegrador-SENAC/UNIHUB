@@ -47,9 +47,16 @@
         <div class="profile">
             <div class="user">
                 <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.cd_foto}">
-                <div id="edit-img">
-                    <span class="btnPhoto material-symbols-outlined">edit</span>
-                </div>
+                <c:choose>
+                    <c:when test="${empty param.id}">
+                        <div id="edit-img">
+                            <span class="btnPhoto material-symbols-outlined">edit</span>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <!-- Se o parâmetro id não for nulo, não exibe o botão de editar foto -->
+                    </c:otherwise>
+                </c:choose>
             </div>
             <div class="titles">
                 <div class="nameUser">
@@ -65,9 +72,16 @@
         <div class="container">
             <c:forEach items="${postagens}" var="postagem">
                 <div class="post">
-                    <span class="btnDelet icon material-symbols-outlined" data-post-id="${postagem.id}">
-                        delete
-                    </span>
+                    <c:choose>
+                        <c:when test="${empty param.id}">
+                            <span id="btnDelet" class="icon material-symbols-outlined" data-post-id="${postagem.id}">
+                                delete
+                            </span>
+                        </c:when>
+                        <c:otherwise>
+                            <!-- Se o parâmetro id não for nulo, não exibe o botão de delete -->
+                        </c:otherwise>
+                    </c:choose>
                     <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}">
                 </div>
             </c:forEach>

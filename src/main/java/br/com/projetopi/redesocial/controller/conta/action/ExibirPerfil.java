@@ -45,12 +45,16 @@ public class ExibirPerfil implements Action {
         int qtdElemtos =  10; // Integer.valueOf(request.getParameter("qtd_elemtentos"));
         int numInicio = 0; // Integer.valueOf(request.getParameter("num_inicio"));
 
-        ArrayList<Postagem>  postagens = postagemService.findByAccountId(conta.getId(), qtdElemtos, numInicio);
+        ArrayList<Postagem>  postagens;
         ContaPerfilDto contaView;
         if(conta_parameter != null){
             contaView = this.contaService.getContaDadosPerfilView(conta_parameter.getId());
+            postagens = postagemService.findByAccountId(conta_parameter.getId(), qtdElemtos, numInicio);
+            System.out.println(contaView);
         }else{
             contaView = this.contaService.getContaDadosPerfilView(conta.getId());
+            postagens = postagemService.findByAccountId(conta.getId(), qtdElemtos, numInicio);
+            System.out.println(contaView);
         }
 
         request.setAttribute("postagens", postagens);

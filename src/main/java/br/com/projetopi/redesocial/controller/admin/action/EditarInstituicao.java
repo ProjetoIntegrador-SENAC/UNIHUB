@@ -23,7 +23,6 @@ public class EditarInstituicao implements Action {
         Instituicao instituicao = new Instituicao();
         instituicao.setId(instituicao_id);
         instituicao.setNome(nome);
-        ;
 
         if(this.instituicaoService.update(instituicao)){
             request.setAttribute("message", "Instituição atualizada com sucesso");

@@ -28,7 +28,7 @@
 </div>
 <script>
   function cancelar() {
-    window.location.href = "/admin?acao=ExibirUsuario";
+    window.location.href = "/admin?acao=ExibirTelaUsuario";
   }
 </script>
 <%@ include file="footer.jsp" %>

@@ -59,8 +59,7 @@ public class UsuarioDao {
         String sqlQuery = "DELETE FROM usuario WHERE id =?";
         try {PreparedStatement ps = conexao.prepareStatement(sqlQuery);
             ps.setInt(1, id);
-            ps.execute();
-
+            ps.execute(); 
             return true;
         }catch (SQLException e){
             e.printStackTrace();

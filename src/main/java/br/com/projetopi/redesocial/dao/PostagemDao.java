@@ -52,9 +52,10 @@ public class PostagemDao implements Dao<Postagem> {
 
     @Override
     public boolean remove(int id) {
-        String sqlQuery = "delete from postagem where id = ?";
+        String sqlQuery = "update postagem set ic_ativo = ? where id = ?";
         try(PreparedStatement ps =  conexao.prepareStatement(sqlQuery)){
-            ps.setInt(1, id);
+            ps.setInt(1, 0);
+            ps.setInt(2, id);
             ps.execute();
         }catch(SQLException e){
             e.printStackTrace();
@@ -71,7 +72,7 @@ public class PostagemDao implements Dao<Postagem> {
         String SQL = "select * \n" +
                 "from postagem p \n" +
                 "left join \n" +
-                "(SELECT  postagem_id, count(*) qtd FROM curtida_postagem group by postagem_id ) c on p.id = c.postagem_id order by id desc";
+                "(SELECT  postagem_id, count(*) qtd FROM curtida_postagem group by postagem_id ) c on p.id = c.postagem_id where ic_ativo = 1 order by id desc";
 
         ArrayList<Postagem> postagens = new ArrayList<>();
 
@@ -144,7 +145,7 @@ public class PostagemDao implements Dao<Postagem> {
 
         ArrayList<Postagem> postagens = new ArrayList<>();
 
-        String sqlQuery = "select * from postagem where conta_id = ? order by id desc LIMIT ? OFFSET ?";
+        String sqlQuery = "select * from postagem where conta_id = ? and ic_ativo = 1 order by id desc LIMIT ? OFFSET ?";
 
         try (PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
 
@@ -179,7 +180,7 @@ public class PostagemDao implements Dao<Postagem> {
                 "from postagem p \n" +
                 "left join \n" +
                 "(SELECT  postagem_id, count(*) qtd FROM curtida_postagem group by postagem_id ) c on p.id = c.postagem_id\n" +
-                "where id = ?";
+                "where id = ? and ic_ativo = 1";
         Postagem postagem = new Postagem();
 
         try(PreparedStatement statement = conexao.prepareStatement(SQL)){
@@ -207,7 +208,7 @@ public class PostagemDao implements Dao<Postagem> {
         }
     }
     public int getCount(){
-        String sqlQuery = "select count(*) from postagem";
+        String sqlQuery = "select count(*) from postagem where ic_ativo = 1";
         try (PreparedStatement statement = conexao.prepareStatement(sqlQuery)){
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){

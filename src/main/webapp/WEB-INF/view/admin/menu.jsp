@@ -41,7 +41,7 @@
                     </li>
                     <li class="nav-item menu-item d-flex justify-content-center">
                         <a class="nav-link" href="admin?acao=ExibirTelaInstituicao">
-                            <div class="d-flex">
+                           <div class="d-flex">
                            <span class="material-icons">
                                    school
                            </span>

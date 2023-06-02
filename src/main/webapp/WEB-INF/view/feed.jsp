@@ -19,7 +19,6 @@
     <script src="../../js/theme.js" defer></script>
     <script src="../../js/feed.js" defer></script>
     <script src="../../js/modal.js" defer></script>
-    <script src="../../js/allFriends.js" defer></script>
 
     <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>
@@ -36,7 +35,7 @@ input[type="search"]::-webkit-search-cancel-button {
         <!-- HEADER -->
         <header>
             <div class="logo">
-                <a href="/conta?acao=ExibirFeed">
+                <a href="/conta?acao=ExibirFeed&id=">
                     <img src="../../img/system/logo-white.png">
                 </a>
             </div>

@@ -153,6 +153,7 @@ main .friend{
     height: 200px;
     padding: 1rem;
     position: relative;
+    cursor: pointer;
 }
 main .friend:hover{
     transform: scale(1.1);

@@ -21,11 +21,11 @@ function filterFriends() {
     });
 }
 
-friends.addEventListener('click', openPerfil)
+friends.forEach((friend) => {
+    friend.addEventListener('click', openPerfil)
+});
 
 function openPerfil() {
-    friends.forEach((friend) => {
-        const idFriend = friend.currentTarget.getAttribute('data-set');
-        location.href = './conta?acaoExibirPerfil&${idFriend}'
-    });
+    const idFriend = this.getAttribute('data-set');
+    location.href = `./conta?acao=ExibirPerfil&id=${idFriend}`
 }

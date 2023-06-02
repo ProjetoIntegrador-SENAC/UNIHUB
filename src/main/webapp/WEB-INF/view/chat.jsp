@@ -32,8 +32,8 @@
 
     <div class="conteinerChatDisplay">
         <div class="infoFriend">
-            <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${contaOrigem.foto}">
-            <h4>${id_conta_destino}</h4>
+            <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${contaDestino.foto}">
+            <h4>${contaDestino.nome}</h4>
         </div>
         <div id="chat-display">
             <c:forEach items="${mensagens}" var="mensagem">

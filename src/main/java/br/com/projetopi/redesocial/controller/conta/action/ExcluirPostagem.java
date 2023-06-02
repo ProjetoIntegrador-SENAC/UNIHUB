@@ -25,9 +25,9 @@ public class ExcluirPostagem implements Action {
 
         Postagem postagem = this.postagemService.findById(id);
 
-        this.fotoService.remove(postagem.getFoto_id());
-
         this.postagemService.remove(id);
+
+        this.fotoService.remove(postagem.getFoto_id());
 
         return "redirect:conta?acao=ExibirPerfil";
     }

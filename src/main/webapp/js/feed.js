@@ -76,3 +76,10 @@ imageProfile.addEventListener('click', onPress);
 function onPress() {
     location.href = './conta?acao=ExibirPerfil'
 }
+
+// Exibir All Friends
+const btnFriendsAll = document.getElementById('btnFriendsAll')
+btnFriendsAll.addEventListener('click', viewAllFriends)
+function viewAllFriends() {
+    location.href = './conta?acao=ExibirFriends'
+}

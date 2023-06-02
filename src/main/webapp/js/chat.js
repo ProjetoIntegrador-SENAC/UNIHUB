@@ -16,7 +16,8 @@ socket.onmessage = function (e) {
     // Exiba a mensagem na interface do usuário do chat
     // Exemplo: adicione a mensagem a uma área de exibição na página HTML
     
-    id_origem = document.querySelector('#id_origem')
+    id_origem = document.querySelector('#id_origem').value
+    console.log(`id origem = ${id_origem}`)
     const serverScheme = chatDisplay.dataset.parametro1
     const serverName = chatDisplay.dataset.parametro2
     const serverPort = chatDisplay.dataset.parametro3
@@ -27,7 +28,7 @@ socket.onmessage = function (e) {
 
     if(id_origem == jsonObject.conta_remente_id){
         newMessage.classList.add('message')
-        newMessage.classList.add('recipient')
+        newMessage.classList.add('sender')
         newMessage.textContent = jsonObject.conteudo
         imgElement.src = serverScheme + '://' + serverName + ':' + serverPort + '/' + contaDestinoFoto
         imgElement.classList.add('photoRecipient')
@@ -37,7 +38,7 @@ socket.onmessage = function (e) {
     }else{
         const chatDisplay = document.getElementById('chat-display')
         newMessage.classList.add('message')
-        newMessage.classList.add('sender')
+        newMessage.classList.add('recipient')
         newMessage.textContent = jsonObject.conteudo
         imgElement.src = serverScheme + '://' + serverName + ':' + serverPort + '/' + contaOrigemFoto
         imgElement.classList.add('photoSender')

@@ -35,7 +35,28 @@ public class CurtidaPostagemDao {
     }
 
     public boolean add(int postagem_id, int conta_id){
-        String sqlQuery = "insert into curtida_postagem (postagem_id, conta_id)values (?,?) ";
+
+        String sqlQuery1 = "select * from curtida_postagem where postagem_id = ? and conta_id = ?";
+        try(PreparedStatement ps = connection.prepareStatement(sqlQuery1)) {
+            ps.setInt(1, postagem_id);
+            ps.setInt(2, conta_id);
+
+            ResultSet resultSet = ps.executeQuery();
+            if(resultSet.next()){
+                String sqlQuery2 = "delete  from curtida_postagem where postagem_id = ? and conta_id = ?";
+                try(PreparedStatement ps2 = connection.prepareStatement(sqlQuery2)){
+                    ps2.setInt(1, postagem_id);
+                    ps2.setInt(2, conta_id);
+                    ps2.execute();
+                    return true;
+                }
+            }}
+            catch (SQLException e){
+            System.out.println(e);
+            return false;
+        }
+
+        String sqlQuery = "insert into curtida_postagem (postagem_id, conta_id) values (?,?) ";
         try(PreparedStatement ps = connection.prepareStatement(sqlQuery)) {
             ps.setInt(1, postagem_id);
             ps.setInt(2, conta_id);

@@ -29,7 +29,11 @@ public class ExibirPerfil implements Action {
 
         Conta conta = (Conta) session.getAttribute("contaLogado");
 
-        Conta conta_parameter = contaService.getContaById(Integer.valueOf(request.getParameter("id")));
+        String conta_id = request.getParameter("id");
+        Conta conta_parameter = null;
+        if (conta_id != null){
+            conta_parameter = contaService.getContaById(Integer.valueOf(request.getParameter("id")));
+        }
 
         int qtdElemtos =  10; // Integer.valueOf(request.getParameter("qtd_elemtentos"));
         int numInicio = 0; // Integer.valueOf(request.getParameter("num_inicio"));
@@ -39,7 +43,7 @@ public class ExibirPerfil implements Action {
         if(conta_parameter != null){
             contaView = this.contaService.getContaDadosPerfilView(conta_parameter.getId());
         }else{
-            contaView = this.contaService.getContaDadosPerfilView(conta.getId());;
+            contaView = this.contaService.getContaDadosPerfilView(conta.getId());
         }
 
         request.setAttribute("postagens", postagens);

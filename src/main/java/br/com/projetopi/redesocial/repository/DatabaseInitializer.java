@@ -121,8 +121,9 @@ public class DatabaseInitializer implements ServletContextListener {
                 INSERT INTO CURSO (ID, NOME, TIPO, AREA, INSTITUICAO_ID) VALUES (1, 'ANALISE E DESENVOLVIMENTO DE SISTEMAS', 'TECNOLOGO', 'TECNOLOGIA DA INFORMACAO', 1);
                 INSERT INTO FOTO(CD_FOTO) VALUES ('img/fotos/user.png');
                 insert into turma values (1, 1, '2022-01-01', 'Norturno', 'Primeiro', 'A');
-                insert into usuario (id, email, senha, papel) values (1, 'jho@unihub.com', '$2a$10$DZRMqR7U7hZR8gvjZdhuhugESSDG8ct1HtHsygIR7Qd078UnczlIi', 'Aluno');
-                insert into conta (id, cpf, ic_ativo, nome, data_nascimento, sobre, genero, sobrenome, usuario_id, instituicao_id, curso_id, foto_id, turma_id ) values (1, '45179292804', 1, 'jhonatan', '2002-12-31', '', 'Masculino', 'rocha', 1, 1,1,1,1);
+                insert into usuario (email, senha, papel) values ('admin@unihub.com', '$2a$10$DZRMqR7U7hZR8gvjZdhuhugESSDG8ct1HtHsygIR7Qd078UnczlIi', 'Admin');
+                //insert into usuario (id, email, senha, papel) values (1, 'jho@unihub.com', '$2a$10$DZRMqR7U7hZR8gvjZdhuhugESSDG8ct1HtHsygIR7Qd078UnczlIi', 'Aluno');
+                //insert into conta (id, cpf, ic_ativo, nome, data_nascimento, sobre, genero, sobrenome, usuario_id, instituicao_id, curso_id, foto_id, turma_id ) values (1, '45179292804', 1, 'jhonatan', '2002-12-31', '', 'Masculino', 'rocha', 1, 1,1,1,1);
                 """;
     }
 

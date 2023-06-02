@@ -99,7 +99,9 @@ header .profile .user{
     justify-content: center;
     align-items: center;
     box-shadow: inset 1px 3px 10px var(--black-mono);
-
+}
+header .profile .user:hover{
+    border: 2px solid var(--emphasis);
 }
 header .profile .user > img{
     content: "";
@@ -175,8 +177,8 @@ main .post > span{
 }
 main .post > img{
     content: "";
-    width: 300px;
-    height: 300px;
+    width: 320px;
+    height: 320px;
     border-radius: 0.5rem;
     object-fit: cover;
     box-shadow: inset 0px 0px 10px var(--black-mono);

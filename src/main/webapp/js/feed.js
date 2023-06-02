@@ -20,50 +20,20 @@ legends.forEach(legend => {
 
 const btnFavorites = document.querySelectorAll('.btnFavorite')
 btnFavorites.forEach(btnFavorite => {
-    btnFavorite.addEventListener('click', () => {
-        const fav = btnFavorite.querySelector('.favorite')
+    const postId = btnFavorite.dataset.postagemId;
+    const userId = btnFavorite.dataset.usuarioLogadoId;
+    const fav = btnFavorite.querySelector('.favorite')
+    fav.addEventListener('click', () => {
         const outlined = getComputedStyle(document.querySelector('.material-symbols-outlined'))
         if (fav.dataset.like == 'dislike') {
             fav.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 1'
             fav.style.color = 'red'
             fav.dataset.like = 'like'
+            location.href=`conta?acao=CurtirPostagem&postagem_id=${postId}&conta_id=${userId}`
         } else {
             fav.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 0'
             fav.style.color = 'var(--black)'
             fav.dataset.like = 'dislike'
-        }
-    })
-})
-
-const btnComments = document.querySelectorAll('.btnComment')
-btnComments.forEach(btnComment => {
-    btnComment.addEventListener('click', () => {
-        const comment = btnComment.querySelector('.comment')
-        const outlined = getComputedStyle(document.querySelector('.material-symbols-outlined'))
-        if (comment.dataset.comment == 'closed') {
-            comment.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 1'
-            comment.dataset.comment = 'open'
-        } else {
-            comment.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 0'
-            comment.style.color = 'var(--black)'
-            comment.dataset.comment = 'closed'
-        }
-    })
-})
-
-const btnShares = document.querySelectorAll('.btnShare')
-btnShares.forEach(btnShare => {
-    btnShare.addEventListener('click', () => {
-        const share = btnShare.querySelector('.share')
-        const outlined = getComputedStyle(document.querySelector('.material-symbols-outlined'))
-        if (share.dataset.share == 'closed') {
-            share.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 1'
-            share.style.color = 'blue'
-            share.dataset.share = 'open'
-        } else {
-            share.style.fontVariationSettings = outlined.getPropertyValue('font-variation-settings') + ', "FILL" 0'
-            share.style.color = 'var(--black)'
-            share.dataset.share = 'closed'
         }
     })
 })
@@ -83,3 +53,5 @@ btnFriendsAll.addEventListener('click', viewAllFriends)
 function viewAllFriends() {
     location.href = './conta?acao=ExibirFriends'
 }
+
+// Curtir Postagem

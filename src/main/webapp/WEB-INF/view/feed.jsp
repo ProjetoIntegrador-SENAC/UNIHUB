@@ -63,15 +63,10 @@ input[type="search"]::-webkit-search-cancel-button {
                             </span>
                         </button>
                     </div>
-                    <div class="interactions">
-                        <button class="btnFavorite">
+                    <div class="interaction">
+                        <button class="btnFavorite" data-postagem-id="${postagem.id}" data-usuario-logado-id="${usuariologado.id}">
                             <span class="icon material-symbols-outlined favorite" data-like="dislike">favorite</span>
-                        </button>
-                        <button class="btnComment">
-                            <span class="icon material-symbols-outlined comment" data-comment="closed">Comment</span>
-                        </button>
-                        <button class="btnShare">
-                            <span class="icon material-symbols-outlined share" data-share="closed">share</span>
+                            <span class="icon"><small>${postagem.qtdLikes}</small><span>
                         </button>
                     </div>
                 </div>
@@ -115,7 +110,7 @@ input[type="search"]::-webkit-search-cancel-button {
                 <div class="friend">
                     <span data-set="${conta.id}" class="chatFrame">
                         <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}">
-                        <h4>${conta.nome}</h4>
+                        <h5>${conta.nome}</h5>
                     </span>
                 </div>
                 </c:forEach>

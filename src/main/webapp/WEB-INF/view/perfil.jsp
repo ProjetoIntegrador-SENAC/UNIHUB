@@ -18,7 +18,6 @@
     <script src="../../js/theme.js" defer></script>
     <script src="../../js/perfil.js" defer></script>
     <script src="../../js/modalPerfil.js" defer></script>
-    <script src="../../js/allFriends.js" defer></script>
     
     <link rel="shortcut icon" href="../../img/system/favicon.ico" type="image/x-icon">
     <title>UNIHUB</title>

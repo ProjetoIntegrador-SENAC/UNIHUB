@@ -94,8 +94,7 @@ main .post{
     box-shadow: 1px 1px 10px var(--black-mono);
     width: min-content;
     height: min-content;
-    padding: 1rem;
-    gap: 0.5rem;
+    padding: 1rem 1rem 0.5rem 1rem;
     z-index: 1;
 }
 main .post::before{
@@ -154,7 +153,8 @@ main .post .legend{
     width: 100%;
     border-radius: 0.5rem;
     box-shadow: inset 0px 0px 10px var(--black-mono);
-    position: relative;   
+    position: relative;
+    margin: 0.5rem 0;
 }
 main .post .legend > textarea{
     padding: 0.5rem;
@@ -183,12 +183,14 @@ main .post .legend > button{
     color: var(--black);
 }
 
-main .post .interactions{
+main .post .interaction{
     display: flex;
-    gap: 0.5rem;
     position: relative;
 }
-main .post .interactions > button{
+main .post .interaction button{
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
     background: transparent;
     color: var(--black);
     cursor: pointer;
@@ -267,7 +269,7 @@ aside .container{
     justify-content: flex-start;
     width: 100%;
     min-height: 90%;
-    margin: 1rem;
+    padding: 1rem 0.5rem;
     gap: 0.5rem;
 }
 aside .container .search{
@@ -275,7 +277,7 @@ aside .container .search{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 100%;
 }
 aside .container .search > input{
     width: 100%;
@@ -285,7 +287,7 @@ aside .container .search > input{
     backdrop-filter: blur(15px);
     background: var(--offWhite);
     --webkit-backdrop-filter: blur(15px);
-    box-shadow: inset 1px 1px 5px var(--black-mono), inset -1px -1px 5px var(--black-mono);
+    box-shadow: inset 1px 1px 5px var(--black-mono), inset -1px -1px 5px var(--black-mono), 0 0 5px var(--black-mono);
 }
 aside .container .search > input:focus {
     outline: 0;
@@ -302,8 +304,8 @@ aside .container .friends{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 85%;
-    height: 100%;
+    width: 100%;
+    flex: 1;
     margin-bottom: 0.5rem;
     gap: 0.5rem;
     border-radius: 0.5rem;

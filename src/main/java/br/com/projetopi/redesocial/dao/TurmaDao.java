@@ -65,6 +65,7 @@ public class TurmaDao implements Dao<Turma> {
                 turma.setData_inicio(result.getDate("data_inicio"));
                 turma.setLetra(result.getString("letra"));
                 turma.setSemestre(result.getString("semestre"));
+                turma.setId(result.getInt("id"));
                 turmas.add(turma);
             }
         }catch (SQLException e){

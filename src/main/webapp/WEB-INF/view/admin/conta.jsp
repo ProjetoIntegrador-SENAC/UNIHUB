@@ -30,6 +30,7 @@
 
             </td>
             <td>
+            <a href="/admin?acao=ExibirTelaEditarConta&id=${conta.id}">
             <span class="material-icons editar" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="${conta.id}">
                 edit
             </span>

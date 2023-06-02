@@ -199,6 +199,7 @@ public class ContaDao {
                 conta.setCurso_id(result.getInt("curso_id"));
                 conta.setFoto_id(result.getInt("foto_id"));
                 conta.setTurma_id(result.getInt("turma_id"));
+                conta.setSobrenome(result.getString("sobrenome"));
             }
         }catch (SQLException e){
             e.printStackTrace();

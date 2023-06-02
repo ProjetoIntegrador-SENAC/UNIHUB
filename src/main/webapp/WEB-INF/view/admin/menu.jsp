@@ -1,5 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="row no-gutter-col no-gutter-row">
 <div class="col-2 no-gutter-row no-gutter-col container">
     <nav class="navbar navbar-expand-lg bg-dark side-nav d-flex align-items-start">
@@ -45,7 +45,7 @@
                            <span class="material-icons">
                                    school
                            </span>
-                            Instituicoes
+                            Instituições
                             </div>
                         </a>
                     </li>

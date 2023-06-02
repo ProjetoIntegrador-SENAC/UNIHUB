@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="br.com.projetopi.redesocial.model.Conta" %>
 <%@ page import="br.com.projetopi.redesocial.dao.InstituicaoDao" %>
 <%@ page import="br.com.projetopi.redesocial.service.InstituicaoService" %>

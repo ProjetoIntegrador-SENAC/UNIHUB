@@ -26,14 +26,21 @@ public class ExibirPerfil implements Action {
     @Override
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         var session = request.getSession();
+
         Conta conta = (Conta) session.getAttribute("contaLogado");
+
+        Conta conta_parameter = contaService.getContaById(Integer.valueOf(request.getParameter("id")));
 
         int qtdElemtos =  10; // Integer.valueOf(request.getParameter("qtd_elemtentos"));
         int numInicio = 0; // Integer.valueOf(request.getParameter("num_inicio"));
 
         ArrayList<Postagem>  postagens = postagemService.findByAccountId(conta.getId(), qtdElemtos, numInicio);
-
-        ContaPerfilDto contaView = this.contaService.getContaDadosPerfilView(conta.getId());
+        ContaPerfilDto contaView;
+        if(conta_parameter != null){
+            contaView = this.contaService.getContaDadosPerfilView(conta_parameter.getId());
+        }else{
+            contaView = this.contaService.getContaDadosPerfilView(conta.getId());;
+        }
 
         request.setAttribute("postagens", postagens);
         request.setAttribute("conta", contaView);

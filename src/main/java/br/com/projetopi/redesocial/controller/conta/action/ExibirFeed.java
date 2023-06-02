@@ -25,6 +25,7 @@ public class ExibirFeed implements Action {
     public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         var session = request.getSession();
+
         Conta conta = (Conta) session.getAttribute("contaLogado");
 
         int instituicao_id = 1; // Integer.valueOf(request.getParameter("instituicao_id"));

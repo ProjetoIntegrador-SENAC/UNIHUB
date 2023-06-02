@@ -43,10 +43,12 @@ public class Chat extends ServerEndpointConfig.Configurator {
         activeSessionsToSendMessage.add(origem);
         activeSessionsToSendMessage.add(destinatario);
 
+        String apiPayload = ApiUtils.ObjectToJsonString(mensagem);
+
         for(Session client : session.getOpenSessions()){
             if(client.isOpen()){
                 if(client.getBasicRemote() == origem || client.getBasicRemote() == destinatario){
-                    client.getBasicRemote().sendText(mensagem.getConteudo());
+                    client.getBasicRemote().sendText(apiPayload);
                 }
                 SessionManager.showSession();
             }

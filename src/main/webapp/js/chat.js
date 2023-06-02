@@ -19,14 +19,16 @@ socket.onmessage = function (e) {
     if(id_origem == jsonObject.conta_remente_id){
         const chatDisplay = document.getElementById('chat-display')
         const newMessage = document.createElement('p');
-        newMessage.classList.add('message sender')
+        newMessage.classList.add('message')
+        newMessage.classList.add('recipient')
         newMessage.textContent = jsonObject.conteudo
         chatDisplay.appendChild(newMessage)
         chatDisplay.scrollTop = 2 ^ 10000;
     }else{
         const chatDisplay = document.getElementById('chat-display')
         const newMessage = document.createElement('p');
-        newMessage.classList.add('message recipient')
+        newMessage.classList.add('message')
+        newMessage.classList.add('sender')
         newMessage.textContent = jsonObject.conteudo
         chatDisplay.appendChild(newMessage)
         chatDisplay.scrollTop = 2 ^ 10000;

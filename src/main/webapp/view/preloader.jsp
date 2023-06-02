@@ -46,14 +46,14 @@ body {
     justify-content: center;
     width: 100%;
     height: 100vh;
-    overflow: none;
+    overflow: hidden;
 }
 
 .loader {
   width: 500px;
   height: 500px;
   position: relative;
-  animation: pulse 2s infinite linear;
+  animation: pulse 1.5s infinite linear;
 
 }
 
@@ -61,7 +61,7 @@ body {
   width: 100%;
   height: 100%;
   position: absolute;
-  animation: opacity 2s infinite linear;
+  animation: opacity 1.5s infinite linear;
 }
 
 .image-bottom {
@@ -81,7 +81,7 @@ body {
     window.addEventListener('load', () =>{
         setTimeout(function() {
             window.location.href = "../login?acao=ExibirTelaLogin";
-        }, 6000);
+        }, 3000);
     })
 </script>
 </html>

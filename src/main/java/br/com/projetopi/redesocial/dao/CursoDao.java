@@ -70,6 +70,7 @@ public class CursoDao {
                     curso.setArea(set.getString("area"));
                     curso.setTipo(set.getString("tipo"));
                     curso.setNome(set.getString("nome"));
+                    curso.setId(set.getInt("id"));
                     curso.setInstituicao_id(set.getInt("instituicao_id"));
                     return curso;
                 }

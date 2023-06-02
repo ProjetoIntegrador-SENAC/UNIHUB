@@ -19,7 +19,7 @@
     </div>
 
     <div class="mb-3">
-           <input type="text" name="id" class="form-control d-none" id="exampleFormControlInput1" placeholder="name@example.com" value="${curso.id}">
+           <input type="text" name="id" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" value="${curso.id}">
     </div>
 
     <div class="mb-3">

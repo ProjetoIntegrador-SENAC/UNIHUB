@@ -8,15 +8,29 @@ socket.onopen = function () {
 
 socket.onmessage = function (e) {
     const message = e.data;
-    console.log('Mensagem recebida: ', message);
+    console.log('Mensagem recebidass: ', message);
+    const jsonObject = JSON.parse(message);
+    console.log(jsonObject.conta_remente_id)
     // Exiba a mensagem na interface do usuário do chat
     // Exemplo: adicione a mensagem a uma área de exibição na página HTML
-    const chatDisplay = document.getElementById('chat-display')
-    const newMessage = document.createElement('p');
-    newMessage.textContent = message
-    chatDisplay.appendChild(newMessage)
-    chatDisplay.scrollTop = 2 ^ 10000;
+    
+    id_origem = document.querySelector('#id_origem')
 
+    if(id_origem == jsonObject.conta_remente_id){
+        const chatDisplay = document.getElementById('chat-display')
+        const newMessage = document.createElement('p');
+        newMessage.classList.add('message sender')
+        newMessage.textContent = jsonObject.conteudo
+        chatDisplay.appendChild(newMessage)
+        chatDisplay.scrollTop = 2 ^ 10000;
+    }else{
+        const chatDisplay = document.getElementById('chat-display')
+        const newMessage = document.createElement('p');
+        newMessage.classList.add('message recipient')
+        newMessage.textContent = jsonObject.conteudo
+        chatDisplay.appendChild(newMessage)
+        chatDisplay.scrollTop = 2 ^ 10000;
+    }
 }
 
 // Evento disparado quando a conexão é fechada
@@ -29,7 +43,6 @@ socket.onclose = function (event) {
 socket.onerror = function (error) {
     console.error('Erro na conexão:', error);
 };
-
 
 function sendMessage() {
 

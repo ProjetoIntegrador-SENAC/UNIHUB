@@ -14,7 +14,7 @@ function filterFriends() {
     friends.forEach((friend) => {
         const name = friend.querySelector('p').textContent.toLowerCase();
     if (name.includes(searchTerm)) {
-        friend.style.display = 'block';
+        friend.style.display = 'flex';
     } else {
         friend.style.display = 'none';
     }

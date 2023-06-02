@@ -71,7 +71,7 @@ public class PostagemDao implements Dao<Postagem> {
         String SQL = "select * \n" +
                 "from postagem p \n" +
                 "left join \n" +
-                "(SELECT  postagem_id, count(*) qtd FROM curtida_postagem group by postagem_id ) c on p.id = c.postagem_id";
+                "(SELECT  postagem_id, count(*) qtd FROM curtida_postagem group by postagem_id ) c on p.id = c.postagem_id order by id desc";
 
         ArrayList<Postagem> postagens = new ArrayList<>();
 
@@ -144,7 +144,7 @@ public class PostagemDao implements Dao<Postagem> {
 
         ArrayList<Postagem> postagens = new ArrayList<>();
 
-        String sqlQuery = "select * from postagem where conta_id = ? LIMIT ? OFFSET ?;";
+        String sqlQuery = "select * from postagem where conta_id = ? order by id desc LIMIT ? OFFSET ?";
 
         try (PreparedStatement ps = conexao.prepareStatement(sqlQuery)){
 

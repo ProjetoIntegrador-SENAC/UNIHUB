@@ -30,9 +30,16 @@ public class ExibirPerfil implements Action {
         Conta conta = (Conta) session.getAttribute("contaLogado");
 
         String conta_id = request.getParameter("id");
+        System.out.println("Valor do parâmetro id: " + conta_id);
+
         Conta conta_parameter = null;
-        if (conta_id != null){
-            conta_parameter = contaService.getContaById(Integer.valueOf(request.getParameter("id")));
+        if (conta_id != null) {
+            int id = Integer.parseInt(conta_id);
+            System.out.println("Valor do ID convertido: " + id);
+            
+            conta_parameter = contaService.getContaById(id);
+            System.out.println("Conta encontrada: " + conta_parameter);
+            
         }
 
         int qtdElemtos =  10; // Integer.valueOf(request.getParameter("qtd_elemtentos"));

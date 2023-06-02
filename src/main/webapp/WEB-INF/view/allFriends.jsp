@@ -61,28 +61,28 @@
         </div>
         <h1>Curso</h1>
         <div class="container">
-            <c:forEach items="${postagens}" var="postagem">
-                <div class="friend">
-                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}">
-                    <p>Nome_user</p>
+            <c:forEach items="${contas}" var="conta">
+                <div class="friend" data-set="${conta.id}">
+                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}">
+                    <p>${conta.nome}</p>
                 </div>
             </c:forEach>
         </div>
         <h1>Instituição</h1>
         <div class="container">
-            <c:forEach items="${postagens}" var="postagem">
-                <div class="friend">
-                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}">
-                    <p>Nome_user</p>
+            <c:forEach items="${contas}" var="conta">
+                <div class="friend" data-set="${conta.id}">
+                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}">
+                    <p>${conta.nome}</p>
                 </div>
             </c:forEach>
         </div>
         <h1>Outros</h1>
         <div class="container">
-            <c:forEach items="${postagens}" var="postagem">
-                <div class="friend">
-                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${postagem.foto}">
-                    <p>Nome_user</p>
+            <c:forEach items="${contas}" var="conta">
+                <div class="friend" data-set="${conta.id}">
+                    <img src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${conta.foto}">
+                    <p>${conta.nome}</p>
                 </div>
             </c:forEach>
         </div>

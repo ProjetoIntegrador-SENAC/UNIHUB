@@ -88,7 +88,7 @@ input[type="search"]::-webkit-search-cancel-button {
     <aside>
         <section class="profile">
             <div class="user">
-                <img id="imageProfile" src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${usuariologado.foto}"> <!-- TODO:Adicionar foto usuario -->
+                <img id="imageProfile" src="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}/${usuariologado.foto}">
             </div>
             <div class="config">
                 <span id="btnTheme" data-theme="dark" class="icon material-symbols-outlined">
